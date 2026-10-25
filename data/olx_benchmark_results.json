@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "v1-granite42-8b",
+    "model": "eriktonon/granite4.2-uncensored:8b",
+    "label": "IBM Granite 4.2 8B Uncensored + LoRA",
+    "elapsed_sec": 254.0,
+    "peak_tok_s": 77.7,
+    "avg_tok_s": 75.1,
+    "frontend_lines": 153,
+    "frontend_kb": 8.8,
+    "backend_lines": 210,
+    "sql_lines": 97
+  },
+  {
+    "slug": "v2-deepseek-v41-9b",
+    "model": "eriktonon/deepseek-v4.1-flash-1017:9b",
+    "label": "DeepSeek V4.1 Flash 9B Uncensored",
+    "elapsed_sec": 98.3,
+    "peak_tok_s": 109.0,
+    "avg_tok_s": 96.9,
+    "frontend_lines": 297,
+    "frontend_kb": 20.8,
+    "backend_lines": 210,
+    "sql_lines": 102
+  },
+  {
+    "slug": "v3-bonsai2-9b",
+    "model": "eriktonon/bonsai-2-uncensored:9b",
+    "label": "Ternary Bonsai 2 9B (Q2_0 Surgical)",
+    "elapsed_sec": 109.4,
+    "peak_tok_s": 66.8,
+    "avg_tok_s": 51.3,
+    "frontend_lines": 121,
+    "frontend_kb": 7.1,
+    "backend_lines": 210,
+    "sql_lines": 108
+  },
+  {
+    "slug": "v4-qwen38-9b",
+    "model": "eriktonon/qwen3.8-uncensored:9b",
+    "label": "Qwen 3.8 9B Opus-Distill Uncensored",
+    "elapsed_sec": 133.7,
+    "peak_tok_s": 111.3,
+    "avg_tok_s": 104.0,
+    "frontend_lines": 307,
+    "frontend_kb": 17.5,
+    "backend_lines": 210,
+    "sql_lines": 224
+  },
+  {
+    "slug": "v5-jarvis-14b",
+    "model": "jarvis:14b-v4",
+    "label": "JARVIS 14B v4 (Qwen 2.5 Coder 14B)",
+    "elapsed_sec": 61.1,
+    "peak_tok_s": 72.1,
+    "avg_tok_s": 64.7,
+    "frontend_lines": 128,
+    "frontend_kb": 6.9,
+    "backend_lines": 210,
+    "sql_lines": 73
+  }
+]
