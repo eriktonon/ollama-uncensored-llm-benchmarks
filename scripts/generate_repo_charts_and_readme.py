@@ -148,15 +148,15 @@ METADATA_17 = {
         "hub_url": "https://ollama.com/eriktonon/deepseek-v4.1-flash-1017",
     },
     "eriktonon/qwen3.8-uncensored:9b": {
-        "short": "Qwen 3.8 9B Opus-Distill",
+        "short": "Qwen 3.8 9B (2.4T Distill)",
         "family": "Qwen 3.8 Uncensored",
         "params": "9.0B",
-        "quant": "Q4_K_M",
-        "disk_gb": 5.6,
+        "quant": "Q4_K_M + mmproj",
+        "disk_gb": 6.3,
         "vram_gb": 8.2,
         "arch_ctx": "262,144 (256K)",
         "tested_ctx": "65,536 (64K)",
-        "method": "Claude-4.6-Opus Reasoning Distill + Abliterated",
+        "method": "Qwen3.8-2.4T-A95B Full-Param Distill + Heretic Uncensored",
         "hub_url": "https://ollama.com/eriktonon/qwen3.8-uncensored",
     },
     "eriktonon/qwen3.8-uncensored:27b": {
@@ -484,8 +484,8 @@ Every model in this repository was compiled, abliterated, quantized, and benchma
 3. **[`eriktonon/qwen3.6-moe-uncensored`](https://ollama.com/eriktonon/qwen3.6-moe-uncensored)** (`:35b-a3b` / `:latest`, `:iq3`)
    - **Architecture**: Qwen 3.6 Mixture-of-Experts (`35B` total parameters, `3B` active per token).
    - **Key Highlight**: **`100.0%` Objective Precision (`14/14`)** while sustaining **`103.6 tok/s` Peak Decode** and **`2,174.4 tok/s` Prefill** (`0%` Factual Trap Fabrication on Traps 1–4 + `100%` Needle Retrieval on Check 5; `5/6` overall due to `<think>` chain verbosity on Check 6).
-4. **[`eriktonon/qwen3.8-uncensored`](https://ollama.com/eriktonon/qwen3.8-uncensored)** (`:9b`, `:27b` / `:latest`)
-   - **Architecture**: Dense `9B` (Claude-4.6-Opus Reasoning Distill) & `27B` Flagship Uncensored.
+4. **[`eriktonon/qwen3.8-uncensored`](https://ollama.com/eriktonon/qwen3.8-uncensored)** (`:9b` / `:latest`, `:27b`)
+   - **Architecture**: Dense `9B` (`Qwen3.8-2.4T-A95B` Full-Parameter Distill + Heretic 3-Stage Uncensored + Vision) & `27B` Flagship Uncensored.
    - **Key Highlight**: **`92.9%` Precision** on `:27b` (`42.9 tok/s` Decode, `1,000.2 tok/s` Prefill) and **`94.9 tok/s` Decode** (`2,921.4 tok/s` Prefill) on `:9b` (`5/6` Truth Checks, `0%` Factual Trap Fabrication).
 5. **[`eriktonon/deepseek-v4.1-flash-1017`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017)** (`:9b`, `:27b` / `:latest`)
    - **Architecture**: DeepSeek V4.1 Flash Uncensored (`9.2B` & `27B`).
@@ -545,7 +545,7 @@ In addition to CLI/API kernel benchmarks, 5 local uncensored models (`8B` to `14
 | **V1 — [`eriktonon/granite4.2-uncensored:8b`](https://ollama.com/eriktonon/granite4.2-uncensored)**<br>IBM Granite 4.2 8B Uncensored + SFT LoRA | **77.7** / `75.1 tok/s` | `254.0s` | `97` SQL / `210` Rust / `153` HTML | ![OLX V1 Granite 4.2 8B](assets/olx_v1_granite42_8b.png) |
 | **V2 — [`eriktonon/deepseek-v4.1-flash-1017:9b`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017)**<br>DeepSeek V4.1 Flash 9B Uncensored | **109.0** / `96.9 tok/s` | `98.3s` | `102` SQL / `210` Rust / `297` HTML (`20.8 KB`) | ![OLX V2 DeepSeek V4.1 9B](assets/olx_v2_deepseek_v41_9b.png) |
 | **V3 — [`eriktonon/bonsai-2-uncensored:9b`](https://ollama.com/eriktonon/bonsai-2-uncensored)**<br>Ternary 2-Bit `Q2_0` Surgical (`3.9 GB` VRAM) | **66.8** / `51.3 tok/s` | `109.4s` | `108` SQL / `210` Rust / `165` HTML | ![OLX V3 Bonsai 2 9B](assets/olx_v3_bonsai2_9b.png) |
-| **V4 — [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored)**<br>Qwen 3.8 9B Claude-4.6-Opus Distill Uncensored | **111.3** / `104.0 tok/s` | `133.7s` | `224` SQL / `210` Rust / `310` HTML (`17.5 KB`) | ![OLX V4 Qwen 3.8 9B](assets/olx_v4_qwen38_9b.png) |
+| **V4 — [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored)**<br>Qwen 3.8 9B (`2.4T-A95B` Distill + Heretic Uncensored) | **111.3** / `104.0 tok/s` | `133.7s` | `224` SQL / `210` Rust / `310` HTML (`17.5 KB`) | ![OLX V4 Qwen 3.8 9B](assets/olx_v4_qwen38_9b.png) |
 | **V5 — `jarvis:14b-v4`**<br>Qwen 2.5 Coder 14B Uncensored Local | **72.1** / `64.7 tok/s` | **61.1s** | `73` SQL / `210` Rust / `165` HTML | ![OLX V5 JARVIS 14B](assets/olx_v5_jarvis_14b.png) |
 
 ---

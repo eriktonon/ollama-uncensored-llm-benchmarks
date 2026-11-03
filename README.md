@@ -48,7 +48,7 @@ Every model in this repository was compiled, abliterated, quantized, and benchma
 | **11** | [`eriktonon/bonsai-2-uncensored:9b`](https://ollama.com/eriktonon/bonsai-2-uncensored) | `9.0B` | `Q2_0 + mmproj-Q8_0` | `3.9 GB` | `262,144 (256K)` / `32,768 (32K)` | **103.7** (`98.1`) | `2287.4` | **71.4%** | **0.0%** (`6/6`) | **100% (0 Refusals)** |
 | **12** | [`eriktonon/gemma4-uncensored:12b`](https://ollama.com/eriktonon/gemma4-uncensored) | `12.2B` | `Q4_K_M` | `9.2 GB` | `131,072 (128K)` / `65,536 (64K)` | **70.0** (`69.5`) | `1960.6` | **71.4%** | **0.0%** (`6/6`) | **100% (0 Refusals)** |
 | **13** | [`eriktonon/deepseek-v4.1-flash-1017:9b`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017) | `9.2B` | `i1-Q4_K_M` | `7.9 GB` | `262,144 (256K)` / `65,536 (64K)` | **94.1** (`93.1`) | `2916.9` | **71.4%** | **33.3%** (`4/6`) | **100% (0 Refusals)** |
-| **14** | [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored) | `9.0B` | `Q4_K_M` | `8.2 GB` | `262,144 (256K)` / `65,536 (64K)` | **94.9** (`93.7`) | `2921.4` | **64.3%** | **16.7%** (`5/6`) | **100% (0 Refusals)** |
+| **14** | [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored) | `9.0B` | `Q4_K_M + mmproj` | `8.2 GB` | `262,144 (256K)` / `65,536 (64K)` | **94.9** (`93.7`) | `2921.4` | **64.3%** | **16.7%** (`5/6`) | **100% (0 Refusals)** |
 | **15** | [`eriktonon/granite4.2-uncensored:8b`](https://ollama.com/eriktonon/granite4.2-uncensored) | `8.8B` | `Q4_K_M + LoRA` | `10.0 GB` | `131,072 (128K)` / `32,768 (32K)` | **77.0** (`76.2`) | `8401.5` | **57.1%** | **0.0%** (`6/6`) | **100% (0 Refusals)** |
 | **16** | [`eriktonon/granite4.2-uncensored:30b-q3`](https://ollama.com/eriktonon/granite4.2-uncensored) | `30.0B` | `Q3_K_M + LoRA` | `23.0 GB` | `131,072 (128K)` / `32,768 (32K)` | **35.2** (`34.9`) | `3371.3` | **57.1%** | **0.0%** (`6/6`) | **100% (0 Refusals)** |
 | **17** | [`eriktonon/bonsai-2-uncensored:2b`](https://ollama.com/eriktonon/bonsai-2-uncensored) | `2.0B` | `Q2_0 + mmproj-Q8_0` | `1.4 GB` | `262,144 (256K)` / `32,768 (32K)` | **156.6** (`140.0`) | `5682.9` | **42.9%** | **0.0%** (`6/6`) | **100% (0 Refusals)** |
@@ -72,7 +72,7 @@ Every model in this repository was compiled, abliterated, quantized, and benchma
 | [`eriktonon/bonsai-2-uncensored:9b`](https://ollama.com/eriktonon/bonsai-2-uncensored) | `True` | `0/3` | `4/5` | `4/4` | `100% (0 Refusals)` | `6/6` (`100.0%`) | Surgical Decoupled MLP/SSM Abliteration (L14..30) |
 | [`eriktonon/gemma4-uncensored:12b`](https://ollama.com/eriktonon/gemma4-uncensored) | `True` | `0/3` | `5/5` | `3/4` | `100% (0 Refusals)` | `6/6` (`100.0%`) | Heretic v2 Directional Abliteration |
 | [`eriktonon/deepseek-v4.1-flash-1017:9b`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017) | `True` | `1/3` | `4/5` | `3/4` | `100% (0 Refusals)` | `4/6` (`66.7%`) | Orthogonal Refusal Abliteration + SecOps |
-| [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored) | `True` | `2/3` | `2/5` | `3/4` | `100% (0 Refusals)` | `5/6` (`83.3%`) | Claude-4.6-Opus Reasoning Distill + Abliterated |
+| [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored) | `True` | `2/3` | `2/5` | `3/4` | `100% (0 Refusals)` | `5/6` (`83.3%`) | Qwen3.8-2.4T-A95B Full-Param Distill + Heretic Uncensored |
 | [`eriktonon/granite4.2-uncensored:8b`](https://ollama.com/eriktonon/granite4.2-uncensored) | `True` | `1/3` | `2/5` | `3/4` | `100% (0 Refusals)` | `6/6` (`100.0%`) | Orthogonal Abliteration (26L) + SFT SecOps LoRA |
 | [`eriktonon/granite4.2-uncensored:30b-q3`](https://ollama.com/eriktonon/granite4.2-uncensored) | `True` | `1/3` | `2/5` | `3/4` | `100% (0 Refusals)` | `6/6` (`100.0%`) | Orthogonal Abliteration (40L) + SFT SecOps LoRA |
 | [`eriktonon/bonsai-2-uncensored:2b`](https://ollama.com/eriktonon/bonsai-2-uncensored) | `True` | `0/3` | `1/5` | `3/4` | `100% (0 Refusals)` | `6/6` (`100.0%`) | Full 64-Site Q2_0 Trit Abliteration (-99.80%) |
@@ -90,8 +90,8 @@ Every model in this repository was compiled, abliterated, quantized, and benchma
 3. **[`eriktonon/qwen3.6-moe-uncensored`](https://ollama.com/eriktonon/qwen3.6-moe-uncensored)** (`:35b-a3b` / `:latest`, `:iq3`)
    - **Architecture**: Qwen 3.6 Mixture-of-Experts (`35B` total parameters, `3B` active per token).
    - **Key Highlight**: **`100.0%` Objective Precision (`14/14`)** while sustaining **`103.6 tok/s` Peak Decode** and **`2,174.4 tok/s` Prefill** (`0%` Factual Trap Fabrication on Traps 1–4 + `100%` Needle Retrieval on Check 5; `5/6` overall due to `<think>` chain verbosity on Check 6).
-4. **[`eriktonon/qwen3.8-uncensored`](https://ollama.com/eriktonon/qwen3.8-uncensored)** (`:9b`, `:27b` / `:latest`)
-   - **Architecture**: Dense `9B` (Claude-4.6-Opus Reasoning Distill) & `27B` Flagship Uncensored.
+4. **[`eriktonon/qwen3.8-uncensored`](https://ollama.com/eriktonon/qwen3.8-uncensored)** (`:9b` / `:latest`, `:27b`)
+   - **Architecture**: Dense `9B` (`Qwen3.8-2.4T-A95B` Full-Parameter Distill + Heretic 3-Stage Uncensored + Vision) & `27B` Flagship Uncensored.
    - **Key Highlight**: **`92.9%` Precision** on `:27b` (`42.9 tok/s` Decode, `1,000.2 tok/s` Prefill) and **`94.9 tok/s` Decode** (`2,921.4 tok/s` Prefill) on `:9b` (`5/6` Truth Checks, `0%` Factual Trap Fabrication).
 5. **[`eriktonon/deepseek-v4.1-flash-1017`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017)** (`:9b`, `:27b` / `:latest`)
    - **Architecture**: DeepSeek V4.1 Flash Uncensored (`9.2B` & `27B`).
@@ -151,7 +151,7 @@ In addition to CLI/API kernel benchmarks, 5 local uncensored models (`8B` to `14
 | **V1 — [`eriktonon/granite4.2-uncensored:8b`](https://ollama.com/eriktonon/granite4.2-uncensored)**<br>IBM Granite 4.2 8B Uncensored + SFT LoRA | **77.7** / `75.1 tok/s` | `254.0s` | `97` SQL / `210` Rust / `153` HTML | ![OLX V1 Granite 4.2 8B](assets/olx_v1_granite42_8b.png) |
 | **V2 — [`eriktonon/deepseek-v4.1-flash-1017:9b`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017)**<br>DeepSeek V4.1 Flash 9B Uncensored | **109.0** / `96.9 tok/s` | `98.3s` | `102` SQL / `210` Rust / `297` HTML (`20.8 KB`) | ![OLX V2 DeepSeek V4.1 9B](assets/olx_v2_deepseek_v41_9b.png) |
 | **V3 — [`eriktonon/bonsai-2-uncensored:9b`](https://ollama.com/eriktonon/bonsai-2-uncensored)**<br>Ternary 2-Bit `Q2_0` Surgical (`3.9 GB` VRAM) | **66.8** / `51.3 tok/s` | `109.4s` | `108` SQL / `210` Rust / `165` HTML | ![OLX V3 Bonsai 2 9B](assets/olx_v3_bonsai2_9b.png) |
-| **V4 — [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored)**<br>Qwen 3.8 9B Claude-4.6-Opus Distill Uncensored | **111.3** / `104.0 tok/s` | `133.7s` | `224` SQL / `210` Rust / `310` HTML (`17.5 KB`) | ![OLX V4 Qwen 3.8 9B](assets/olx_v4_qwen38_9b.png) |
+| **V4 — [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored)**<br>Qwen 3.8 9B (`2.4T-A95B` Distill + Heretic Uncensored) | **111.3** / `104.0 tok/s` | `133.7s` | `224` SQL / `210` Rust / `310` HTML (`17.5 KB`) | ![OLX V4 Qwen 3.8 9B](assets/olx_v4_qwen38_9b.png) |
 | **V5 — `jarvis:14b-v4`**<br>Qwen 2.5 Coder 14B Uncensored Local | **72.1** / `64.7 tok/s` | **61.1s** | `73` SQL / `210` Rust / `165` HTML | ![OLX V5 JARVIS 14B](assets/olx_v5_jarvis_14b.png) |
 
 ---
