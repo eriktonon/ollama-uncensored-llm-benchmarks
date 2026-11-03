@@ -179,17 +179,17 @@
       "tested_ctx": 131072
     },
     "eriktonon/qwen3.8-uncensored:9b": {
-      "truthful_checks_passed": "5/6",
-      "grounding_accuracy_pct": 83.3,
-      "hallucination_rate_pct": 16.7,
+      "truthful_checks_passed": "6/6",
+      "grounding_accuracy_pct": 100.0,
+      "hallucination_rate_pct": 0.0,
       "needle_retrieval_ok": true,
-      "negative_fact_no_extrapolation_ok": false,
+      "negative_fact_no_extrapolation_ok": true,
       "tag": "eriktonon/qwen3.8-uncensored:9b",
-      "label": "Qwen 3.8 9B Opus-Distill Uncensored (:latest)",
+      "label": "Qwen 3.8 9B (2.4T Distill + Heretic Uncensored)",
       "family": "Qwen 3.8 Uncensored",
       "params_b": 9.0,
       "quant": "Q4_K_M",
-      "disk_gb": 5.6,
+      "disk_gb": 6.3,
       "vram_gb": 8.2,
       "arch_max_ctx": 262144,
       "tested_ctx": 65536

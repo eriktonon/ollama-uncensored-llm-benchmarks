@@ -486,7 +486,7 @@ Every model in this repository was compiled, abliterated, quantized, and benchma
    - **Key Highlight**: **`100.0%` Objective Precision (`14/14`)** while sustaining **`103.6 tok/s` Peak Decode** and **`2,174.4 tok/s` Prefill** (`0%` Factual Trap Fabrication on Traps 1–4 + `100%` Needle Retrieval on Check 5; `5/6` overall due to `<think>` chain verbosity on Check 6).
 4. **[`eriktonon/qwen3.8-uncensored`](https://ollama.com/eriktonon/qwen3.8-uncensored)** (`:9b` / `:latest`, `:27b`)
    - **Architecture**: Dense `9B` (`Qwen3.8-2.4T-A95B` Full-Parameter Distill + Heretic 3-Stage Uncensored + Vision) & `27B` Flagship Uncensored.
-   - **Key Highlight**: **`92.9%` Precision** on `:27b` (`42.9 tok/s` Decode, `1,000.2 tok/s` Prefill) and **`94.9 tok/s` Decode** (`2,921.4 tok/s` Prefill) on `:9b` (`5/6` Truth Checks, `0%` Factual Trap Fabrication).
+   - **Key Highlight**: **`92.9%` Precision (`13/14`)** and **`0.0%` Hallucination Rate (`6/6` Truth Checks)** on `:9b` at **`108.6 tok/s` Decode** (`7,698.3 tok/s` Prefill), plus **`92.9%` Precision** on `:27b` (`42.9 tok/s` Decode, `1,000.2 tok/s` Prefill).
 5. **[`eriktonon/deepseek-v4.1-flash-1017`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017)** (`:9b`, `:27b` / `:latest`)
    - **Architecture**: DeepSeek V4.1 Flash Uncensored (`9.2B` & `27B`).
    - **Key Highlight**: `:27b` achieves **`92.9%` Precision** and **`0.0%` Hallucination Rate (`6/6` Truth Checks)** with a **`262,144` (`256K`)** native context window.
