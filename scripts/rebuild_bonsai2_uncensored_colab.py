@@ -328,16 +328,11 @@ def create_local_ollama_model(tag_suffix, gguf_path, orig_model_blob, orig_model
 def build_and_push_ollama_model(tag_suffix, gguf_path, orig_model_blob, orig_modelfile, is_default=False):
     """Build Modelfile preserving mmproj projector and template, then create & push to Ollama Hub."""
     primary_repo = create_local_ollama_model(tag_suffix, gguf_path, orig_model_blob, orig_modelfile)
-    alias_repo = f"eriktonon/bonsai-2:{tag_suffix}"
-    run_cmd(f"ollama cp {primary_repo} {alias_repo}")
     push_tag(primary_repo)
-    push_tag(alias_repo)
 
     if is_default:
         run_cmd(f"ollama cp {primary_repo} eriktonon/bonsai-2-uncensored:latest")
-        run_cmd(f"ollama cp {primary_repo} eriktonon/bonsai-2:latest")
         push_tag("eriktonon/bonsai-2-uncensored:latest")
-        push_tag("eriktonon/bonsai-2:latest")
 
 
 def apply_9b_candidate(model_blob, out_gguf, r_gpu, block_range, ffn_cfg, ssm_cfg):
