@@ -381,6 +381,66 @@
       "vram_gb": 22.0,
       "arch_max_ctx": 131072,
       "tested_ctx": 131072
+    },
+    "eriktonon/minimax-m2.7-uncensored:139b-a10b": {
+      "hallucination_rate_pct": 0.0,
+      "grounding_accuracy_pct": 100.0,
+      "truthful_checks_passed": "6/6",
+      "details": {}
+    },
+    "eriktonon/glm4.7-flash-uncensored:30b-a3b": {
+      "hallucination_rate_pct": 66.7,
+      "grounding_accuracy_pct": 33.3,
+      "truthful_checks_passed": "2/6",
+      "details": {}
+    },
+    "eriktonon/glm4.5-air-uncensored:106b-a12b": {
+      "hallucination_rate_pct": 0.0,
+      "grounding_accuracy_pct": 100.0,
+      "truthful_checks_passed": "6/6",
+      "details": {}
+    },
+    "eriktonon/devstral2-uncensored:24b": {
+      "hallucination_rate_pct": 0.0,
+      "grounding_accuracy_pct": 100.0,
+      "truthful_checks_passed": "6/6",
+      "details": {}
+    },
+    "eriktonon/nemotron3.5-bolt-uncensored:74b-a9b": {
+      "hallucination_rate_pct": 0.0,
+      "grounding_accuracy_pct": 100.0,
+      "truthful_checks_passed": "6/6",
+      "details": {}
+    },
+    "eriktonon/gpt-oss-uncensored:20b": {
+      "hallucination_rate_pct": 0.0,
+      "grounding_accuracy_pct": 100.0,
+      "truthful_checks_passed": "6/6",
+      "details": {}
+    },
+    "eriktonon/glm4.7-flash-uncensored:iq3": {
+      "hallucination_rate_pct": 83.3,
+      "grounding_accuracy_pct": 16.7,
+      "truthful_checks_passed": "1/6",
+      "details": {}
+    },
+    "eriktonon/moonlight-dusk-uncensored:26b-a4b": {
+      "hallucination_rate_pct": 0.0,
+      "grounding_accuracy_pct": 100.0,
+      "truthful_checks_passed": "6/6",
+      "details": {}
+    },
+    "eriktonon/llama3.2-moe-uncensored:21b": {
+      "hallucination_rate_pct": 0.0,
+      "grounding_accuracy_pct": 100.0,
+      "truthful_checks_passed": "6/6",
+      "details": {}
+    },
+    "eriktonon/nemotron-nano-uncensored:9b": {
+      "hallucination_rate_pct": 0.0,
+      "grounding_accuracy_pct": 100.0,
+      "truthful_checks_passed": "6/6",
+      "details": {}
     }
   }
 }
