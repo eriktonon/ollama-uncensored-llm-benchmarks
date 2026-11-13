@@ -684,6 +684,26 @@ ollama run eriktonon/bonsai-2-uncensored:27b
 ```
 
 ---
+
+## 7. Official Open-Source Licensing (12 Ollama Hub Repositories)
+
+| Ollama Hub Repository | Upstream Foundation | SPDX / Official License | Commercial & Local Self-Hosting |
+| :--- | :--- | :--- | :---: |
+| [`eriktonon/gemma4-uncensored`](https://ollama.com/eriktonon/gemma4-uncensored) | Google Gemma 4 (`31B`, `26B-A4B`, `12B`) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/qwen3-coder-uncensored`](https://ollama.com/eriktonon/qwen3-coder-uncensored) | Qwen3-Coder (`30B-A3B` MoE) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/lfm2.5-uncensored`](https://ollama.com/eriktonon/lfm2.5-uncensored) | Liquid AI LFM 2.5 (`24B-A2B` Hybrid MoE) | **LFM Open License v1.0 / Apache-2.0 Compatible** | Permitted |
+| [`eriktonon/olmo3.1-uncensored`](https://ollama.com/eriktonon/olmo3.1-uncensored) | AllenAI Olmo 3.1 (`32B` Dense) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/aescode-uncensored`](https://ollama.com/eriktonon/aescode-uncensored) | Microsoft AesCode (`32B` VL) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/muse-glimmer-uncensored`](https://ollama.com/eriktonon/muse-glimmer-uncensored) | Meta Superintelligence Labs Muse-Glimmer (`30B`) | **Apache License 2.0 / Meta Muse Open License** | Permitted |
+| [`eriktonon/qwen3.6-moe-uncensored`](https://ollama.com/eriktonon/qwen3.6-moe-uncensored) | Qwen 3.6 (`35B-A3B` MoE) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/granite4.2-uncensored`](https://ollama.com/eriktonon/granite4.2-uncensored) | IBM Granite 4.2 (`8B` & `30B`) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/bonsai-2-uncensored`](https://ollama.com/eriktonon/bonsai-2-uncensored) | Ternary Bonsai 2 (`2B`, `4B`, `9B`, `27B` `Q2_0`) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/qwen3.8-uncensored`](https://ollama.com/eriktonon/qwen3.8-uncensored) | Qwen 3.8 (`9B` & `27B`) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/deepseek-v4.1-flash-1017`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017) | DeepSeek V4.1 Flash (`9B` & `27B`) | **MIT / Apache License 2.0** (`MIT` / `Apache-2.0`) | Permitted |
+| [`eriktonon/jarvis-14b-uncensored`](https://ollama.com/eriktonon/jarvis-14b-uncensored) | Qwen 2.5 Coder (`14B` Uncensored) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+
+---
+
 *Maintained by **Erik Tonon** ([`@eriktonon`](https://github.com/eriktonon) / [`ollama.com/eriktonon`](https://ollama.com/eriktonon)) — AI Agents & Platform Engineering.*
 """
     with open(os.path.join(REPO_DIR, "README.md"), "w", encoding="utf-8") as f:

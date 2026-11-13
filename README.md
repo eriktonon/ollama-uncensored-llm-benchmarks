@@ -198,4 +198,25 @@ ollama run eriktonon/bonsai-2-uncensored:27b
 ```
 
 ---
+
+## 7. Official Open-Source Licensing (`Apache 2.0` & `MIT`)
+
+All **23 Uncensored LLM images** across our **12 official Ollama Hub repositories** ([`https://ollama.com/eriktonon`](https://ollama.com/eriktonon)) are distributed under permissive open-source licenses granting **commercial use, private on-premises deployment, surgical abliteration/fine-tuning, and redistribution**:
+
+| Ollama Hub Repository | Published Tags | Upstream Base Architecture | Official License | Commercial & Private Use |
+| :--- | :--- | :--- | :---: | :---: |
+| **[`eriktonon/gemma4-uncensored`](https://ollama.com/eriktonon/gemma4-uncensored)** | `:31b`, `:26b-a4b` (`:latest`), `:12b` | `google/gemma-4` (`31B` Multimodal, `26B-A4B` MoE, `12B`) | **Apache 2.0** | ✅ 100% Free |
+| **[`eriktonon/qwen3-coder-uncensored`](https://ollama.com/eriktonon/qwen3-coder-uncensored)** | `:30b-a3b`, `:latest` | `Qwen/Qwen3-Coder-30B-A3B-Instruct` (`30.5B` MoE, `3B` Active) | **Apache 2.0** | ✅ 100% Free |
+| **[`eriktonon/lfm2.5-uncensored`](https://ollama.com/eriktonon/lfm2.5-uncensored)** | `:24b-a2b`, `:latest` | `LiquidAI/LFM2.5-24B-A2B` (`24B` Liquid Hybrid MoE, `2B` Active) | **LFM Open 1.0 / Apache 2.0** | ✅ 100% Free |
+| **[`eriktonon/olmo3.1-uncensored`](https://ollama.com/eriktonon/olmo3.1-uncensored)** | `:32b`, `:latest` | `allenai/Olmo-3.1-32B` (`32.2B` Dense Reasoning & Systems) | **Apache 2.0** | ✅ 100% Free |
+| **[`eriktonon/aescode-uncensored`](https://ollama.com/eriktonon/aescode-uncensored)** | `:32b`, `:latest` | `microsoft/AesCode-32B` + `Qwen3-VL-32B` (`33.4B` VL UI-to-Code) | **Apache 2.0** | ✅ 100% Free |
+| **[`eriktonon/muse-glimmer-uncensored`](https://ollama.com/eriktonon/muse-glimmer-uncensored)** | `:30b`, `:latest` | `Meta-Superintelligence/Muse-Glimmer-30B` (`29.8B` Multimodal) | **Apache 2.0 / MIT** | ✅ 100% Free |
+| **[`eriktonon/qwen3.6-moe-uncensored`](https://ollama.com/eriktonon/qwen3.6-moe-uncensored)** | `:35b-a3b` (`:latest`), `:iq3` | `Qwen/Qwen3.6-35B-A3B` (`35B` MoE, `3B` Active) | **Apache 2.0** | ✅ 100% Free |
+| **[`eriktonon/qwen3.8-uncensored`](https://ollama.com/eriktonon/qwen3.8-uncensored)** | `:9b` (`:latest`), `:27b` | `Qwen3.8` (`9B` Distill `2.4T-A95B` + `27B` Dense) | **Apache 2.0** | ✅ 100% Free |
+| **[`eriktonon/bonsai-2-uncensored`](https://ollama.com/eriktonon/bonsai-2-uncensored)** | `:2b`, `:4b`, `:9b` (`:latest`), `:27b` | `PrismML Ternary Bonsai 2` (`Q2_0` Native + Vision `mmproj-Q8_0`) | **Apache 2.0** | ✅ 100% Free |
+| **[`eriktonon/granite4.2-uncensored`](https://ollama.com/eriktonon/granite4.2-uncensored)** | `:8b` (`:latest`), `:30b-q3`, `:30b`, `:30b-q6`, `:30b-q8` | `ibm-granite/granite-4.2` (`8.8B` & `30B` + SFT SecOps LoRA) | **Apache 2.0** | ✅ 100% Free |
+| **[`eriktonon/deepseek-v4.1-flash-1017`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017)** | `:9b`, `:27b` (`:latest`) | `DeepSeek-V4.1-Flash` (**MIT**) + `Qwen3.5/3.6` (**Apache 2.0**) | **MIT + Apache 2.0** | ✅ 100% Free |
+| **[`eriktonon/ltx-2.5-uncensored`](https://ollama.com/eriktonon/ltx-2.5-uncensored)** | `:latest`, `:22b-int8` | `Lightricks/LTX-2.5` + `AnimateDiff` (**Apache 2.0**) | **Apache 2.0 / MIT** | ✅ 100% Free |
+
+---
 *Maintained by **Erik Tonon** ([`@eriktonon`](https://github.com/eriktonon) / [`ollama.com/eriktonon`](https://ollama.com/eriktonon)) — AI Agents & Platform Engineering.*
