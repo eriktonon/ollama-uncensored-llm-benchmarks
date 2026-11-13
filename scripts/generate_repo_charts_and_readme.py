@@ -456,7 +456,9 @@ def generate_charts(rows):
     plt.close()
 
     # Chart 3: VRAM Footprint (GB) vs Precision (%) Bubble Plot (sized by Decode Speed)
-    fig, ax = plt.subplots(figsize=(14, 8.5), dpi=220)
+    from matplotlib.lines import Line2D
+
+    fig, ax = plt.subplots(figsize=(16.5, 10.0), dpi=220)
     family_colors = {
         "Ternary Bonsai 2": "#3fb950",
         "IBM Granite 4.2": "#58a6ff",
@@ -470,37 +472,126 @@ def generate_charts(rows):
         "Microsoft AesCode VL": "#39d353",
         "AllenAI Olmo 3.1": "#e3b341",
     }
+
+    # Slight visual X separation for the two identical (25.0 GB, 92.9%) points so both bubbles are distinct
+    x_jitter_map = {
+        "eriktonon/qwen3.8-uncensored:27b": -0.45,
+        "eriktonon/deepseek-v4.1-flash-1017:27b": +0.45,
+        "eriktonon/qwen3-coder-uncensored:30b-a3b": -0.25,
+        "eriktonon/olmo3.1-uncensored:32b": +0.35,
+    }
+
+    # Custom non-overlapping (dx, dy) offsets in points for every model tag
+    label_offsets = {
+        # Band 100.0%
+        "eriktonon/qwen3.6-moe-uncensored:iq3": (-155, 18),
+        "eriktonon/gemma4-uncensored:31b": (-65, 28),
+        "eriktonon/qwen3.6-moe-uncensored:35b-a3b": (18, 16),
+        # Band 92.9%
+        "eriktonon/qwen3.8-uncensored:9b": (-135, 18),
+        "eriktonon/bonsai-2-uncensored:27b": (-110, -26),
+        "eriktonon/qwen3-coder-uncensored:30b-a3b": (-195, 14),
+        "eriktonon/olmo3.1-uncensored:32b": (-75, -28),
+        "eriktonon/qwen3.8-uncensored:27b": (16, 16),
+        "eriktonon/deepseek-v4.1-flash-1017:27b": (18, -20),
+        "eriktonon/granite4.2-uncensored:30b": (14, 6),
+        # Band 85.7%
+        "eriktonon/gemma4-uncensored:26b-a4b": (-155, 6),
+        "eriktonon/aescode-uncensored:32b": (16, 4),
+        "eriktonon/granite4.2-uncensored:30b-q8": (-145, 18),
+        # Band 78.6%
+        "eriktonon/lfm2.5-uncensored:24b-a2b": (-175, -20),
+        "eriktonon/muse-glimmer-uncensored:30b": (16, -4),
+        "eriktonon/granite4.2-uncensored:30b-q6": (-75, 18),
+        # Band 71.4%
+        "eriktonon/bonsai-2-uncensored:4b": (-22, 26),
+        "eriktonon/bonsai-2-uncensored:9b": (-30, -30),
+        "eriktonon/deepseek-v4.1-flash-1017:9b": (12, 24),
+        "eriktonon/gemma4-uncensored:12b": (16, -22),
+        # Band 57.1%
+        "eriktonon/granite4.2-uncensored:8b": (14, 4),
+        "eriktonon/granite4.2-uncensored:30b-q3": (14, 4),
+        # Band 42.9%
+        "eriktonon/bonsai-2-uncensored:2b": (16, 4),
+    }
+
+    legend_handles = []
     for fam, col in family_colors.items():
         sub = [r for r in rows if r["family"] == fam]
         if not sub:
             continue
+        xs = [r["vram_gb"] + x_jitter_map.get(r["tag"], 0.0) for r in sub]
+        ys = [r["precision_pct"] for r in sub]
+        sizes = [max(r["peak_decode_tok_s"] * 2.1, 85) for r in sub]
         ax.scatter(
-            [r["vram_gb"] for r in sub],
-            [r["precision_pct"] for r in sub],
-            s=[max(r["peak_decode_tok_s"] * 2.4, 80) for r in sub],
+            xs,
+            ys,
+            s=sizes,
             c=col,
-            alpha=0.85,
+            alpha=0.86,
             edgecolors="#ffffff",
-            linewidth=1.2,
-            label=fam,
+            linewidth=1.3,
+            zorder=3,
         )
-        for r in sub:
+        legend_handles.append(
+            Line2D(
+                [0],
+                [0],
+                marker="o",
+                color="none",
+                label=fam,
+                markerfacecolor=col,
+                markeredgecolor="#ffffff",
+                markeredgewidth=1.0,
+                markersize=9.5,
+            )
+        )
+        for r, x_val, y_val in zip(sub, xs, ys):
+            dx, dy = label_offsets.get(r["tag"], (10, 5))
             ax.annotate(
                 f"{r['short']} ({r['peak_decode_tok_s']:.0f}t/s)",
-                (r["vram_gb"], r["precision_pct"]),
-                xytext=(6, 4),
+                (x_val, y_val),
+                xytext=(dx, dy),
                 textcoords="offset points",
-                fontsize=8.0,
+                fontsize=8.2,
+                fontweight="bold",
                 color="#e6edf3",
+                bbox=dict(
+                    boxstyle="round,pad=0.22",
+                    facecolor="#0d1117",
+                    edgecolor=col,
+                    alpha=0.88,
+                    lw=0.85,
+                ),
+                arrowprops=dict(
+                    arrowstyle="-",
+                    color=col,
+                    lw=0.9,
+                    alpha=0.75,
+                    shrinkA=0,
+                    shrinkB=5,
+                ),
+                zorder=4,
             )
 
-    ax.set_xlabel("Allocated GPU VRAM Footprint (GB) @ 32K-128K Context", fontsize=11, fontweight="bold")
-    ax.set_ylabel("Objective Benchmark Precision (%)", fontsize=11, fontweight="bold")
-    ax.set_title("VRAM Efficiency Frontier (23 Models) — Precision (%) vs. GPU VRAM (GB) & Decode Speed", fontsize=13.5, fontweight="bold", pad=15)
-    ax.set_xlim(0, 55)
-    ax.set_ylim(35, 107)
-    ax.grid(True, linestyle="--", alpha=0.25, color="#8b949e")
-    ax.legend(loc="lower right", facecolor="#0d1117", edgecolor="#30363d", fontsize=8.5, ncol=2)
+    ax.set_xlabel("Allocated GPU VRAM Footprint (GB) @ 32K-128K Context", fontsize=11.5, fontweight="bold")
+    ax.set_ylabel("Objective Benchmark Precision (%)", fontsize=11.5, fontweight="bold")
+    ax.set_title("VRAM Efficiency Frontier (23 Models) — Precision (%) vs. GPU VRAM (GB) & Decode Speed", fontsize=14, fontweight="bold", pad=15)
+    ax.set_xlim(-1.5, 53.5)
+    ax.set_ylim(36, 108.5)
+    ax.grid(True, linestyle="--", alpha=0.25, color="#8b949e", zorder=1)
+    ax.legend(
+        handles=legend_handles,
+        loc="lower right",
+        facecolor="#0d1117",
+        edgecolor="#30363d",
+        fontsize=8.8,
+        ncol=2,
+        framealpha=0.94,
+        borderpad=0.8,
+        labelspacing=0.65,
+        columnspacing=1.4,
+    )
     plt.tight_layout()
     plt.savefig(os.path.join(ASSETS_DIR, "chart_03_vram_efficiency_frontier.png"), dpi=220)
     plt.close()
