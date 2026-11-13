@@ -732,17 +732,22 @@ Executed via [`scripts/benchmark_hallucination_context_colab.py`](scripts/benchm
 
 ---
 
-## 5. Multi-Agent Full-Stack OLX Clone Benchmark (100% Local Models on RTX 5080)
+## 5. Multi-Agent Full-Stack OLX Clone Benchmark (100% Local Models on RTX 5080 — V1 to V10)
 
-In addition to CLI/API kernel benchmarks, 5 local uncensored models (`8B` to `14B`, **100% Local Execution — Zero Cloud APIs**) were stress-tested by orchestrating our **4-Wave Multi-Agent Pipeline (`homelab copilot`)** to build a complete **OLX Brasil Clone (`OLX Pay Escrow 5% + Entrega Fácil Correios/Jadlog + Chat Integrado + Filtro por DDD/Categoria`)** across 5 specialized agents:
+In addition to CLI/API kernel benchmarks, **10 local uncensored models (`8B` to `30.5B-A3B` MoE & `27B` Ternary `Q2_0`, 100% Local Execution — Zero Cloud APIs)** were stress-tested by orchestrating our **4-Wave Multi-Agent Pipeline (`homelab copilot` / JARVIS v2.0)** to build a complete **OLX Brasil Clone (`OLX Pay Escrow 5% + Entrega Fácil Correios/Jadlog + Chat Integrado + Filtro por DDD/Categoria`)** across 5 specialized agents (`pe-agents-ibm-arquitetura`, `pe-agents-ibm-banco-dados`, `pe-agents-ibm-rust-backend`, `pe-agents-ibm-frontend`, `pe-agents-ibm-sre`):
 
-| Local Model Tier (`100% Local RTX 5080`) | Peak / Avg `tok/s` | Total 4-Wave Time | Generated Code (`SQL` / `Rust` / `UI`) | Rendered OLX Clone UI (`1440x920`) |
+| Local Model Tier (`100% Local RTX 5080 + 128GB DDR5`) | Peak / Avg `tok/s` | Total 4-Wave Time | Generated Code (`SQL` / `Rust` / `UI`) | Rendered OLX Clone UI (`1440x920`) |
 | :--- | :---: | :---: | :---: | :--- |
-| **V1 — [`eriktonon/granite4.2-uncensored:8b`](https://ollama.com/eriktonon/granite4.2-uncensored)**<br>IBM Granite 4.2 8B Uncensored + SFT LoRA | **77.7** / `75.1 tok/s` | `254.0s` | `97` SQL / `210` Rust / `153` HTML | ![OLX V1 Granite 4.2 8B](assets/olx_v1_granite42_8b.png) |
+| **V1 — [`eriktonon/granite4.2-uncensored:8b`](https://ollama.com/eriktonon/granite4.2-uncensored)**<br>IBM Granite 4.2 8B Uncensored + SFT LoRA | **77.7** / `75.1 tok/s` | `254.0s` | `97` SQL / `210` Rust / `153` HTML (`8.8 KB`) | ![OLX V1 Granite 4.2 8B](assets/olx_v1_granite42_8b.png) |
 | **V2 — [`eriktonon/deepseek-v4.1-flash-1017:9b`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017)**<br>DeepSeek V4.1 Flash 9B Uncensored | **109.0** / `96.9 tok/s` | `98.3s` | `102` SQL / `210` Rust / `297` HTML (`20.8 KB`) | ![OLX V2 DeepSeek V4.1 9B](assets/olx_v2_deepseek_v41_9b.png) |
-| **V3 — [`eriktonon/bonsai-2-uncensored:9b`](https://ollama.com/eriktonon/bonsai-2-uncensored)**<br>Ternary 2-Bit `Q2_0` Surgical (`3.9 GB` VRAM) | **66.8** / `51.3 tok/s` | `109.4s` | `108` SQL / `210` Rust / `165` HTML | ![OLX V3 Bonsai 2 9B](assets/olx_v3_bonsai2_9b.png) |
+| **V3 — [`eriktonon/bonsai-2-uncensored:9b`](https://ollama.com/eriktonon/bonsai-2-uncensored)**<br>Ternary 2-Bit `Q2_0` Surgical (`3.9 GB` VRAM) | **66.8** / `51.3 tok/s` | `109.4s` | `108` SQL / `210` Rust / `165` HTML (`7.1 KB`) | ![OLX V3 Bonsai 2 9B](assets/olx_v3_bonsai2_9b.png) |
 | **V4 — [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored)**<br>Qwen 3.8 9B (`2.4T-A95B` Distill + Heretic Uncensored) | **111.3** / `104.0 tok/s` | `133.7s` | `224` SQL / `210` Rust / `310` HTML (`17.5 KB`) | ![OLX V4 Qwen 3.8 9B](assets/olx_v4_qwen38_9b.png) |
-| **V5 — `jarvis:14b-v4`**<br>Qwen 2.5 Coder 14B Uncensored Local | **72.1** / `64.7 tok/s` | **61.1s** | `73` SQL / `210` Rust / `165` HTML | ![OLX V5 JARVIS 14B](assets/olx_v5_jarvis_14b.png) |
+| **V5 — `jarvis:14b-v4`**<br>Qwen 2.5 Coder 14B Uncensored Local | **72.1** / `64.7 tok/s` | **61.1s** | `73` SQL / `210` Rust / `165` HTML (`6.9 KB`) | ![OLX V5 JARVIS 14B](assets/olx_v5_jarvis_14b.png) |
+| **V6 — [`eriktonon/gemma4-uncensored:12b`](https://ollama.com/eriktonon/gemma4-uncensored)**<br>Google Gemma 4 12B Heretic Uncensored (`7.6 GB` VRAM) | **77.1** / `76.6 tok/s` | **80.2s** | `100` SQL / `210` Rust / `294` HTML (`18.3 KB`) | ![OLX V6 Gemma 4 12B](assets/olx_v6_gemma4_12b.png) |
+| **V7 — [`eriktonon/gemma4-uncensored:26b-a4b`](https://ollama.com/eriktonon/gemma4-uncensored)**<br>Google Gemma 4 26B-A4B MoE Uncensored (`4B` Active) | **30.1** / `21.4 tok/s` | `252.9s` | `102` SQL / `210` Rust / `180` HTML (`5.8 KB`) | ![OLX V7 Gemma 4 26B-A4B](assets/olx_v7_gemma4_26b_a4b.png) |
+| **V8 — [`eriktonon/lfm2.5-uncensored:24b-a2b`](https://ollama.com/eriktonon/lfm2.5-uncensored)**<br>Liquid AI LFM 2.5 24B-A2B Hybrid MoE Uncensored (`2B` Active) | **128.0** / `46.8 tok/s` | `633.4s` | `211` SQL (`10.0 KB`) / `210` Rust / **`565` HTML (`27.4 KB`)** | ![OLX V8 LFM 2.5 24B-A2B](assets/olx_v8_lfm25_24b_a2b.png) |
+| **V9 — [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored)**<br>Qwen3-Coder 30B-A3B MoE Uncensored (`3B` Active, VRAM+DDR5 Split) | **71.9** / `21.8 tok/s` | `946.8s` | `90` SQL / `210` Rust / `139` HTML (`7.2 KB`) | ![OLX V9 Qwen3-Coder 30B-A3B](assets/olx_v9_qwen3_coder_30b_a3b.png) |
+| **V10 — [`eriktonon/bonsai-2-uncensored:27b`](https://ollama.com/eriktonon/bonsai-2-uncensored)**<br>Ternary 2-Bit `Q2_0` 27B Heretic v2 + Vision (`7.6 GB` on Disk, 100% RTX 5080 VRAM) | **66.8** / `65.5 tok/s` | **163.3s** | `107` SQL (`6.1 KB`) / `210` Rust / `130` HTML (`11.1 KB`) | ![OLX V10 Bonsai 2 27B](assets/olx_v10_bonsai2_27b.png) |
 
 ---
 

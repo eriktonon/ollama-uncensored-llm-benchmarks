@@ -58,5 +58,65 @@
     "frontend_kb": 6.9,
     "backend_lines": 210,
     "sql_lines": 73
+  },
+  {
+    "slug": "v6-gemma4-12b",
+    "model": "eriktonon/gemma4-uncensored:12b",
+    "label": "Gemma 4 12B Heretic Uncensored",
+    "elapsed_sec": 80.2,
+    "peak_tok_s": 77.1,
+    "avg_tok_s": 76.6,
+    "frontend_lines": 294,
+    "frontend_kb": 18.3,
+    "backend_lines": 210,
+    "sql_lines": 100
+  },
+  {
+    "slug": "v7-gemma4-26b-a4b",
+    "model": "eriktonon/gemma4-uncensored:26b-a4b",
+    "label": "Gemma 4 26B-A4B MoE Uncensored",
+    "elapsed_sec": 252.9,
+    "peak_tok_s": 30.1,
+    "avg_tok_s": 21.4,
+    "frontend_lines": 1,
+    "frontend_kb": 5.8,
+    "backend_lines": 210,
+    "sql_lines": 102
+  },
+  {
+    "slug": "v8-lfm25-24b-a2b",
+    "model": "eriktonon/lfm2.5-uncensored:24b-a2b",
+    "label": "Liquid AI LFM 2.5 24B-A2B Hybrid MoE Uncensored",
+    "elapsed_sec": 633.4,
+    "peak_tok_s": 128.0,
+    "avg_tok_s": 46.8,
+    "frontend_lines": 565,
+    "frontend_kb": 27.4,
+    "backend_lines": 210,
+    "sql_lines": 211
+  },
+  {
+    "slug": "v9-qwen3-coder-30b-a3b",
+    "model": "eriktonon/qwen3-coder-uncensored:30b-a3b",
+    "label": "Qwen3-Coder 30B-A3B MoE Uncensored",
+    "elapsed_sec": 946.8,
+    "peak_tok_s": 71.9,
+    "avg_tok_s": 21.8,
+    "frontend_lines": 139,
+    "frontend_kb": 7.2,
+    "backend_lines": 210,
+    "sql_lines": 90
+  },
+  {
+    "slug": "v10-bonsai2-27b",
+    "model": "eriktonon/bonsai-2-uncensored:27b",
+    "label": "Ternary Bonsai 2 27B (Q2_0 Heretic v2 + Vision)",
+    "elapsed_sec": 163.3,
+    "peak_tok_s": 66.8,
+    "avg_tok_s": 65.5,
+    "frontend_lines": 130,
+    "frontend_kb": 11.1,
+    "backend_lines": 210,
+    "sql_lines": 107
   }
 ]
