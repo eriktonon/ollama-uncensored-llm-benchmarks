@@ -27,6 +27,12 @@ Every model in this repository was compiled, abliterated, quantized, and benchma
 ### 3. GPU VRAM Efficiency Frontier (`VRAM GB` vs. `Precision %` & `Decode Speed`)
 ![VRAM Efficiency Frontier](assets/chart_03_vram_efficiency_frontier.png)
 
+### 4. Scenario Specialization Heatmap — Which LLM Excels at Each Scenario (`34 Models × 10 SOTA Execution Domains`)
+![Scenario Specialization Heatmap](assets/chart_04_scenario_specialization_heatmap.png)
+
+### 5. Top Scenario Champions — Datacenter GPU Tier vs. Consumer `<=16GB` Local Tier
+![Scenario Champions Board](assets/chart_05_scenario_champions_board.png)
+
 ---
 
 ## 1. Master Benchmark Table (All 41 Ollama Uncensored Images)
@@ -142,6 +148,92 @@ Executed via [`scripts/build_and_benchmark_modelscope_colab.py`](scripts/build_a
 
 ---
 
+## 2C. Scenario Specialization Matrix — Which LLM Excels at Each Scenario (`Suite 08 · RouterBench`)
+
+Instead of relying on saturated static multiple-choice exams (`MMLU`) or verbose `LLM-as-a-Judge` rubrics, **Suite 08 (`RouterBench 34×10`)** evaluates **34 uncensored models (`340` live runs on Google Colab Datacenter GPUs)** across **10 deterministic execution graders** (`Python unit test subprocess`, `dirty SQLite execution`, `BFCL v3 AST + firewall restraint`, `6-rule IFEval`, `3-hop RULER + closed-world abstention`, `K8s OOM/probe root-cause`, `HarmBench/OR-Bench + x86-64 rel32`, `GPQA + CRT modular math`, `strict XML/SVG 1080x1920 9:16 parser`, and `Anti-AI Humanizer + culinary thermal physics`) to answer **which specific model you should route to for each real-world task**:
+
+### A. Empirical Champions by Scenario (`Datacenter Colab Tier` vs. `Consumer <=16GB Local Tier`)
+
+| Scenario Domain | SOTA Benchmark Reference | #1 Overall Champion (`Colab A100/H100`) | #1 Consumer Champion (`<=16GB VRAM Local`) | #1 Speed Leader (`>=70 pts`) |
+| :--- | :--- | :--- | :--- | :--- |
+| **`D01_SWE_CODE`**<br>Engenharia de Software & Algoritmos | `LiveCodeBench + BigCodeBench (Python Sandbox)` | [**Qwen3-Coder 30B-A3B**](https://ollama.com/eriktonon/qwen3-coder-uncensored)<br>`100/100` · `21.0 GB` · `116.7 tok/s` | [**Gemma 4 MoE 26B-A4B**](https://ollama.com/eriktonon/gemma4-uncensored)<br>`100/100` · `15.0 GB` · `75.5 tok/s` | [`OpenAI GPT-OSS 20B-A3.6B`](https://ollama.com/eriktonon/gpt-oss-uncensored)<br>**`131.2 tok/s`** (`100/100`) |
+| **`D02_SQL_DATA`**<br>SQL Analítico & Dados Sujos | `BIRD-SQL + Spider 2.0 (SQLite Execution)` | [**Qwen3-Coder 30B-A3B**](https://ollama.com/eriktonon/qwen3-coder-uncensored)<br>`100/100` · `21.0 GB` · `116.7 tok/s` | [**Gemma 4 MoE 26B-A4B**](https://ollama.com/eriktonon/gemma4-uncensored)<br>`100/100` · `15.0 GB` · `75.5 tok/s` | [`LFM2.5 24B-A2B Hybrid`](https://ollama.com/eriktonon/lfm2.5-uncensored)<br>**`152.9 tok/s`** (`100/100`) |
+| **`D03_BFCL_TOOLS`**<br>Tool-Calling Agêntico & JSON AST | `BFCL v3 AST + Negative Restraint` | [**Qwen3-Coder 30B-A3B**](https://ollama.com/eriktonon/qwen3-coder-uncensored)<br>`100/100` · `21.0 GB` · `116.7 tok/s` | [**Gemma 4 MoE 26B-A4B**](https://ollama.com/eriktonon/gemma4-uncensored)<br>`100/100` · `15.0 GB` · `75.5 tok/s` | [`LFM2.5 24B-A2B Hybrid`](https://ollama.com/eriktonon/lfm2.5-uncensored)<br>**`152.9 tok/s`** (`100/100`) |
+| **`D04_IFEVAL_STRICT`**<br>Seguimento Estrito de Instruções | `IFEval / IFBench (6 Hard Constraints)` | [**Qwen3-Coder 30B-A3B**](https://ollama.com/eriktonon/qwen3-coder-uncensored)<br>`100/100` · `21.0 GB` · `116.7 tok/s` | [**Gemma 4 MoE 26B-A4B**](https://ollama.com/eriktonon/gemma4-uncensored)<br>`100/100` · `15.0 GB` · `75.5 tok/s` | [`LFM2.5 24B-A2B Hybrid`](https://ollama.com/eriktonon/lfm2.5-uncensored)<br>**`152.9 tok/s`** (`85/100`) |
+| **`D05_RULER_ONTOLOGY`**<br>Ontologia OWL/SPARQL & Long-Context | `RULER 3-Hop + SimpleQA Abstention` | [**Qwen3-Coder 30B-A3B**](https://ollama.com/eriktonon/qwen3-coder-uncensored)<br>`100/100` · `21.0 GB` · `116.7 tok/s` | [**Gemma 4 MoE 26B-A4B**](https://ollama.com/eriktonon/gemma4-uncensored)<br>`100/100` · `15.0 GB` · `75.5 tok/s` | [`LFM2.5 24B-A2B Hybrid`](https://ollama.com/eriktonon/lfm2.5-uncensored)<br>**`152.9 tok/s`** (`70/100`) |
+| **`D06_SRE_K8S`**<br>SRE, Kubernetes & Root-Cause | `AIOps Multi-Signal Triage` | [**Qwen3-Coder 30B-A3B**](https://ollama.com/eriktonon/qwen3-coder-uncensored)<br>`100/100` · `21.0 GB` · `116.7 tok/s` | [**Gemma 4 MoE 26B-A4B**](https://ollama.com/eriktonon/gemma4-uncensored)<br>`100/100` · `15.0 GB` · `75.5 tok/s` | [`LFM2.5 24B-A2B Hybrid`](https://ollama.com/eriktonon/lfm2.5-uncensored)<br>**`152.9 tok/s`** (`100/100`) |
+| **`D07_SECOPS_RE`**<br>SecOps Ofensivo, Pentest & Eng. Reversa | `HarmBench + OR-Bench + x86-64 REL32` | [**Gemma 4 31B Multimodal**](https://ollama.com/eriktonon/gemma4-uncensored)<br>`100/100` · `22.0 GB` · `36.4 tok/s` | [**Gemma 4 12B Heretic**](https://ollama.com/eriktonon/gemma4-uncensored)<br>`60/100` · `9.2 GB` · `63.5 tok/s` | [`Gemma 4 31B Multimodal`](https://ollama.com/eriktonon/gemma4-uncensored)<br>**`36.4 tok/s`** (`100/100`) |
+| **`D08_GPQA_MATH`**<br>Ciência Avançada, Clínica & Matemática | `GPQA Diamond + MATH-500 CRT` | [**Muse-Glimmer 30B VL**](https://ollama.com/eriktonon/muse-glimmer-uncensored)<br>`100/100` · `22.0 GB` · `49.3 tok/s` | [**Gemma 4 MoE 26B-A4B**](https://ollama.com/eriktonon/gemma4-uncensored)<br>`30/100` · `15.0 GB` · `75.5 tok/s` | [`Muse-Glimmer 30B VL`](https://ollama.com/eriktonon/muse-glimmer-uncensored)<br>**`49.3 tok/s`** (`100/100`) |
+| **`D09_VIDEO_SVG_916`**<br>Vídeos Curtos 9:16 & Motion SVG | `Creative-IFEval + XML/SVG DOM Parser` | [**Nemotron Nano 9B (1M Ctx)**](https://ollama.com/eriktonon/nemotron-nano-uncensored)<br>`100/100` · `8.0 GB` · `102.4 tok/s` | [**Nemotron Nano 9B (1M Ctx)**](https://ollama.com/eriktonon/nemotron-nano-uncensored)<br>`100/100` · `8.0 GB` · `102.4 tok/s` | [`Nemotron Nano 9B (1M Ctx)`](https://ollama.com/eriktonon/nemotron-nano-uncensored)<br>**`102.4 tok/s`** (`100/100`) |
+| **`D10_COPY_RECIPES`**<br>Artigos Executivos & Receitas Técnicas | `Anti-AI Humanizer + Gastronomia Térmica` | [**Qwen3-Coder 30B-A3B**](https://ollama.com/eriktonon/qwen3-coder-uncensored)<br>`100/100` · `21.0 GB` · `116.7 tok/s` | [**Gemma 4 MoE 26B-A4B**](https://ollama.com/eriktonon/gemma4-uncensored)<br>`100/100` · `15.0 GB` · `75.5 tok/s` | [`LFM2.5 24B-A2B Hybrid`](https://ollama.com/eriktonon/lfm2.5-uncensored)<br>**`152.9 tok/s`** (`100/100`) |
+
+### B. Full `34 × 10` Scenario Score Matrix (Sorted by `RouterBench` Quality-Latency Index)
+
+| # | Ollama Model Tag | VRAM | RouterBench | Avg `tok/s` | D01 SWE | D02 SQL | D03 Tool | D04 IFEval | D05 Onto | D06 SRE | D07 SecOps | D08 Math | D09 9:16 | D10 Copy | Top Specialties |
+| :-: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **1** | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) | `21.0 GB` | **`80.4`** | `116.7` | `100` | `100` | `100` | `100` | `100` | `100` | `40` | `60` | `25` | `100` | `D01, D02, D03` |
+| **2** | [`eriktonon/gemma4-uncensored:31b`](https://ollama.com/eriktonon/gemma4-uncensored) | `22.0 GB` | **`76.0`** | `36.4` | `100` | `100` | `100` | `100` | `100` | `100` | `100` | `30` | `25` | `100` | `D01, D02, D03` |
+| **3** | [`eriktonon/gemma4-uncensored:26b-a4b`](https://ollama.com/eriktonon/gemma4-uncensored) | `15.0 GB` | **`74.5`** | `75.5` | `100` | `100` | `100` | `100` | `100` | `100` | `45` | `30` | `25` | `100` | `D01, D02, D03` |
+| **4** | [`eriktonon/gemma4-uncensored:12b`](https://ollama.com/eriktonon/gemma4-uncensored) | `9.2 GB` | **`73.0`** | `63.5` | `80` | `100` | `100` | `100` | `100` | `100` | `60` | `30` | `25` | `100` | `D02, D03, D04` |
+| **5** | [`eriktonon/nemotron-nano-uncensored:9b`](https://ollama.com/eriktonon/nemotron-nano-uncensored) | `8.0 GB` | **`71.0`** | `102.4` | `0` | `100` | `100` | `85` | `100` | `100` | `25` | `30` | `100` | `100` | `D02, D03, D05` |
+| **6** | [`eriktonon/qwen3.6-moe-uncensored:35b-a3b`](https://ollama.com/eriktonon/qwen3.6-moe-uncensored) | `24.0 GB` | **`69.4`** | `93.9` | `100` | `20` | `100` | `85` | `100` | `80` | `60` | `60` | `25` | `100` | `D01, D03, D05` |
+| **7** | [`eriktonon/qwen3.8-uncensored:27b`](https://ollama.com/eriktonon/qwen3.8-uncensored) | `25.0 GB` | **`69.2`** | `39.8` | `100` | `100` | `100` | `100` | `100` | `80` | `40` | `30` | `25` | `100` | `D01, D02, D03` |
+| **8** | [`eriktonon/ling3.0-flash-uncensored:127b-a5b`](https://ollama.com/eriktonon/ling3.0-flash-uncensored) | `56.0 GB` | **`68.9`** | `41.5` | `100` | `100` | `100` | `100` | `100` | `80` | `60` | `30` | `0` | `100` | `D01, D02, D03` |
+| **9** | [`eriktonon/deepseek-v4.1-flash-1017:27b`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017) | `25.0 GB` | **`67.4`** | `39.7` | `80` | `100` | `100` | `100` | `100` | `80` | `40` | `30` | `25` | `100` | `D02, D03, D04` |
+| **10** | [`eriktonon/aescode-uncensored:32b`](https://ollama.com/eriktonon/aescode-uncensored) | `22.5 GB` | **`67.3`** | `38.2` | `0` | `100` | `100` | `100` | `100` | `100` | `60` | `30` | `65` | `100` | `D02, D03, D04` |
+| **11** | [`eriktonon/moonlight-dusk-uncensored:26b-a4b`](https://ollama.com/eriktonon/moonlight-dusk-uncensored) | `15.5 GB` | **`67.3`** | `84.7` | `0` | `100` | `100` | `100` | `100` | `100` | `60` | `30` | `25` | `100` | `D02, D03, D04` |
+| **12** | [`eriktonon/seed-oss-uncensored:36b`](https://ollama.com/eriktonon/seed-oss-uncensored) | `21.5 GB` | **`67.2`** | `37.6` | `40` | `100` | `100` | `100` | `100` | `100` | `60` | `30` | `25` | `100` | `D02, D03, D04` |
+| **13** | [`eriktonon/lfm2.5-uncensored:24b-a2b`](https://ollama.com/eriktonon/lfm2.5-uncensored) | `16.0 GB` | **`67.0`** | `152.9` | `20` | `100` | `100` | `85` | `70` | `100` | `40` | `30` | `25` | `100` | `D02, D03, D06` |
+| **14** | [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored) | `8.2 GB` | **`65.5`** | `85.6` | `100` | `0` | `100` | `100` | `100` | `100` | `40` | `30` | `25` | `100` | `D01, D03, D04` |
+| **15** | [`eriktonon/step3.5-flash-uncensored:196b-a11b`](https://ollama.com/eriktonon/step3.5-flash-uncensored) | `60.6 GB` | **`65.3`** | `13.4` | `100` | `100` | `100` | `85` | `100` | `80` | `60` | `30` | `0` | `100` | `D01, D02, D03` |
+| **16** | [`eriktonon/muse-glimmer-uncensored:30b`](https://ollama.com/eriktonon/muse-glimmer-uncensored) | `22.0 GB` | **`62.3`** | `49.3` | `100` | `100` | `100` | `55` | `100` | `0` | `10` | `100` | `25` | `100` | `D01, D02, D03` |
+| **17** | [`eriktonon/nemotron3.5-bolt-uncensored:74b-a9b`](https://ollama.com/eriktonon/nemotron3.5-bolt-uncensored) | `24.0 GB` | **`61.9`** | `31.4` | `0` | `100` | `100` | `85` | `100` | `100` | `60` | `30` | `25` | `100` | `D02, D03, D05` |
+| **18** | [`eriktonon/olmo3.1-uncensored:32b`](https://ollama.com/eriktonon/olmo3.1-uncensored) | `21.5 GB` | **`60.7`** | `40.1` | `20` | `0` | `100` | `85` | `100` | `100` | `45` | `30` | `100` | `100` | `D03, D05, D06` |
+| **19** | [`eriktonon/baichuan-m2-uncensored:32b`](https://ollama.com/eriktonon/baichuan-m2-uncensored) | `19.8 GB` | **`60.3`** | `40.8` | `20` | `100` | `100` | `85` | `100` | `100` | `40` | `30` | `100` | `0` | `D02, D03, D05` |
+| **20** | [`eriktonon/ltx-2.5-uncensored:22b`](https://ollama.com/eriktonon/ltx-2.5-uncensored) | `6.4 GB` | **`57.7`** | `89.3` | `40` | `40` | `100` | `100` | `100` | `50` | `25` | `30` | `25` | `100` | `D03, D04, D05` |
+| **21** | [`eriktonon/devstral2-uncensored:24b`](https://ollama.com/eriktonon/devstral2-uncensored) | `16.0 GB` | **`56.5`** | `50.5` | `20` | `20` | `100` | `100` | `100` | `100` | `60` | `0` | `25` | `100` | `D03, D04, D05` |
+| **22** | [`eriktonon/granite4.2-uncensored:30b`](https://ollama.com/eriktonon/granite4.2-uncensored) | `35.0 GB` | **`53.9`** | `11.7` | `0` | `100` | `100` | `100` | `70` | `80` | `45` | `30` | `0` | `100` | `D02, D03, D04` |
+| **23** | [`eriktonon/bonsai-2-uncensored:27b`](https://ollama.com/eriktonon/bonsai-2-uncensored) | `10.0 GB` | **`53.8`** | `51.2` | `0` | `0` | `100` | `100` | `100` | `100` | `40` | `30` | `25` | `100` | `D03, D04, D05` |
+| **24** | [`eriktonon/glm4.5-air-uncensored:106b-a12b`](https://ollama.com/eriktonon/glm4.5-air-uncensored) | `48.5 GB` | **`52.8`** | `8.2` | `20` | `20` | `100` | `100` | `100` | `80` | `40` | `30` | `25` | `100` | `D03, D04, D05` |
+| **25** | [`eriktonon/deepseek-v4.1-flash-1017:9b`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017) | `7.9 GB` | **`52.7`** | `85.0` | `0` | `40` | `100` | `85` | `100` | `70` | `40` | `0` | `25` | `100` | `D03, D05, D10` |
+| **26** | [`eriktonon/minimax-m2.7-uncensored:139b-a10b`](https://ollama.com/eriktonon/minimax-m2.7-uncensored) | `49.0 GB` | **`51.9`** | `20.7` | `20` | `100` | `100` | `65` | `70` | `100` | `40` | `0` | `0` | `100` | `D02, D03, D06` |
+| **27** | [`eriktonon/hunyuan-a13b-uncensored:80b-a13b`](https://ollama.com/eriktonon/hunyuan-a13b-uncensored) | `46.8 GB` | **`51.6`** | `9.6` | `40` | `0` | `100` | `65` | `70` | `80` | `25` | `30` | `90` | `100` | `D03, D10, D09` |
+| **28** | [`eriktonon/bonsai-2-uncensored:9b`](https://ollama.com/eriktonon/bonsai-2-uncensored) | `3.9 GB` | **`51.5`** | `97.1` | `0` | `20` | `100` | `100` | `70` | `70` | `25` | `30` | `25` | `100` | `D03, D04, D10` |
+| **29** | [`eriktonon/gpt-oss-uncensored:20b`](https://ollama.com/eriktonon/gpt-oss-uncensored) | `13.5 GB` | **`50.5`** | `131.2` | `100` | `0` | `100` | `0` | `100` | `100` | `10` | `0` | `0` | `100` | `D01, D03, D05` |
+| **30** | [`eriktonon/ernie4.5-moe-uncensored:21b-a3b`](https://ollama.com/eriktonon/ernie4.5-moe-uncensored) | `22.4 GB` | **`49.0`** | `149.9` | `0` | `40` | `100` | `70` | `50` | `80` | `40` | `0` | `25` | `85` | `D03, D10, D06` |
+| **31** | [`eriktonon/kimi-linear-uncensored:48b-a3b`](https://ollama.com/eriktonon/kimi-linear-uncensored) | `28.1 GB` | **`48.5`** | `52.8` | `20` | `0` | `100` | `70` | `70` | `80` | `40` | `30` | `25` | `100` | `D03, D10, D06` |
+| **32** | [`eriktonon/glm4.7-flash-uncensored:30b-a3b`](https://ollama.com/eriktonon/glm4.7-flash-uncensored) | `20.5 GB` | **`34.2`** | `92.9` | `0` | `0` | `100` | `50` | `0` | `50` | `60` | `0` | `0` | `100` | `D03, D10, D07` |
+| **33** | [`eriktonon/llama3.2-moe-uncensored:21b`](https://ollama.com/eriktonon/llama3.2-moe-uncensored) | `14.5 GB` | **`25.8`** | `114.5` | `0` | `0` | `45` | `50` | `0` | `20` | `25` | `0` | `25` | `100` | `D10, D04, D03` |
+| **34** | [`eriktonon/ring-flash2-uncensored:103b-a6b`](https://ollama.com/eriktonon/ring-flash2-uncensored) | `46.8 GB` | **`4.4`** | `23.1` | `0` | `0` | `0` | `15` | `0` | `0` | `10` | `0` | `25` | `0` | `D09, D04, D07` |
+
+### C. Recommended Model Routing for All 21 Operational Scenarios (`S01..S21`)
+
+| Operational Scenario (`S01..S21`) | Primary SOTA Grader | Best Datacenter GPU Model (`Colab`) | Best Consumer `<=16GB` GPU Model (`RTX 5080`) |
+| :--- | :---: | :--- | :--- |
+| **`S01`** — Vídeos Curtos 9:16 — Direção de Cena & Keyframes | `D09_VIDEO_SVG_916` | [`eriktonon/nemotron-nano-uncensored:9b`](https://ollama.com/eriktonon/nemotron-nano-uncensored) (`92/100` · `102.4 tok/s`) | [`eriktonon/nemotron-nano-uncensored:9b`](https://ollama.com/eriktonon/nemotron-nano-uncensored) (`92/100` · `8.0 GB`) |
+| **`S02`** — Vídeos Curtos 9:16 — Storyboard Cinematográfico & Locução | `D09_VIDEO_SVG_916` | [`eriktonon/nemotron-nano-uncensored:9b`](https://ollama.com/eriktonon/nemotron-nano-uncensored) (`100/100` · `102.4 tok/s`) | [`eriktonon/nemotron-nano-uncensored:9b`](https://ollama.com/eriktonon/nemotron-nano-uncensored) (`100/100` · `8.0 GB`) |
+| **`S03`** — Vídeos Curtos 9:16 — Motion Design SVG/Canvas 60fps | `D09_VIDEO_SVG_916` | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) (`62/100` · `116.7 tok/s`) | [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored) (`62/100` · `8.2 GB`) |
+| **`S04`** — Vídeos Curtos 9:16 — Roteiros Reels Rápidos & Hooks | `D09_VIDEO_SVG_916` | [`eriktonon/nemotron-nano-uncensored:9b`](https://ollama.com/eriktonon/nemotron-nano-uncensored) (`100/100` · `102.4 tok/s`) | [`eriktonon/nemotron-nano-uncensored:9b`](https://ollama.com/eriktonon/nemotron-nano-uncensored) (`100/100` · `8.0 GB`) |
+| **`S05`** — Softwares — Full-Stack Rust/Axum + PostgreSQL | `D01_SWE_CODE` | [`eriktonon/gemma4-uncensored:31b`](https://ollama.com/eriktonon/gemma4-uncensored) (`100/100` · `36.4 tok/s`) | [`eriktonon/gemma4-uncensored:26b-a4b`](https://ollama.com/eriktonon/gemma4-uncensored) (`82/100` · `15.0 GB`) |
+| **`S06`** — Softwares — SaaS Multi-Tenant & Contratos REST | `D01_SWE_CODE` | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) (`100/100` · `116.7 tok/s`) | [`eriktonon/gemma4-uncensored:26b-a4b`](https://ollama.com/eriktonon/gemma4-uncensored) (`100/100` · `15.0 GB`) |
+| **`S07`** — Softwares — Design-to-Code UI/SVG & Clean Arch | `D01_SWE_CODE` | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) (`62/100` · `116.7 tok/s`) | [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored) (`62/100` · `8.2 GB`) |
+| **`S08`** — Softwares — Microsserviços, Event Sourcing & SAGA | `D01_SWE_CODE` | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) (`100/100` · `116.7 tok/s`) | [`eriktonon/gemma4-uncensored:26b-a4b`](https://ollama.com/eriktonon/gemma4-uncensored) (`100/100` · `15.0 GB`) |
+| **`S09`** — Softwares — Automação CLI, Agentes & Tool-Calling | `D03_BFCL_TOOLS` | [`eriktonon/gpt-oss-uncensored:20b`](https://ollama.com/eriktonon/gpt-oss-uncensored) (`100/100` · `131.2 tok/s`) | [`eriktonon/gpt-oss-uncensored:20b`](https://ollama.com/eriktonon/gpt-oss-uncensored) (`100/100` · `13.5 GB`) |
+| **`S10`** — Ontologia — Leitura de Grafos Massivos (Long-Context) | `D05_RULER_ONTOLOGY` | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) (`100/100` · `116.7 tok/s`) | [`eriktonon/ltx-2.5-uncensored:22b`](https://ollama.com/eriktonon/ltx-2.5-uncensored) (`100/100` · `6.4 GB`) |
+| **`S11`** — Ontologia — Modelagem Formal OWL/RDF & SPARQL | `D05_RULER_ONTOLOGY` | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) (`100/100` · `116.7 tok/s`) | [`eriktonon/nemotron-nano-uncensored:9b`](https://ollama.com/eriktonon/nemotron-nano-uncensored) (`100/100` · `8.0 GB`) |
+| **`S12`** — Ontologia — Extração JSON-LD & Tool-Calling Semântico | `D05_RULER_ONTOLOGY` | [`eriktonon/gpt-oss-uncensored:20b`](https://ollama.com/eriktonon/gpt-oss-uncensored) (`100/100` · `131.2 tok/s`) | [`eriktonon/gpt-oss-uncensored:20b`](https://ollama.com/eriktonon/gpt-oss-uncensored) (`100/100` · `13.5 GB`) |
+| **`S13`** — Ontologia — Inferência Causal Multi-Hop & Abstenção | `D05_RULER_ONTOLOGY` | [`eriktonon/muse-glimmer-uncensored:30b`](https://ollama.com/eriktonon/muse-glimmer-uncensored) (`100/100` · `49.3 tok/s`) | [`eriktonon/nemotron-nano-uncensored:9b`](https://ollama.com/eriktonon/nemotron-nano-uncensored) (`65/100` · `8.0 GB`) |
+| **`S14`** — Artigos — Dossiês Executivos & ADRs Arquiteturais | `D10_COPY_RECIPES` | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) (`100/100` · `116.7 tok/s`) | [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored) (`100/100` · `8.2 GB`) |
+| **`S15`** — Artigos — Engenharia de Plataforma & SRE Shift-Left | `D10_COPY_RECIPES` | [`eriktonon/lfm2.5-uncensored:24b-a2b`](https://ollama.com/eriktonon/lfm2.5-uncensored) (`100/100` · `152.9 tok/s`) | [`eriktonon/lfm2.5-uncensored:24b-a2b`](https://ollama.com/eriktonon/lfm2.5-uncensored) (`100/100` · `16.0 GB`) |
+| **`S16`** — Artigos — Síntese Técnica Bilíngue & Benchmarks | `D10_COPY_RECIPES` | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) (`100/100` · `116.7 tok/s`) | [`eriktonon/bonsai-2-uncensored:9b`](https://ollama.com/eriktonon/bonsai-2-uncensored) (`100/100` · `3.9 GB`) |
+| **`S17`** — Artigos — Whitepapers Científicos, Clínica & SecOps | `D08_GPQA_MATH` | [`eriktonon/gemma4-uncensored:31b`](https://ollama.com/eriktonon/gemma4-uncensored) (`77/100` · `36.4 tok/s`) | [`eriktonon/moonlight-dusk-uncensored:26b-a4b`](https://ollama.com/eriktonon/moonlight-dusk-uncensored) (`63/100` · `15.5 GB`) |
+| **`S18`** — Receitas — Gastronomia Molecular & Precisão Térmica | `D10_COPY_RECIPES` | [`eriktonon/muse-glimmer-uncensored:30b`](https://ollama.com/eriktonon/muse-glimmer-uncensored) (`100/100` · `49.3 tok/s`) | [`eriktonon/lfm2.5-uncensored:24b-a2b`](https://ollama.com/eriktonon/lfm2.5-uncensored) (`65/100` · `16.0 GB`) |
+| **`S19`** — Receitas — Fichas Técnicas Estruturadas & Custos | `D10_COPY_RECIPES` | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) (`100/100` · `116.7 tok/s`) | [`eriktonon/bonsai-2-uncensored:9b`](https://ollama.com/eriktonon/bonsai-2-uncensored) (`100/100` · `3.9 GB`) |
+| **`S20`** — Receitas — Runbooks Operacionais Passo a Passo | `D04_IFEVAL_STRICT` | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) (`100/100` · `116.7 tok/s`) | [`eriktonon/qwen3.8-uncensored:9b`](https://ollama.com/eriktonon/qwen3.8-uncensored) (`100/100` · `8.2 GB`) |
+| **`S21`** — Receitas — Culinária Autoral, Emulsões & Harmonização | `D10_COPY_RECIPES` | [`eriktonon/qwen3-coder-uncensored:30b-a3b`](https://ollama.com/eriktonon/qwen3-coder-uncensored) (`100/100` · `116.7 tok/s`) | [`eriktonon/bonsai-2-uncensored:9b`](https://ollama.com/eriktonon/bonsai-2-uncensored) (`100/100` · `3.9 GB`) |
+
+---
+
 ## 3. Official Published Ollama Repositories (`ollama.com/eriktonon` — 29 Repositories)
 
 1. **[`eriktonon/step3.5-flash-uncensored`](https://ollama.com/eriktonon/step3.5-flash-uncensored)** (`:196b-a11b`, `:196b`, `:latest`)
@@ -224,6 +316,19 @@ Executed via [`scripts/benchmark_hallucination_context_colab.py`](scripts/benchm
 2. **Mathematical / Cryptographic Trap Verification**: SHA-256 preimage impossibility & batch throughput arithmetic traps.
 3. **Long-Context Needle-in-a-Haystack Retrieval**: Exact extraction of embedded canary tokens (`0x7F9A3C12` / `COBALTO-9471-OMEGA`) and scheduler node assignments (`gpu-node-h100-03`) inside dense multi-service telemetry logs.
 4. **Strict Closed-World Negative Abstention**: Querying absent telemetry fields (`OMEGA_SECRET_KEY` / missing `node-01bgp` CPU temp) -> must abstain without guessing.
+
+### Suite C: Scenario Specialization Matrix (`10 SOTA Execution Graders` · `RouterBench Suite 08`)
+Executed 100% on Google Colab GPUs via [`scripts/colab_scenario_matrix_benchmark.py`](scripts/colab_scenario_matrix_benchmark.py):
+1. **`D01_SWE_CODE` (`LiveCodeBench` / `BigCodeBench`)**: Isolated Python subprocess executing 5 `assert` unit-test suites on a sliding-window token-bucket rate limiter.
+2. **`D02_SQL_DATA` (`BIRD-SQL` / `Spider 2.0`)**: Live in-memory `sqlite3` execution over dirty multi-currency strings (`R$ 1.500,00`, `$400.00`), duplicate webhook IDs, chargebacks, and suspended tenants.
+3. **`D03_BFCL_TOOLS` (`Berkeley Function Calling v3`)**: Multi-tool JSON AST validation + exact parameter calculation (`limit_gb=64`) + mandatory negative restraint against unverified gateway firewall reboots.
+4. **`D04_IFEVAL_STRICT` (`Google IFEval`)**: Algorithmic verifier enforcing 6 simultaneous lexical/structural constraints (exact 4 `* ` bullets, `12..22` words/bullet, zero digits `0-9`, exact closing sentinel).
+5. **`D05_RULER_ONTOLOGY` (`NVIDIA RULER` + `OpenAI SimpleQA`)**: 3-hop causal dependency graph traversal (`SRV-payments-api -> POOL-pgbouncer-02 -> NODE-lxc-108 -> CVE-2026-4419`) + `"INSUFFICIENT_EVIDENCE"` closed-world abstention.
+6. **`D06_SRE_K8S` (`AIOpsLab`)**: Kubernetes `OOMKilled` (`exitCode 137`, `2.21 GiB > 2Gi`) calculation + cascading `livenessProbe` boot-loop diagnosis.
+7. **`D07_SECOPS_RE` (`HarmBench` / `OR-Bench` + `CTIBench`)**: Zero false-positive refusal audit + exact x86-64 `JMP rel32` little-endian assembly (`E9 3B 01 00 00`) + AWS `IMDSv2` hop-limit remediation.
+8. **`D08_GPQA_MATH` (`GPQA Diamond` + `MATH-500`)**: First-order pharmacokinetic elimination (`t_1/2 = 14h -> 0.125`) + Chinese Remainder Theorem modular exponentiation (`(13^2027 + 17^2027) mod 150 = 90`).
+9. **`D09_VIDEO_SVG_916` (`Design2Code` / `SVG-Bench`)**: Strict `xml.etree.ElementTree` parser validating `viewBox="0 0 1080 1920"` vertical 9:16 Reels motion SVG (`<animate>`/`<animateTransform>`) + scene JSON.
+10. **`D10_COPY_RECIPES` (`Humanizer` + `Culinary Physics`)**: Zero synthetic AI clichés in PT-BR engineering prose + exact `55–65°C` (`<70°C`) starch-protein emulsion thermal window.
 
 ---
 
@@ -318,6 +423,9 @@ ollama run eriktonon/bonsai-2-uncensored:27b
 
 - **Unified 41-Model Master Datasets**:
   - [`data/master_benchmark_41_models.json`](data/master_benchmark_41_models.json) & [`data/master_benchmark_41_models.csv`](data/master_benchmark_41_models.csv)
+- **Scenario Specialization Matrix (`Suite 08 · RouterBench 34×10`)**:
+  - [`data/scenario_specialization_matrix.json`](data/scenario_specialization_matrix.json) & [`data/scenario_specialization_matrix.csv`](data/scenario_specialization_matrix.csv)
+  - [`scripts/colab_scenario_matrix_benchmark.py`](scripts/colab_scenario_matrix_benchmark.py)
 - **Suite-Specific Raw Telemetry**:
   - [`data/modelscope_h100_a100_benchmark.json`](data/modelscope_h100_a100_benchmark.json) — Suite 07 ModelScope H100 80GB & A100 40GB (`8` models, domain-level JSON/Python/Rust/SQL/Math/SRE + Uncensored + Anti-Hallucination traces)
   - [`data/global_frontier_benchmark.json`](data/global_frontier_benchmark.json) — Suite 06 Global Frontier (`10` models)

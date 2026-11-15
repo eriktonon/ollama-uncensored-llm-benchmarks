@@ -950,6 +950,117 @@ def generate_charts(rows):
     plt.close()
 
 
+def build_scenario_matrix_sections():
+    sm_path = os.path.join(DATA_DIR, "scenario_specialization_matrix.json")
+    if not os.path.exists(sm_path):
+        return "", "", "", ""
+    with open(sm_path, "r", encoding="utf-8") as f:
+        sm = json.load(f)
+
+    scenarios = sm.get("scenarios") or []
+    champs = sm.get("champions_by_scenario") or {}
+    jarvis21 = sm.get("jarvis_21_scenarios_routing") or []
+    models = sm.get("models") or []
+
+    charts_md = f"""
+### 4. Scenario Specialization Heatmap — Which LLM Excels at Each Scenario (`{len(models)} Models × 10 SOTA Execution Domains`)
+![Scenario Specialization Heatmap](assets/chart_04_scenario_specialization_heatmap.png)
+
+### 5. Top Scenario Champions — Datacenter GPU Tier vs. Consumer `<=16GB` Local Tier
+![Scenario Champions Board](assets/chart_05_scenario_champions_board.png)
+"""
+
+    champ_rows = []
+    for sc in scenarios:
+        sid = sc["id"]
+        c_obj = champs.get(sid) or {}
+        ov = (c_obj.get("overall_top3") or [{}])[0]
+        loc = (c_obj.get("local_16gb_top3") or [{}])[0]
+        spd = c_obj.get("speed_leader") or {}
+        ov_url = f"https://ollama.com/{ov.get('model', '').split(':')[0]}" if ov.get("model") else "#"
+        loc_url = f"https://ollama.com/{loc.get('model', '').split(':')[0]}" if loc.get("model") else "#"
+        spd_url = f"https://ollama.com/{spd.get('model', '').split(':')[0]}" if spd.get("model") else "#"
+        champ_rows.append(
+            f"| **`{sid}`**<br>{sc['name']} | `{sc['sota_ref']}` | "
+            f"[**{ov.get('display', '-')}**]({ov_url})<br>`{ov.get('score', 0):.0f}/100` · `{ov.get('vram_gb', 0)} GB` · `{ov.get('decode_tps', 0):.1f} tok/s` | "
+            f"[**{loc.get('display', '-')}**]({loc_url})<br>`{loc.get('score', 0):.0f}/100` · `{loc.get('vram_gb', 0)} GB` · `{loc.get('decode_tps', 0):.1f} tok/s` | "
+            f"[`{spd.get('display', '-')}`]({spd_url})<br>**`{spd.get('decode_tps', 0):.1f} tok/s`** (`{spd.get('score', 0):.0f}/100`) |"
+        )
+    champ_table = "\n".join(champ_rows)
+
+    j21_rows = []
+    for j in jarvis21:
+        cm = j.get("recommended_colab") or {}
+        lm = j.get("recommended_local_5080") or {}
+        cm_url = f"https://ollama.com/{cm.get('model', '').split(':')[0]}" if cm.get("model") else "#"
+        lm_url = f"https://ollama.com/{lm.get('model', '').split(':')[0]}" if lm.get("model") else "#"
+        j21_rows.append(
+            f"| **`{j['id']}`** — {j['name']} | `{j['benchmark_domain']}` | "
+            f"[`{cm.get('model', '-')}`]({cm_url}) (`{cm.get('score', 0):.0f}/100` · `{cm.get('decode_tps', 0):.1f} tok/s`) | "
+            f"[`{lm.get('model', '-')}`]({lm_url}) (`{lm.get('score', 0):.0f}/100` · `{lm.get('vram_gb', 0)} GB`) |"
+        )
+    j21_table = "\n".join(j21_rows)
+
+    m_rows = []
+    for idx, m in enumerate(models, 1):
+        sc_map = m.get("scores") or {}
+        repo_url = f"https://ollama.com/{m['model'].split(':')[0]}"
+        cells = " | ".join(f"`{sc_map.get(s['id'], 0):.0f}`" for s in scenarios)
+        top3_short = ", ".join(sid.split("_", 1)[0] for sid in (m.get("top_3_scenarios") or [])[:3])
+        m_rows.append(
+            f"| **{idx}** | [`{m['model']}`]({repo_url}) | `{m['vram_gb']} GB` | **`{m['routerbench_index']:.1f}`** | "
+            f"`{m['avg_decode_tps']:.1f}` | {cells} | `{top3_short}` |"
+        )
+    matrix_table = "\n".join(m_rows)
+
+    section_md = f"""
+---
+
+## 2C. Scenario Specialization Matrix — Which LLM Excels at Each Scenario (`Suite 08 · RouterBench`)
+
+Instead of relying on saturated static multiple-choice exams (`MMLU`) or verbose `LLM-as-a-Judge` rubrics, **Suite 08 (`RouterBench {len(models)}×10`)** evaluates **{len(models)} uncensored models (`{sm.get('total_evaluations', len(models)*10)}` live runs on Google Colab Datacenter GPUs)** across **10 deterministic execution graders** (`Python unit test subprocess`, `dirty SQLite execution`, `BFCL v3 AST + firewall restraint`, `6-rule IFEval`, `3-hop RULER + closed-world abstention`, `K8s OOM/probe root-cause`, `HarmBench/OR-Bench + x86-64 rel32`, `GPQA + CRT modular math`, `strict XML/SVG 1080x1920 9:16 parser`, and `Anti-AI Humanizer + culinary thermal physics`) to answer **which specific model you should route to for each real-world task**:
+
+### A. Empirical Champions by Scenario (`Datacenter Colab Tier` vs. `Consumer <=16GB Local Tier`)
+
+| Scenario Domain | SOTA Benchmark Reference | #1 Overall Champion (`Colab A100/H100`) | #1 Consumer Champion (`<=16GB VRAM Local`) | #1 Speed Leader (`>=70 pts`) |
+| :--- | :--- | :--- | :--- | :--- |
+{champ_table}
+
+### B. Full `{len(models)} × 10` Scenario Score Matrix (Sorted by `RouterBench` Quality-Latency Index)
+
+| # | Ollama Model Tag | VRAM | RouterBench | Avg `tok/s` | D01 SWE | D02 SQL | D03 Tool | D04 IFEval | D05 Onto | D06 SRE | D07 SecOps | D08 Math | D09 9:16 | D10 Copy | Top Specialties |
+| :-: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+{matrix_table}
+
+### C. Recommended Model Routing for All 21 Operational Scenarios (`S01..S21`)
+
+| Operational Scenario (`S01..S21`) | Primary SOTA Grader | Best Datacenter GPU Model (`Colab`) | Best Consumer `<=16GB` GPU Model (`RTX 5080`) |
+| :--- | :---: | :--- | :--- |
+{j21_table}
+"""
+
+    method_md = """
+### Suite C: Scenario Specialization Matrix (`10 SOTA Execution Graders` · `RouterBench Suite 08`)
+Executed 100% on Google Colab GPUs via [`scripts/colab_scenario_matrix_benchmark.py`](scripts/colab_scenario_matrix_benchmark.py):
+1. **`D01_SWE_CODE` (`LiveCodeBench` / `BigCodeBench`)**: Isolated Python subprocess executing 5 `assert` unit-test suites on a sliding-window token-bucket rate limiter.
+2. **`D02_SQL_DATA` (`BIRD-SQL` / `Spider 2.0`)**: Live in-memory `sqlite3` execution over dirty multi-currency strings (`R$ 1.500,00`, `$400.00`), duplicate webhook IDs, chargebacks, and suspended tenants.
+3. **`D03_BFCL_TOOLS` (`Berkeley Function Calling v3`)**: Multi-tool JSON AST validation + exact parameter calculation (`limit_gb=64`) + mandatory negative restraint against unverified gateway firewall reboots.
+4. **`D04_IFEVAL_STRICT` (`Google IFEval`)**: Algorithmic verifier enforcing 6 simultaneous lexical/structural constraints (exact 4 `* ` bullets, `12..22` words/bullet, zero digits `0-9`, exact closing sentinel).
+5. **`D05_RULER_ONTOLOGY` (`NVIDIA RULER` + `OpenAI SimpleQA`)**: 3-hop causal dependency graph traversal (`SRV-payments-api -> POOL-pgbouncer-02 -> NODE-lxc-108 -> CVE-2026-4419`) + `"INSUFFICIENT_EVIDENCE"` closed-world abstention.
+6. **`D06_SRE_K8S` (`AIOpsLab`)**: Kubernetes `OOMKilled` (`exitCode 137`, `2.21 GiB > 2Gi`) calculation + cascading `livenessProbe` boot-loop diagnosis.
+7. **`D07_SECOPS_RE` (`HarmBench` / `OR-Bench` + `CTIBench`)**: Zero false-positive refusal audit + exact x86-64 `JMP rel32` little-endian assembly (`E9 3B 01 00 00`) + AWS `IMDSv2` hop-limit remediation.
+8. **`D08_GPQA_MATH` (`GPQA Diamond` + `MATH-500`)**: First-order pharmacokinetic elimination (`t_1/2 = 14h -> 0.125`) + Chinese Remainder Theorem modular exponentiation (`(13^2027 + 17^2027) mod 150 = 90`).
+9. **`D09_VIDEO_SVG_916` (`Design2Code` / `SVG-Bench`)**: Strict `xml.etree.ElementTree` parser validating `viewBox="0 0 1080 1920"` vertical 9:16 Reels motion SVG (`<animate>`/`<animateTransform>`) + scene JSON.
+10. **`D10_COPY_RECIPES` (`Humanizer` + `Culinary Physics`)**: Zero synthetic AI clichés in PT-BR engineering prose + exact `55–65°C` (`<70°C`) starch-protein emulsion thermal window.
+"""
+
+    links_md = f"""- **Scenario Specialization Matrix (`Suite 08 · RouterBench {len(models)}×10`)**:
+  - [`data/scenario_specialization_matrix.json`](data/scenario_specialization_matrix.json) & [`data/scenario_specialization_matrix.csv`](data/scenario_specialization_matrix.csv)
+  - [`scripts/colab_scenario_matrix_benchmark.py`](scripts/colab_scenario_matrix_benchmark.py)
+"""
+    return charts_md, section_md, method_md, links_md
+
+
 def generate_readme(rows, ms_models):
     n_models = len(rows)
     r_sorted = sorted(rows, key=lambda x: (-x["precision_pct"], x["hallucination_rate_pct"], -x["peak_decode_tok_s"]))
@@ -994,6 +1105,7 @@ def generate_readme(rows, ms_models):
             f"**{m['hallucination_rate_pct']:.2f}%** (`{m['hallucination_6']}`) | **{m['avg_decode_tps']:.2f}** / `{m['avg_prefill_tps']:.1f}` |"
         )
     ms_table = "\n".join(ms_lines)
+    sc_charts_md, sc_section_md, sc_method_md, sc_links_md = build_scenario_matrix_sections()
 
     readme_md = f"""# Uncensored LLM & Multi-Agent Benchmarks (Colab 80GB–96GB H100 / Blackwell / A100 Suite)
 
@@ -1023,7 +1135,7 @@ Every model in this repository was compiled, abliterated, quantized, and benchma
 
 ### 3. GPU VRAM Efficiency Frontier (`VRAM GB` vs. `Precision %` & `Decode Speed`)
 ![VRAM Efficiency Frontier](assets/chart_03_vram_efficiency_frontier.png)
-
+{sc_charts_md}
 ---
 
 ## 1. Master Benchmark Table (All {n_models} Ollama Uncensored Images)
@@ -1057,7 +1169,7 @@ Executed via [`scripts/build_and_benchmark_modelscope_colab.py`](scripts/build_a
 > - **Top Zero-Hallucination 100B+ Sparse MoE (`85.71%` Precision · `0.00%` Hallucination · `183.51 tok/s`)**: [`eriktonon/ling3.0-flash-uncensored:127b-a5b`](https://ollama.com/eriktonon/ling3.0-flash-uncensored) activates only `5.1B` of `127.5B` parameters per token (`56.0 GiB` VRAM), passing `5/5` Gate, `9/9` Uncensored, and `6/6` Anti-Hallucination checks.
 > - **Largest Single-80GB-GPU Frontier MoE (`196B` Total / `11B` Active · `173.36 tok/s`)**: [`eriktonon/step3.5-flash-uncensored:196b-a11b`](https://ollama.com/eriktonon/step3.5-flash-uncensored) packs `196B` parameters into `60.6 GiB` VRAM via `i1-IQ2_M`, scoring `85.71%` (`12/14`) and `9/9` Uncensored.
 > - **Fastest 100B+ Throughput (`285.96 tok/s` Decode · `6,090.28 tok/s` Prefill)**: [`eriktonon/ring-flash2-uncensored:103b-a6b`](https://ollama.com/eriktonon/ring-flash2-uncensored) runs in `THINK_LEN=0` fast-decode mode (`9/9` Suite A Uncensored); because `Ring-flash-2.0` is a pure RL Chain-of-Thought MoE, re-enabling `<think>` (see [`readme_ring_flash2_103b.md`](ollama_readmes/readme_ring_flash2_103b.md)) restores full multi-step formal math/code reasoning.
-
+{sc_section_md}
 ---
 
 ## 3. Official Published Ollama Repositories (`ollama.com/eriktonon` — 29 Repositories)
@@ -1142,7 +1254,7 @@ Executed via [`scripts/benchmark_hallucination_context_colab.py`](scripts/benchm
 2. **Mathematical / Cryptographic Trap Verification**: SHA-256 preimage impossibility & batch throughput arithmetic traps.
 3. **Long-Context Needle-in-a-Haystack Retrieval**: Exact extraction of embedded canary tokens (`0x7F9A3C12` / `COBALTO-9471-OMEGA`) and scheduler node assignments (`gpu-node-h100-03`) inside dense multi-service telemetry logs.
 4. **Strict Closed-World Negative Abstention**: Querying absent telemetry fields (`OMEGA_SECRET_KEY` / missing `node-01bgp` CPU temp) -> must abstain without guessing.
-
+{sc_method_md}
 ---
 
 ## 5. Multi-Agent Full-Stack OLX Clone Benchmark (100% Local Models on RTX 5080 — V1 to V10)
@@ -1236,7 +1348,7 @@ ollama run eriktonon/bonsai-2-uncensored:27b
 
 - **Unified 41-Model Master Datasets**:
   - [`data/master_benchmark_41_models.json`](data/master_benchmark_41_models.json) & [`data/master_benchmark_41_models.csv`](data/master_benchmark_41_models.csv)
-- **Suite-Specific Raw Telemetry**:
+{sc_links_md}- **Suite-Specific Raw Telemetry**:
   - [`data/modelscope_h100_a100_benchmark.json`](data/modelscope_h100_a100_benchmark.json) — Suite 07 ModelScope H100 80GB & A100 40GB (`8` models, domain-level JSON/Python/Rust/SQL/Math/SRE + Uncensored + Anti-Hallucination traces)
   - [`data/global_frontier_benchmark.json`](data/global_frontier_benchmark.json) — Suite 06 Global Frontier (`10` models)
   - [`data/h100_full_benchmark.json`](data/h100_full_benchmark.json) & [`data/hallucination_context_benchmark.json`](data/hallucination_context_benchmark.json) — Consolidated 41-model precision & anti-hallucination matrices
