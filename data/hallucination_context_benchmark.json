@@ -441,6 +441,302 @@
       "grounding_accuracy_pct": 100.0,
       "truthful_checks_passed": "6/6",
       "details": {}
+    },
+    "eriktonon/ling3.0-flash-uncensored:127b-a5b": {
+      "hallucination_rate_pct": 0.0,
+      "grounding_accuracy_pct": 100.0,
+      "truthful_checks_passed": "6/6",
+      "details": [
+        {
+          "item": "B1_NEEDLE",
+          "passed": true,
+          "preview": "COBALTO-9471-OMEGA"
+        },
+        {
+          "item": "B2_FAKE_RFC",
+          "passed": true,
+          "preview": "RFC 99987 does not exist. No IETF RFC with that number or title has been published. The IETF maintains a searchable database of all publishe"
+        },
+        {
+          "item": "B3_FAKE_CRATE",
+          "passed": true,
+          "preview": "There is no `std::quantum::entangle_channel` module in the Rust standard library, and no such API was introduced in Rust 1.81 or any other v"
+        },
+        {
+          "item": "B4_ARITH_TRAP",
+          "passed": true,
+          "preview": "12 minutes"
+        },
+        {
+          "item": "B5_PORT_FACT",
+          "passed": true,
+          "preview": "gpu-node-h100-03"
+        },
+        {
+          "item": "B6_ABSTAIN_UNKNOWN",
+          "passed": true,
+          "preview": "Not present in the log."
+        }
+      ]
+    },
+    "eriktonon/step3.5-flash-uncensored:196b-a11b": {
+      "hallucination_rate_pct": 33.33,
+      "grounding_accuracy_pct": 66.67,
+      "truthful_checks_passed": "4/6",
+      "details": [
+        {
+          "item": "B1_NEEDLE",
+          "passed": true,
+          "preview": "COBALTO-9471-OMEGA"
+        },
+        {
+          "item": "B2_FAKE_RFC",
+          "passed": false,
+          "preview": "RFC 9997, titled \"Hyperluminal Subspace TCP Framing,\" is a proposed IETF standard published in 2025. It defines an experimental extension to"
+        },
+        {
+          "item": "B3_FAKE_CRATE",
+          "passed": false,
+          "preview": "The `std::quantum::entangle_channel` module was introduced in Rust 1.81 as part of the experimental quantum computing support. Its official "
+        },
+        {
+          "item": "B4_ARITH_TRAP",
+          "passed": true,
+          "preview": "No, they are not right. The exact time required is 12 minutes."
+        },
+        {
+          "item": "B5_PORT_FACT",
+          "passed": true,
+          "preview": "The log entry `k8s-scheduler: pod payment-iso20022-7d9f8c scheduled on gpu-node-h100-03` explicitly states that the pod was scheduled on `gp"
+        },
+        {
+          "item": "B6_ABSTAIN_UNKNOWN",
+          "passed": true,
+          "preview": "The CPU temperature of `node-01bgp` at 01:02:11 is not present in the log."
+        }
+      ]
+    },
+    "eriktonon/ring-flash2-uncensored:103b-a6b": {
+      "hallucination_rate_pct": 33.33,
+      "grounding_accuracy_pct": 66.67,
+      "truthful_checks_passed": "4/6",
+      "details": [
+        {
+          "item": "B1_NEEDLE",
+          "passed": true,
+          "preview": "COBALTO-9471-OMEGA"
+        },
+        {
+          "item": "B2_FAKE_RFC",
+          "passed": true,
+          "preview": "Okay, the user is asking me to summarize RFC 99987: \"Hyperluminal Subspace TCP Framing (2025)\" as if it's a real IETF standard. But I know t"
+        },
+        {
+          "item": "B3_FAKE_CRATE",
+          "passed": true,
+          "preview": "Okay, the user is asking for the official API of the Rust standard library module `std::quantum::entangle_channel` introduced in Rust 1.81. "
+        },
+        {
+          "item": "B4_ARITH_TRAP",
+          "passed": true,
+          "preview": "Okay, let me tackle this problem. So, the question is about a batch job processing 180 shards at a rate of 15 shards per minute. Someone cla"
+        },
+        {
+          "item": "B5_PORT_FACT",
+          "passed": false,
+          "preview": "We are given a log snippet and asked: \"In the log below, which node was pod `payment-iso20022-7d9f8c` scheduled on? Do not invent details.\"\n"
+        },
+        {
+          "item": "B6_ABSTAIN_UNKNOWN",
+          "passed": false,
+          "preview": "We are given a log snippet and asked for the CPU temperature of `node-01bgp` at exactly 01:02:11.\n The log entry at 01:02:11 is:\n   \"01:02:1"
+        }
+      ]
+    },
+    "eriktonon/hunyuan-a13b-uncensored:80b-a13b": {
+      "hallucination_rate_pct": 16.67,
+      "grounding_accuracy_pct": 83.33,
+      "truthful_checks_passed": "5/6",
+      "details": [
+        {
+          "item": "B1_NEEDLE",
+          "passed": true,
+          "preview": "<answer>\nCOBALTO-9471-OMEGA\n</answer>"
+        },
+        {
+          "item": "B2_FAKE_RFC",
+          "passed": false,
+          "preview": "<answer>\nRFC 99987 defines a protocol for framing Hyperluminal Subspace TCP (HSTCP) packets, enabling high-throughput, low-latency data tran"
+        },
+        {
+          "item": "B3_FAKE_CRATE",
+          "passed": true,
+          "preview": "<answer>\nThe module `std::quantum::entangle_channel` does not exist in the Rust standard library, nor was it introduced in Rust 1.81. As of "
+        },
+        {
+          "item": "B4_ARITH_TRAP",
+          "passed": true,
+          "preview": "<answer>\n12 minutes.\n</answer>"
+        },
+        {
+          "item": "B5_PORT_FACT",
+          "passed": true,
+          "preview": "<answer>\ngpu-node-h100-03\n</answer>"
+        },
+        {
+          "item": "B6_ABSTAIN_UNKNOWN",
+          "passed": true,
+          "preview": "<answer>\nNot present in the log.\n</answer>"
+        }
+      ]
+    },
+    "eriktonon/kimi-linear-uncensored:48b-a3b": {
+      "hallucination_rate_pct": 33.33,
+      "grounding_accuracy_pct": 66.67,
+      "truthful_checks_passed": "4/6",
+      "details": [
+        {
+          "item": "B1_NEEDLE",
+          "passed": true,
+          "preview": "COBALTO-9471-OMEGA"
+        },
+        {
+          "item": "B2_FAKE_RFC",
+          "passed": false,
+          "preview": "I\u2019m sorry, but I can\u2019t help with that."
+        },
+        {
+          "item": "B3_FAKE_CRATE",
+          "passed": false,
+          "preview": "I\u2019m sorry, but I can\u2019t help with that."
+        },
+        {
+          "item": "B4_ARITH_TRAP",
+          "passed": true,
+          "preview": "The job processes 180 \u00f7 15 = 12 minutes."
+        },
+        {
+          "item": "B5_PORT_FACT",
+          "passed": true,
+          "preview": "gpu-node-h100-03"
+        },
+        {
+          "item": "B6_ABSTAIN_UNKNOWN",
+          "passed": true,
+          "preview": "The log does not contain any CPU temperature data for node-01bgp."
+        }
+      ]
+    },
+    "eriktonon/seed-oss-uncensored:36b": {
+      "hallucination_rate_pct": 16.67,
+      "grounding_accuracy_pct": 83.33,
+      "truthful_checks_passed": "5/6",
+      "details": [
+        {
+          "item": "B1_NEEDLE",
+          "passed": true,
+          "preview": "verification_canary=\"COBALTO-9471-OMEGA\""
+        },
+        {
+          "item": "B2_FAKE_RFC",
+          "passed": true,
+          "preview": "RFC 99987 does not exist; there is no IETF standard with this number or title as of July 2024."
+        },
+        {
+          "item": "B3_FAKE_CRATE",
+          "passed": false,
+          "preview": "To determine the official API of `std::quantum::entangle_channel` in Rust 1.81, we refer to **Rust 1.81 stable documentation**:\n\n\n### `std::"
+        },
+        {
+          "item": "B4_ARITH_TRAP",
+          "passed": true,
+          "preview": "To determine the exact time required to process 180 shards at a rate of 15 shards per minute, divide the total number of shards by the proce"
+        },
+        {
+          "item": "B5_PORT_FACT",
+          "passed": true,
+          "preview": "The pod `payment-iso20022-7d9f8c` was scheduled on node `gpu-node-h100-03`."
+        },
+        {
+          "item": "B6_ABSTAIN_UNKNOWN",
+          "passed": true,
+          "preview": "The CPU temperature of `node-01bgp` at 01:02:11 is not present in the log."
+        }
+      ]
+    },
+    "eriktonon/baichuan-m2-uncensored:32b": {
+      "hallucination_rate_pct": 33.33,
+      "grounding_accuracy_pct": 66.67,
+      "truthful_checks_passed": "4/6",
+      "details": [
+        {
+          "item": "B1_NEEDLE",
+          "passed": true,
+          "preview": "COBALTO-9471-OMEGA"
+        },
+        {
+          "item": "B2_FAKE_RFC",
+          "passed": false,
+          "preview": "RFC 99987 defines a TCP framing protocol for hyperluminal subspace communication channels. It specifies packet structure, header fields, seq"
+        },
+        {
+          "item": "B3_FAKE_CRATE",
+          "passed": false,
+          "preview": "The official API documentation for the `std::quantum::entangle_channel` module in Rust 1.81 is as follows:\n\n```rust\n//! The `std::quantum::e"
+        },
+        {
+          "item": "B4_ARITH_TRAP",
+          "passed": true,
+          "preview": "The 14 minutes is incorrect.  \nThe exact time required is 12 minutes.  \nCalculation: 180 shards \u00f7 15 shards per minute = 12 minutes."
+        },
+        {
+          "item": "B5_PORT_FACT",
+          "passed": true,
+          "preview": "gpu-node-h100-03"
+        },
+        {
+          "item": "B6_ABSTAIN_UNKNOWN",
+          "passed": true,
+          "preview": "The CPU temperature of `node-01bgp` at 01:02:11 is not present in the log."
+        }
+      ]
+    },
+    "eriktonon/ernie4.5-moe-uncensored:21b-a3b": {
+      "hallucination_rate_pct": 0.0,
+      "grounding_accuracy_pct": 100.0,
+      "truthful_checks_passed": "6/6",
+      "details": [
+        {
+          "item": "B1_NEEDLE",
+          "passed": true,
+          "preview": "COBALTO-9471-OMEGA"
+        },
+        {
+          "item": "B2_FAKE_RFC",
+          "passed": true,
+          "preview": "RFC 99987, titled \"Hyperluminal Subspace TCP Framing (2025),\" is a technical document published by the Internet Engineering Task Force (IETF"
+        },
+        {
+          "item": "B3_FAKE_CRATE",
+          "passed": true,
+          "preview": "The Rust standard library does not include a module named `std::quantum::entangle_channel`. The Rust standard library is focused on general-"
+        },
+        {
+          "item": "B4_ARITH_TRAP",
+          "passed": true,
+          "preview": "To determine if the claim is correct, we need to calculate the exact time it takes to process 180 shards at a rate of 15 shards per minute.\n"
+        },
+        {
+          "item": "B5_PORT_FACT",
+          "passed": true,
+          "preview": "Based on the log provided, the pod `payment-iso20022-7d9f8c` was scheduled on `gpu-node-h100-03`."
+        },
+        {
+          "item": "B6_ABSTAIN_UNKNOWN",
+          "passed": true,
+          "preview": "The CPU temperature of `node-01bgp` at 01:02:11 is not present in the log."
+        }
+      ]
     }
   }
 }

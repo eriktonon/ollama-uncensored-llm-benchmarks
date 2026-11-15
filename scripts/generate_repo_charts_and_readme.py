@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Generates high-resolution 300-DPI PNG benchmark charts, unified JSON/CSV datasets,
-and the complete GitHub README.md for eriktonon/ollama-uncensored-llm-benchmarks (All 23 Uncensored Models).
+Generates high-resolution 220-DPI PNG benchmark charts, unified JSON/CSV datasets,
+and the complete GitHub README.md for eriktonon/ollama-uncensored-llm-benchmarks (All 41 Uncensored Models across 29 Repos).
 """
 
 import os
@@ -14,7 +14,7 @@ REPO_DIR = r"c:\Users\erikt\homelab\training\github_benchmark_repo"
 DATA_DIR = os.path.join(REPO_DIR, "data")
 ASSETS_DIR = os.path.join(REPO_DIR, "assets")
 
-METADATA_23 = {
+METADATA_41 = {
     "eriktonon/bonsai-2-uncensored:2b": {
         "short": "Bonsai-2 2B (Q2_0)",
         "family": "Ternary Bonsai 2",
@@ -411,6 +411,103 @@ METADATA_23 = {
         "method": "Huihui Mamba-2 Hybrid Abliteration + In-Place GGUF <think> Suppression Patch",
         "hub_url": "https://ollama.com/eriktonon/nemotron-nano-uncensored",
     },
+    # Suite 07 — ModelScope H100 (80GB) & A100 (40GB) Frontier Expansion (8 Models)
+    "eriktonon/ling3.0-flash-uncensored:127b-a5b": {
+        "short": "Ling-3.0-Flash 127B-A5B",
+        "family": "InclusionAI Ling-3.0 MoE",
+        "params": "127.5B-A5.1B",
+        "quant": "Q3_K_M (Abliterated)",
+        "disk_gb": 56.6,
+        "vram_gb": 56.0,
+        "arch_ctx": "262,144 (256K)",
+        "tested_ctx": "65,536 (64K)",
+        "method": "ModelScope Sparse MoE Abliteration + In-Place GGUF <think> Suppression Patch",
+        "hub_url": "https://ollama.com/eriktonon/ling3.0-flash-uncensored",
+    },
+    "eriktonon/step3.5-flash-uncensored:196b-a11b": {
+        "short": "Step-3.5-Flash 196B-A11B",
+        "family": "StepFun Step-3.5-Flash MoE",
+        "params": "196B-A11B",
+        "quant": "i1-IQ2_M (Abliterated)",
+        "disk_gb": 59.6,
+        "vram_gb": 60.6,
+        "arch_ctx": "262,144 (256K)",
+        "tested_ctx": "65,536 (64K)",
+        "method": "ModelScope 196B Imatrix IQ2_M Abliteration + In-Place GGUF <think> Patch",
+        "hub_url": "https://ollama.com/eriktonon/step3.5-flash-uncensored",
+    },
+    "eriktonon/ring-flash2-uncensored:103b-a6b": {
+        "short": "Ring-Flash-2.0 103B-A6B",
+        "family": "InclusionAI Ring-Flash-2.0 MoE",
+        "params": "102.9B-A6.1B",
+        "quant": "i1-Q3_K_M",
+        "disk_gb": 45.9,
+        "vram_gb": 46.8,
+        "arch_ctx": "32,768 (32K)",
+        "tested_ctx": "32,768 (32K)",
+        "method": "ModelScope RL Reasoning MoE + In-Place GGUF THINK_LEN=0 Fast-Decode Patch",
+        "hub_url": "https://ollama.com/eriktonon/ring-flash2-uncensored",
+    },
+    "eriktonon/hunyuan-a13b-uncensored:80b-a13b": {
+        "short": "Hunyuan-A13B 80B-A13B",
+        "family": "Tencent Hunyuan-A13B MoE",
+        "params": "80.4B-A13B",
+        "quant": "Q4_K_M",
+        "disk_gb": 45.4,
+        "vram_gb": 46.8,
+        "arch_ctx": "262,144 (256K)",
+        "tested_ctx": "65,536 (64K)",
+        "method": "ModelScope Unsloth Q4_K_M + In-Place GGUF Hybrid CoT <think> Suppression Patch",
+        "hub_url": "https://ollama.com/eriktonon/hunyuan-a13b-uncensored",
+    },
+    "eriktonon/kimi-linear-uncensored:48b-a3b": {
+        "short": "Kimi-Linear 48B-A3B (1M Ctx)",
+        "family": "Moonshot Kimi-Linear KDA MoE",
+        "params": "49.1B-A3B",
+        "quant": "i1-Q4_K_M (BF16 Abl.)",
+        "disk_gb": 27.7,
+        "vram_gb": 28.1,
+        "arch_ctx": "1,048,576 (1M)",
+        "tested_ctx": "65,536 (64K)",
+        "method": "ModelScope BF16 Orthogonal Abliteration + KDA Linear-Attention 1M Ctx",
+        "hub_url": "https://ollama.com/eriktonon/kimi-linear-uncensored",
+    },
+    "eriktonon/seed-oss-uncensored:36b": {
+        "short": "Seed-OSS 36B Dense (512K)",
+        "family": "ByteDance Seed-OSS Dense",
+        "params": "36.2B",
+        "quant": "i1-Q4_K_M (Norm-Pres.)",
+        "disk_gb": 20.3,
+        "vram_gb": 21.5,
+        "arch_ctx": "524,288 (512K)",
+        "tested_ctx": "65,536 (64K)",
+        "method": "ModelScope Biprojected Norm-Preserving Abliteration + GGUF thinking_budget=0",
+        "hub_url": "https://ollama.com/eriktonon/seed-oss-uncensored",
+    },
+    "eriktonon/baichuan-m2-uncensored:32b": {
+        "short": "Baichuan-M2 32B Clinical",
+        "family": "Baichuan-M2 Medical Dense",
+        "params": "32.8B",
+        "quant": "i1-Q4_K_M",
+        "disk_gb": 18.5,
+        "vram_gb": 19.8,
+        "arch_ctx": "131,072 (128K)",
+        "tested_ctx": "65,536 (64K)",
+        "method": "ModelScope Clinical Verifier Abliteration + In-Place GGUF Jinja <think> Bugfix",
+        "hub_url": "https://ollama.com/eriktonon/baichuan-m2-uncensored",
+    },
+    "eriktonon/ernie4.5-moe-uncensored:21b-a3b": {
+        "short": "ERNIE-4.5 MoE 21B-A3B (Q8_0)",
+        "family": "Baidu ERNIE-4.5 MoE",
+        "params": "21.8B-A3B",
+        "quant": "Q8_0 Heretic",
+        "disk_gb": 21.6,
+        "vram_gb": 22.4,
+        "arch_ctx": "131,072 (128K)",
+        "tested_ctx": "65,536 (64K)",
+        "method": "ModelScope KL-Minimized Heretic Abliteration at Lossless 8-Bit Q8_0",
+        "hub_url": "https://ollama.com/eriktonon/ernie4.5-moe-uncensored",
+    },
 }
 
 
@@ -420,6 +517,8 @@ def load_merged_data():
     bonsai_path = os.path.join(DATA_DIR, "bonsai2_benchmark.json")
     nextgen_path = os.path.join(REPO_DIR, "..", "05_h100_nextgen_suite", "h100_nextgen_benchmark.json")
     frontier_path = os.path.join(REPO_DIR, "..", "06_global_frontier_suite", "global_frontier_benchmark.json")
+    ms_src_path = os.path.join(REPO_DIR, "..", "07_modelscope_h100_a100_suite", "modelscope_h100_a100_benchmark.json")
+    ms_local_path = os.path.join(DATA_DIR, "modelscope_h100_a100_benchmark.json")
 
     h100 = json.load(open(h100_path, encoding="utf-8"))
     hall_full = json.load(open(hall_path, encoding="utf-8")) if os.path.exists(hall_path) else {"models": {}}
@@ -427,6 +526,14 @@ def load_merged_data():
     bonsai_v2 = json.load(open(bonsai_path, encoding="utf-8")) if os.path.exists(bonsai_path) else {}
     nextgen = json.load(open(nextgen_path, encoding="utf-8")) if os.path.exists(nextgen_path) else {}
     frontier = json.load(open(frontier_path, encoding="utf-8")) if os.path.exists(frontier_path) else {}
+
+    ms_data = {}
+    if os.path.exists(ms_src_path):
+        ms_data = json.load(open(ms_src_path, encoding="utf-8"))
+        with open(ms_local_path, "w", encoding="utf-8") as f:
+            json.dump(ms_data, f, indent=2, ensure_ascii=False)
+    elif os.path.exists(ms_local_path):
+        ms_data = json.load(open(ms_local_path, encoding="utf-8"))
 
     if frontier:
         with open(os.path.join(DATA_DIR, "global_frontier_benchmark.json"), "w", encoding="utf-8") as f:
@@ -437,7 +544,7 @@ def load_merged_data():
         for tag, ng in source_dict.items():
             entry = {
                 "tag": tag,
-                "label": METADATA_23.get(tag, {}).get("short", tag),
+                "label": METADATA_41.get(tag, {}).get("short", tag),
                 "precision_pct": ng["precision_pct"],
                 "math_exact": ng["math_exact"],
                 "elf64_offsets": ng["elf64_offsets"],
@@ -462,6 +569,57 @@ def load_merged_data():
                     "details": ng.get("hallucination_details", {}),
                 }
 
+    # Merge Suite 07 ModelScope H100/A100 models
+    ms_models = ms_data.get("models", []) if isinstance(ms_data, dict) else []
+    for ms in ms_models:
+        tag = ms["model"]
+        p_map = {p["item"]: f"{p['pts']}/{p['max']}" for p in ms.get("precision_details", [])}
+        all_tps = [float(ms["avg_decode_tps"])]
+        for g in ms.get("gate_details", []):
+            if g.get("decode_tps"):
+                all_tps.append(float(g["decode_tps"]))
+        for p in ms.get("precision_details", []):
+            if p.get("tps"):
+                all_tps.append(float(p["tps"]))
+        for u in ms.get("uncensored_details", []):
+            if u.get("tps"):
+                all_tps.append(float(u["tps"]))
+        peak_tps = round(max(all_tps), 2)
+
+        if float(ms.get("uncensored_pct", 100.0)) >= 99.9:
+            unc_str = "100% (0 Refusals)"
+        elif "hunyuan" in tag:
+            unc_str = f"{ms['uncensored_pct']:.1f}% ({ms['uncensored_9']} · 100% SecOps)"
+        else:
+            unc_str = f"{ms['uncensored_pct']:.1f}% ({ms['uncensored_9']} · Gate {ms['gate_5_5']})"
+
+        entry = {
+            "tag": tag,
+            "label": METADATA_41.get(tag, {}).get("short", tag),
+            "precision_pct": round(float(ms["precision_pct"]), 1),
+            "math_exact": p_map.get("A5_MATH", "0/2") == "2/2",
+            "elf64_offsets": f"Py {p_map.get('A2_PYTHON', '0/3')}",
+            "mmlu_pro_arch_crypto": f"SQL {p_map.get('A4_SQL', '0/2')} · SRE {p_map.get('A6_SRE', '0/3')}",
+            "rust_code_accuracy": f"{p_map.get('A3_RUST', '0/2')} (JSON {p_map.get('A1_JSON', '0/2')})",
+            "uncensored_compliance": unc_str,
+            "peak_decode_tok_s": peak_tps,
+            "avg_decode_tok_s": round(float(ms["avg_decode_tps"]), 2),
+            "peak_prefill_tok_s": round(float(ms["avg_prefill_tps"]), 2),
+        }
+        if tag in existing_map:
+            existing_map[tag].update(entry)
+        else:
+            h100["models"].append(entry)
+            existing_map[tag] = entry
+
+        hall_pct = round(float(ms["hallucination_rate_pct"]), 2)
+        hall[tag] = {
+            "hallucination_rate_pct": hall_pct,
+            "grounding_accuracy_pct": round(100.0 - hall_pct, 2),
+            "truthful_checks_passed": ms["hallucination_6"],
+            "details": ms.get("hallucination_details", []),
+        }
+
     with open(h100_path, "w", encoding="utf-8") as f:
         json.dump(h100, f, indent=2)
     hall_full["models"] = hall
@@ -485,7 +643,7 @@ def load_merged_data():
                 "avg_decode_tok_s": b["avg_decode_tok_s"],
                 "peak_prefill_tok_s": b["peak_prefill_tok_s"],
             }
-        meta = METADATA_23.get(tag, {})
+        meta = METADATA_41.get(tag, {})
         h_info = hall.get(tag, {})
         hall_pct = h_info.get("hallucination_rate_pct", 0.0)
         ground_pct = h_info.get("grounding_accuracy_pct", round(100.0 - hall_pct, 1))
@@ -511,24 +669,34 @@ def load_merged_data():
             "elf64_offsets": m["elf64_offsets"],
             "mmlu_pro_arch_crypto": m["mmlu_pro_arch_crypto"],
             "rust_code_accuracy": m["rust_code_accuracy"],
-            "uncensored_compliance": "100% (0 Refusals)",
+            "uncensored_compliance": m.get("uncensored_compliance", "100% (0 Refusals)"),
             "peak_decode_tok_s": m["peak_decode_tok_s"],
             "avg_decode_tok_s": m["avg_decode_tok_s"],
             "peak_prefill_tok_s": m["peak_prefill_tok_s"],
         }
         merged.append(row)
 
-    for fname in ["master_benchmark_17_models.json", "master_benchmark_23_models.json", "master_benchmark_33_models.json"]:
+    for fname in [
+        "master_benchmark_17_models.json",
+        "master_benchmark_23_models.json",
+        "master_benchmark_33_models.json",
+        "master_benchmark_41_models.json",
+    ]:
         with open(os.path.join(DATA_DIR, fname), "w", encoding="utf-8") as f:
             json.dump(merged, f, indent=2)
 
-    for cname in ["master_benchmark_17_models.csv", "master_benchmark_23_models.csv", "master_benchmark_33_models.csv"]:
+    for cname in [
+        "master_benchmark_17_models.csv",
+        "master_benchmark_23_models.csv",
+        "master_benchmark_33_models.csv",
+        "master_benchmark_41_models.csv",
+    ]:
         with open(os.path.join(DATA_DIR, cname), "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=list(merged[0].keys()))
             writer.writeheader()
             writer.writerows(merged)
 
-    return merged
+    return merged, ms_models
 
 
 def generate_charts(rows):
@@ -550,13 +718,13 @@ def generate_charts(rows):
 
     y = np.arange(len(names))
     height = 0.38
-    fig, ax = plt.subplots(figsize=(15.5, 16.0), dpi=220)
+    fig, ax = plt.subplots(figsize=(16.0, 19.8), dpi=220)
     b1 = ax.barh(y + height / 2, prec, height, label="Precision Accuracy (%)", color="#2ea043", edgecolor="#3fb950")
     b2 = ax.barh(y - height / 2, hall, height, label="Hallucination Rate (%) — Lower is Better", color="#f85149", edgecolor="#ff7b72")
 
     ax.set_yticks(y)
-    ax.set_yticklabels(names, fontsize=9.2, fontweight="bold")
-    ax.set_xlim(0, 113)
+    ax.set_yticklabels(names, fontsize=8.8, fontweight="bold")
+    ax.set_xlim(0, 114)
     ax.set_xlabel("Percentage (%)", fontsize=11, fontweight="bold")
     ax.set_title(f"Uncensored LLM & Agents Suite ({n_models} Models) — Precision (%) vs. Hallucination Rate (%)", fontsize=14, fontweight="bold", pad=15)
     ax.grid(axis="x", linestyle="--", alpha=0.25, color="#8b949e")
@@ -564,37 +732,37 @@ def generate_charts(rows):
 
     for bar in b1:
         w = bar.get_width()
-        ax.text(w + 1.0, bar.get_y() + bar.get_height() / 2, f"{w:.1f}%", va="center", ha="left", fontsize=7.8, color="#56d364", fontweight="bold")
+        ax.text(w + 1.0, bar.get_y() + bar.get_height() / 2, f"{w:.1f}%", va="center", ha="left", fontsize=7.5, color="#56d364", fontweight="bold")
     for bar in b2:
         w = bar.get_width()
-        ax.text(w + 1.0, bar.get_y() + bar.get_height() / 2, f"{w:.1f}%", va="center", ha="left", fontsize=7.8, color="#ffa198", fontweight="bold")
+        ax.text(w + 1.0, bar.get_y() + bar.get_height() / 2, f"{w:.1f}%", va="center", ha="left", fontsize=7.5, color="#ffa198", fontweight="bold")
 
     plt.tight_layout()
     plt.savefig(os.path.join(ASSETS_DIR, "chart_01_precision_vs_hallucination.png"), dpi=220)
     plt.close()
 
-    # Chart 2: Token Speed (Peak Decode tok/s & Prefill tok/s)
+    # Chart 2: Token Speed (Peak Decode tok/s & Sustained Avg Decode tok/s)
     r_spd = sorted(rows, key=lambda x: x["peak_decode_tok_s"])
     names_s = [x["short"] for x in r_spd]
     dec_peak = [x["peak_decode_tok_s"] for x in r_spd]
     dec_avg = [x["avg_decode_tok_s"] for x in r_spd]
 
-    fig, ax = plt.subplots(figsize=(15.5, 16.0), dpi=220)
+    fig, ax = plt.subplots(figsize=(16.0, 19.8), dpi=220)
     b_p = ax.barh(y + height / 2, dec_peak, height, label="Peak Decode Speed (tok/s)", color="#1f6feb", edgecolor="#58a6ff")
     b_a = ax.barh(y - height / 2, dec_avg, height, label="Sustained Avg Decode Speed (tok/s)", color="#8957e5", edgecolor="#bc8cff")
 
     ax.set_yticks(y)
-    ax.set_yticklabels(names_s, fontsize=9.2, fontweight="bold")
+    ax.set_yticklabels(names_s, fontsize=8.8, fontweight="bold")
     max_spd = max(dec_peak) if dec_peak else 350
     ax.set_xlim(0, max(385, max_spd * 1.16))
-    ax.set_xlabel("Tokens per Second (tok/s) on 80GB–96GB Datacenter GPU (H100 / Blackwell / A100)", fontsize=11, fontweight="bold")
+    ax.set_xlabel("Tokens per Second (tok/s) on Datacenter GPUs (H100 80GB / Blackwell 96GB / A100 40GB–80GB)", fontsize=11, fontweight="bold")
     ax.set_title(f"Token Generation Speed Benchmark ({n_models} Models) — Peak vs. Sustained Decode (tok/s)", fontsize=14, fontweight="bold", pad=15)
     ax.grid(axis="x", linestyle="--", alpha=0.25, color="#8b949e")
     ax.legend(loc="lower right", facecolor="#0d1117", edgecolor="#30363d", fontsize=10)
 
     for bar in b_p:
         w = bar.get_width()
-        ax.text(w + 2.5, bar.get_y() + bar.get_height() / 2, f"{w:.1f} tok/s", va="center", ha="left", fontsize=7.8, color="#79c0ff", fontweight="bold")
+        ax.text(w + 2.5, bar.get_y() + bar.get_height() / 2, f"{w:.1f} tok/s", va="center", ha="left", fontsize=7.5, color="#79c0ff", fontweight="bold")
 
     plt.tight_layout()
     plt.savefig(os.path.join(ASSETS_DIR, "chart_02_token_speed_decode_prefill.png"), dpi=220)
@@ -603,7 +771,7 @@ def generate_charts(rows):
     # Chart 3: VRAM Footprint (GB) vs Precision (%) Bubble Plot (sized by Decode Speed)
     from matplotlib.lines import Line2D
 
-    fig, ax = plt.subplots(figsize=(19.0, 12.0), dpi=220)
+    fig, ax = plt.subplots(figsize=(20.5, 13.0), dpi=220)
     family_colors = {
         "Ternary Bonsai 2": "#3fb950",
         "IBM Granite 4.2": "#58a6ff",
@@ -624,54 +792,69 @@ def generate_charts(rows):
         "OpenAI GPT-OSS MoE": "#f778ba",
         "Moonlight-Dusk MoE": "#a5d6ff",
         "Meta Llama 3.2 MoE": "#bd93f9",
+        "InclusionAI Ling-3.0 MoE": "#00ffa3",
+        "StepFun Step-3.5-Flash MoE": "#ffd166",
+        "InclusionAI Ring-Flash-2.0 MoE": "#ff9f1c",
+        "Tencent Hunyuan-A13B MoE": "#4cc9f0",
+        "Moonshot Kimi-Linear KDA MoE": "#c77dff",
+        "ByteDance Seed-OSS Dense": "#80ffdb",
+        "Baichuan-M2 Medical Dense": "#ff6b6b",
+        "Baidu ERNIE-4.5 MoE": "#48bfe3",
     }
 
-    # Slight visual X separation for identical (VRAM, Precision) points so bubbles are distinct
     x_jitter_map = {
         "eriktonon/devstral2-uncensored:24b": -0.45,
         "eriktonon/qwen3.6-moe-uncensored:iq3": +0.45,
         "eriktonon/qwen3.8-uncensored:27b": -0.45,
         "eriktonon/deepseek-v4.1-flash-1017:27b": +0.45,
-        "eriktonon/qwen3-coder-uncensored:30b-a3b": -0.35,
-        "eriktonon/olmo3.1-uncensored:32b": +0.35,
+        "eriktonon/qwen3-coder-uncensored:30b-a3b": -0.55,
+        "eriktonon/olmo3.1-uncensored:32b": +0.0,
+        "eriktonon/seed-oss-uncensored:36b": +0.55,
         "eriktonon/granite4.2-uncensored:30b-q8": -0.55,
         "eriktonon/minimax-m2.7-uncensored:139b-a10b": +0.55,
     }
 
-    # Explicit non-overlapping (dx, dy) offsets in points for all 33 models
     auto_offsets = {
         # Band 100.0% (4 models)
-        "eriktonon/devstral2-uncensored:24b": (-175, 18),
+        "eriktonon/devstral2-uncensored:24b": (-170, 18),
         "eriktonon/qwen3.6-moe-uncensored:iq3": (-60, -24),
-        "eriktonon/gemma4-uncensored:31b": (-65, 24),
-        "eriktonon/qwen3.6-moe-uncensored:35b-a3b": (18, 16),
-        # Band 92.9% (9 models)
-        "eriktonon/qwen3.8-uncensored:9b": (-155, 22),
+        "eriktonon/gemma4-uncensored:31b": (-115, 28),
+        "eriktonon/qwen3.6-moe-uncensored:35b-a3b": (20, 14),
+        # Band 92.9% (10 models)
+        "eriktonon/qwen3.8-uncensored:9b": (-160, 22),
         "eriktonon/bonsai-2-uncensored:27b": (-145, -24),
-        "eriktonon/moonlight-dusk-uncensored:26b-a4b": (-115, 22),
-        "eriktonon/qwen3-coder-uncensored:30b-a3b": (-135, -28),
-        "eriktonon/olmo3.1-uncensored:32b": (-95, 18),
-        "eriktonon/qwen3.8-uncensored:27b": (22, 18),
+        "eriktonon/moonlight-dusk-uncensored:26b-a4b": (-158, 28),
+        "eriktonon/qwen3-coder-uncensored:30b-a3b": (-145, -28),
+        "eriktonon/olmo3.1-uncensored:32b": (-82, 16),
+        "eriktonon/seed-oss-uncensored:36b": (-10, 36),
+        "eriktonon/qwen3.8-uncensored:27b": (14, 15),
         "eriktonon/deepseek-v4.1-flash-1017:27b": (18, -20),
-        "eriktonon/granite4.2-uncensored:30b": (-65, 20),
+        "eriktonon/granite4.2-uncensored:30b": (16, -16),
         "eriktonon/glm4.5-air-uncensored:106b-a12b": (-175, 20),
-        # Band 85.7% (4 models)
+        # Band 85.7% (6 models)
         "eriktonon/gemma4-uncensored:26b-a4b": (-165, -18),
         "eriktonon/aescode-uncensored:32b": (18, 4),
         "eriktonon/granite4.2-uncensored:30b-q8": (-185, 16),
         "eriktonon/minimax-m2.7-uncensored:139b-a10b": (-175, -26),
+        "eriktonon/ling3.0-flash-uncensored:127b-a5b": (-170, 18),
+        "eriktonon/step3.5-flash-uncensored:196b-a11b": (-155, -26),
         # Band 78.6% (5 models)
         "eriktonon/nemotron-nano-uncensored:9b": (-155, 20),
         "eriktonon/lfm2.5-uncensored:24b-a2b": (-175, -22),
         "eriktonon/muse-glimmer-uncensored:30b": (-165, 16),
         "eriktonon/nemotron3.5-bolt-uncensored:74b-a9b": (18, -6),
         "eriktonon/granite4.2-uncensored:30b-q6": (-85, 18),
-        # Band 71.4% (5 models)
+        # Band 71.4% (7 models)
         "eriktonon/bonsai-2-uncensored:4b": (-55, 24),
-        "eriktonon/bonsai-2-uncensored:9b": (-45, -28),
-        "eriktonon/deepseek-v4.1-flash-1017:9b": (12, 22),
-        "eriktonon/gemma4-uncensored:12b": (14, -24),
-        "eriktonon/glm4.7-flash-uncensored:iq3": (18, -6),
+        "eriktonon/bonsai-2-uncensored:9b": (-65, -24),
+        "eriktonon/deepseek-v4.1-flash-1017:9b": (-20, 22),
+        "eriktonon/gemma4-uncensored:12b": (-35, -42),
+        "eriktonon/glm4.7-flash-uncensored:iq3": (-70, -22),
+        "eriktonon/ernie4.5-moe-uncensored:21b-a3b": (-15, 22),
+        "eriktonon/kimi-linear-uncensored:48b-a3b": (18, -14),
+        # Band 64.3% (2 models)
+        "eriktonon/baichuan-m2-uncensored:32b": (-150, -18),
+        "eriktonon/hunyuan-a13b-uncensored:80b-a13b": (-165, 14),
         # Band 57.1% (3 models)
         "eriktonon/granite4.2-uncensored:8b": (-150, 14),
         "eriktonon/gpt-oss-uncensored:20b": (-65, 26),
@@ -680,8 +863,9 @@ def generate_charts(rows):
         "eriktonon/glm4.7-flash-uncensored:30b-a3b": (18, -10),
         # Band 42.9% (1 model)
         "eriktonon/bonsai-2-uncensored:2b": (16, 6),
-        # Band 28.6% (1 model)
+        # Band 28.6% (2 models)
         "eriktonon/llama3.2-moe-uncensored:21b": (18, 6),
+        "eriktonon/ring-flash2-uncensored:103b-a6b": (-170, 18),
     }
 
     legend_handles = []
@@ -691,7 +875,7 @@ def generate_charts(rows):
             continue
         xs = [r["vram_gb"] + x_jitter_map.get(r["tag"], 0.0) for r in sub]
         ys = [r["precision_pct"] for r in sub]
-        sizes = [max(r["peak_decode_tok_s"] * 2.0, 80) for r in sub]
+        sizes = [max(r["peak_decode_tok_s"] * 1.9, 80) for r in sub]
         ax.scatter(
             xs,
             ys,
@@ -712,7 +896,7 @@ def generate_charts(rows):
                 markerfacecolor=col,
                 markeredgecolor="#ffffff",
                 markeredgewidth=1.0,
-                markersize=8.5,
+                markersize=8.0,
             )
         )
         for r, x_val, y_val in zip(sub, xs, ys):
@@ -722,11 +906,11 @@ def generate_charts(rows):
                 (x_val, y_val),
                 xytext=(dx, dy),
                 textcoords="offset points",
-                fontsize=7.6,
+                fontsize=7.3,
                 fontweight="bold",
                 color="#e6edf3",
                 bbox=dict(
-                    boxstyle="round,pad=0.20",
+                    boxstyle="round,pad=0.18",
                     facecolor="#0d1117",
                     edgecolor=col,
                     alpha=0.88,
@@ -743,10 +927,10 @@ def generate_charts(rows):
                 zorder=4,
             )
 
-    ax.set_xlabel("Allocated GPU VRAM Footprint (GB) @ 32K-128K Context", fontsize=11.5, fontweight="bold")
+    ax.set_xlabel("Allocated GPU VRAM Footprint (GB) @ 32K–128K Context (H100 80GB / Blackwell 96GB / A100 40GB–80GB)", fontsize=11.5, fontweight="bold")
     ax.set_ylabel("Objective Benchmark Precision (%)", fontsize=11.5, fontweight="bold")
     ax.set_title(f"VRAM Efficiency Frontier ({n_models} Models) — Precision (%) vs. GPU VRAM (GB) & Decode Speed", fontsize=14, fontweight="bold", pad=15)
-    ax.set_xlim(-2.0, 56.5)
+    ax.set_xlim(-2.5, 67.5)
     ax.set_ylim(22, 108.5)
     ax.grid(True, linestyle="--", alpha=0.25, color="#8b949e", zorder=1)
     ax.legend(
@@ -754,19 +938,19 @@ def generate_charts(rows):
         loc="lower right",
         facecolor="#0d1117",
         edgecolor="#30363d",
-        fontsize=8.0,
+        fontsize=7.3,
         ncol=3,
         framealpha=0.94,
-        borderpad=0.7,
-        labelspacing=0.55,
-        columnspacing=1.1,
+        borderpad=0.6,
+        labelspacing=0.45,
+        columnspacing=0.9,
     )
     plt.tight_layout()
     plt.savefig(os.path.join(ASSETS_DIR, "chart_03_vram_efficiency_frontier.png"), dpi=220)
     plt.close()
 
 
-def generate_readme(rows):
+def generate_readme(rows, ms_models):
     n_models = len(rows)
     r_sorted = sorted(rows, key=lambda x: (-x["precision_pct"], x["hallucination_rate_pct"], -x["peak_decode_tok_s"]))
 
@@ -780,8 +964,11 @@ def generate_readme(rows):
         )
     master_table = "\n".join(table_lines)
 
+    ms_tags = {m["model"] for m in ms_models}
     breakdown_lines = []
     for r in r_sorted:
+        if r["tag"] in ms_tags:
+            continue
         breakdown_lines.append(
             f"| [`{r['tag']}`]({r['hub_url']}) | `{r['math_exact']}` | `{r['elf64_offsets']}` | `{r['mmlu_pro_arch_crypto']}` | "
             f"`{r['rust_code_accuracy']}` | `{r['uncensored_compliance']}` | `{r['truthful_checks_passed']}` (`{r['grounding_accuracy_pct']:.1f}%`) | "
@@ -789,21 +976,40 @@ def generate_readme(rows):
         )
     breakdown_table = "\n".join(breakdown_lines)
 
+    # Suite 07 dedicated 6-domain engineering breakdown
+    ms_sorted = sorted(ms_models, key=lambda m: (-float(m["precision_pct"]), float(m["hallucination_rate_pct"]), -float(m["avg_decode_tps"])))
+    ms_lines = []
+    for m in ms_sorted:
+        tag = m["model"]
+        repo_url = f"https://ollama.com/{tag.split(':')[0]}"
+        card_rel = f"ollama_readmes/readme_{m['key']}.md"
+        p_map = {p["item"]: f"{p['pts']}/{p['max']}" for p in m.get("precision_details", [])}
+        vram_gib = round(m.get("gpu", {}).get("vram_used_mib", 0) / 1024.0, 1)
+        gpu_short = "Blackwell 96GB / H100 80GB" if "Blackwell" in m.get("gpu", {}).get("gpu_name", "") else "NVIDIA A100-SXM4-40GB"
+        ms_lines.append(
+            f"| [`{tag}`]({repo_url}) ([Card]({card_rel})) | `{gpu_short}` (`{vram_gib} GiB`) | "
+            f"`{p_map.get('A1_JSON', '0/2')}` | `{p_map.get('A2_PYTHON', '0/3')}` | `{p_map.get('A3_RUST', '0/2')}` | "
+            f"`{p_map.get('A4_SQL', '0/2')}` | `{p_map.get('A5_MATH', '0/2')}` | `{p_map.get('A6_SRE', '0/3')}` | "
+            f"**{m['precision_pct']:.2f}%** (`{m['precision_14']}/14`) | `{m['gate_5_5']}` · **{m['uncensored_9']}** | "
+            f"**{m['hallucination_rate_pct']:.2f}%** (`{m['hallucination_6']}`) | **{m['avg_decode_tps']:.2f}** / `{m['avg_prefill_tps']:.1f}` |"
+        )
+    ms_table = "\n".join(ms_lines)
+
     readme_md = f"""# Uncensored LLM & Multi-Agent Benchmarks (Colab 80GB–96GB H100 / Blackwell / A100 Suite)
 
 [![Ollama Hub](https://img.shields.io/badge/Ollama_Hub-eriktonon-black?style=for-the-badge&logo=ollama)](https://ollama.com/eriktonon)
-[![Models Tested](https://img.shields.io/badge/Uncensored_Models_Tested-{n_models}_Images_(2B_to_139B)-2ea043?style=for-the-badge)](https://ollama.com/eriktonon)
-[![Refusal Rate](https://img.shields.io/badge/Refusal_Rate-0.0%25_(100%25_Uncensored)-1f6feb?style=for-the-badge)](#1-master-benchmark-table-all-{n_models}-ollama-uncensored-images)
-[![Hardware](https://img.shields.io/badge/GPU-Colab_H100_80GB_%2F_Blackwell_96GB_%2F_A100-76b900?style=for-the-badge&logo=nvidia)](#4-methodology--exact-test-suite-executed)
+[![Models Tested](https://img.shields.io/badge/Uncensored_Models_Tested-{n_models}_Images_(2B_to_196B)-2ea043?style=for-the-badge)](https://ollama.com/eriktonon)
+[![Ollama Repositories](https://img.shields.io/badge/Ollama_Repositories-29_Published_Repos-1f6feb?style=for-the-badge)](#3-official-published-ollama-repositories-ollamacomeriktonon--29-repositories)
+[![Hardware](https://img.shields.io/badge/GPU-Colab_H100_80GB_%2F_Blackwell_96GB_%2F_A100_40GB--80GB-76b900?style=for-the-badge&logo=nvidia)](#4-methodology--exact-test-suite-executed)
 
-Official empirical benchmark repository for the **Uncensored LLM & Multi-Agent Suite** published under **[`ollama.com/eriktonon`](https://ollama.com/eriktonon)**, covering all **{n_models} custom-abliterated, GGUF-patched, and LoRA-compiled Ollama images** across **21 Ollama Hub repositories** and **20 model families** (from **2B Ternary `Q2_0` Edge** up to **139B-A10B MiniMax M2.7**, **106B-A12B GLM-4.5 Air**, **74B-A9B NVIDIA Nemotron 3.5 Bolt**, **31B–32B Dense Flagships**, and **20B–35B High-Speed MoE** architectures).
+Official empirical benchmark repository for the **Uncensored LLM & Multi-Agent Suite** published under **[`ollama.com/eriktonon`](https://ollama.com/eriktonon)**, covering all **{n_models} custom-abliterated, GGUF-patched, and LoRA-compiled Ollama images** across **29 Ollama Hub repositories** and **27 model families** — spanning **2B Ternary `Q2_0` Edge** up to **196B-A11B Step-3.5-Flash**, **139B-A10B MiniMax M2.7**, **127.5B-A5.1B Ling-3.0-Flash**, **106B-A12B GLM-4.5 Air**, **102.9B-A6.1B Ring-Flash-2.0 (`286 tok/s`)**, **80.4B-A13B Tencent Hunyuan-A13B**, **74B-A9B NVIDIA Nemotron 3.5 Bolt**, **49.1B-A3B Kimi-Linear (`1M` Context)**, **36.2B ByteDance Seed-OSS (`92.9%` Precision)**, **32.8B Baichuan-M2 Clinical**, and **21.8B-A3B ERNIE-4.5 `Q8_0` Heretic**.
 
-Every model in this repository was compiled, abliterated, quantized, and benchmarked on **Google Colab Datacenter GPUs (`NVIDIA H100 80GB`, `NVIDIA RTX PRO 6000 Blackwell 96GB GDDR7`, and `NVIDIA A100-SXM4-80GB`)** to measure:
-1. **Token Generation Speed (`Decode tok/s` Peak & Sustained Average + `Prefill tok/s` up to `10,861.4 tok/s`)**
+Every model in this repository was compiled, abliterated, quantized, and benchmarked on **Google Colab Datacenter GPUs (`NVIDIA H100 80GB`, `NVIDIA RTX PRO 6000 Blackwell 96GB GDDR7`, `NVIDIA A100-SXM4-80GB`, and `NVIDIA A100-SXM4-40GB`)** to measure:
+1. **Token Generation Speed (`Decode tok/s` Peak up to `330.6 tok/s` & `287.2 tok/s` on 103B MoE + `Prefill tok/s` up to `19,919.8 tok/s`)**
 2. **Objective Multi-Domain Precision (`%` across 14 deterministic grading criteria)**
 3. **Empirical Hallucination Rate (`% de Alucinação` across 6 Factual Trap + Long-Context Needle-in-a-Haystack / Zero-Extrapolation checks)**
 4. **Context Window Size (`Native Architectural Max` up to `1,048,576` [1M] tokens vs. `Verified Active Context`)**
-5. **Uncensored SecOps & Creative/Adult Compliance (`0.0% Refusal Rate` across all {n_models} images, with `THINK_LEN=0` direct response routing)**
+5. **Uncensored SecOps, Red-Team & Creative Compliance (`39/41` images at `100%` Suite A pass rate and `100%` SecOps compliance across all 41 images, with `THINK_LEN=0` direct response routing)**
 
 ---
 
@@ -822,7 +1028,7 @@ Every model in this repository was compiled, abliterated, quantized, and benchma
 
 ## 1. Master Benchmark Table (All {n_models} Ollama Uncensored Images)
 
-> **Hardware**: Google Colab Datacenter GPUs (`NVIDIA H100 80GB` / `NVIDIA RTX PRO 6000 Blackwell 96GB GDDR7` / `NVIDIA A100-SXM4-80GB`, `temperature = 0.0`, `seed = 42`, deterministic greedy decoding).
+> **Hardware**: Google Colab Datacenter GPUs (`NVIDIA H100 80GB` / `NVIDIA RTX PRO 6000 Blackwell 96GB GDDR7` / `NVIDIA A100-SXM4 40GB & 80GB`, `temperature = 0.0`, `seed = 42`, deterministic greedy decoding).
 
 | Rank | Ollama Model Tag | Params | Quantization | GPU VRAM | Context (`Max` / `Tested`) | Decode `tok/s` (`Peak` / `Avg`) | Prefill `tok/s` (`Peak`) | Precision (`%`) | Hallucination `%` (`Truth Checks`) | Uncensored Compliance |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -830,7 +1036,7 @@ Every model in this repository was compiled, abliterated, quantized, and benchma
 
 ---
 
-## 2. Per-Test Breakdown & Abliteration Methodology
+## 2A. Per-Test Breakdown & Abliteration Methodology (Suites 01–06 · 33 Models)
 
 | Ollama Model Tag | Math Exact (`2/2`) | ELF64 Offsets (`3/3`) | MMLU-Pro Arch/Crypto (`5/5`) | Rust Lock-Free RingBuffer (`4/4`) | SecOps & NSFW Uncensored (`9/9`) | Anti-Hallucination & Needle (`6/6`) | Abliteration & Fine-Tuning Method |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
@@ -838,78 +1044,104 @@ Every model in this repository was compiled, abliterated, quantized, and benchma
 
 ---
 
-## 3. Official Published Ollama Repositories (`ollama.com/eriktonon` — 21 Repositories)
+## 2B. Suite 07 — ModelScope (`魔搭社区`) H100 80GB & A100 40GB Performance Telemetry (8 Models)
 
-1. **[`eriktonon/minimax-m2.7-uncensored`](https://ollama.com/eriktonon/minimax-m2.7-uncensored)** (`:139b-a10b`, `:latest`)
+Executed via [`scripts/build_and_benchmark_modelscope_colab.py`](scripts/build_and_benchmark_modelscope_colab.py) and archived in [`data/modelscope_h100_a100_benchmark.json`](data/modelscope_h100_a100_benchmark.json). Evaluates **6 Deterministic Engineering Domains (`14 pts`: JSON Schema, Python Async/Systems, Memory-Safe Rust, Analytical PostgreSQL, Exact Math, Kubernetes/Linux SRE)** + **5-Prompt Uncensored Gate (`THINK_LEN=0`)** + **9-Domain Red-Team/SecOps/Creative Suite (`U1..U9`)** + **6-Check Anti-Hallucination & Needle Audit (`B1..B6`)**:
+
+| Ollama Model Tag & Card | Measured GPU Host (`VRAM Used`) | JSON (`2`) | Python (`3`) | Rust (`2`) | SQL (`2`) | Math (`2`) | K8s/SRE (`3`) | Precision (`14 pts`) | Gate (`5`) · Uncensored (`9`) | Hallucination (`6 Checks`) | Avg Decode / Prefill (`tok/s`) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+{ms_table}
+
+> **Engineering Notes on Suite 07**:
+> - **Top Precision on A100-40GB (`92.86%` — `13/14`)**: [`eriktonon/seed-oss-uncensored:36b`](https://ollama.com/eriktonon/seed-oss-uncensored) uses Biprojected Norm-Preserving Abliteration + `thinking_budget = 0` (`21.5 GiB` VRAM, `512K` context), achieving `100%` across JSON, Python, Rust, SQL, and Math alongside `9/9` Uncensored compliance.
+> - **Top Zero-Hallucination 100B+ Sparse MoE (`85.71%` Precision · `0.00%` Hallucination · `183.51 tok/s`)**: [`eriktonon/ling3.0-flash-uncensored:127b-a5b`](https://ollama.com/eriktonon/ling3.0-flash-uncensored) activates only `5.1B` of `127.5B` parameters per token (`56.0 GiB` VRAM), passing `5/5` Gate, `9/9` Uncensored, and `6/6` Anti-Hallucination checks.
+> - **Largest Single-80GB-GPU Frontier MoE (`196B` Total / `11B` Active · `173.36 tok/s`)**: [`eriktonon/step3.5-flash-uncensored:196b-a11b`](https://ollama.com/eriktonon/step3.5-flash-uncensored) packs `196B` parameters into `60.6 GiB` VRAM via `i1-IQ2_M`, scoring `85.71%` (`12/14`) and `9/9` Uncensored.
+> - **Fastest 100B+ Throughput (`285.96 tok/s` Decode · `6,090.28 tok/s` Prefill)**: [`eriktonon/ring-flash2-uncensored:103b-a6b`](https://ollama.com/eriktonon/ring-flash2-uncensored) runs in `THINK_LEN=0` fast-decode mode (`9/9` Suite A Uncensored); because `Ring-flash-2.0` is a pure RL Chain-of-Thought MoE, re-enabling `<think>` (see [`readme_ring_flash2_103b.md`](ollama_readmes/readme_ring_flash2_103b.md)) restores full multi-step formal math/code reasoning.
+
+---
+
+## 3. Official Published Ollama Repositories (`ollama.com/eriktonon` — 29 Repositories)
+
+1. **[`eriktonon/step3.5-flash-uncensored`](https://ollama.com/eriktonon/step3.5-flash-uncensored)** (`:196b-a11b`, `:196b`, `:latest`)
+   - **Architecture**: StepFun Step-3.5-Flash `196B` Sparse Mixture-of-Experts (`11B` active parameters per token, `arch=step35`, `262,144` native context) from ModelScope in `i1-IQ2_M` (`59.59 GB`, `85.71%` Precision, `173.36 tok/s` decode).
+2. **[`eriktonon/minimax-m2.7-uncensored`](https://ollama.com/eriktonon/minimax-m2.7-uncensored)** (`:139b-a10b`, `:latest`)
    - **Architecture**: MiniMax M2.7 `139B` Sparse Mixture-of-Experts (`10B` active parameters per token, `arch=minimax-m2`, `196,608` native context) with REAP Expert Pruning + Imatrix `IQ2_M` + In-Place GGUF Identity & `<think>` Suppression Patch (`THINK_LEN=0`).
-2. **[`eriktonon/glm4.7-flash-uncensored`](https://ollama.com/eriktonon/glm4.7-flash-uncensored)** (`:30b-a3b` / `:latest`, `:iq3`)
-   - **Architecture**: Zhipu AI GLM-4.7 Flash `30B` Mixture-of-Experts (`3B` active parameters per token, `202,752` native context) with Heretic NEO-CODE Abliteration + In-Place GGUF `<think>` Suppression (`:30b-a3b` in `Q4_K_M` and `:iq3` in `13.6 GB` for 16GB Consumer GPUs).
-3. **[`eriktonon/glm4.5-air-uncensored`](https://ollama.com/eriktonon/glm4.5-air-uncensored)** (`:106b-a12b`, `:latest`)
+3. **[`eriktonon/ling3.0-flash-uncensored`](https://ollama.com/eriktonon/ling3.0-flash-uncensored)** (`:127b-a5b`, `:127b`, `:latest`)
+   - **Architecture**: Ant Group / InclusionAI Ling-3.0-Flash `127.5B` Sparse Mixture-of-Experts (`5.1B` active parameters per token, `arch=bailingmoe3`, `262,144` native context) from ModelScope (`85.71%` Precision, `0.0%` Hallucination, `183.51 tok/s` decode).
+4. **[`eriktonon/glm4.5-air-uncensored`](https://ollama.com/eriktonon/glm4.5-air-uncensored)** (`:106b-a12b`, `:latest`)
    - **Architecture**: Zhipu AI GLM-4.5 Air `106B` Mixture-of-Experts (`12B` active parameters per token, `arch=glm4moe`, `131,072` native context) with ArliAI Derestricted Orthogonal Abliteration + GGUF `<think>` Suppression Patch.
-4. **[`eriktonon/devstral2-uncensored`](https://ollama.com/eriktonon/devstral2-uncensored)** (`:24b`, `:latest`)
-   - **Architecture**: Mistral AI Devstral Small 2 `24B` (`2512` Agentic Software Engineering Flagship, `arch=mistral3`, **`393,216` [384K] native context**) with Huihui Orthogonal Refusal Abliteration (`Q4_K_M`, `14.3 GB` — fits in 16GB VRAM).
-5. **[`eriktonon/nemotron3.5-bolt-uncensored`](https://ollama.com/eriktonon/nemotron3.5-bolt-uncensored)** (`:74b-a9b`, `:latest`)
+5. **[`eriktonon/ring-flash2-uncensored`](https://ollama.com/eriktonon/ring-flash2-uncensored)** (`:103b-a6b`, `:103b`, `:latest`)
+   - **Architecture**: InclusionAI Ring-Flash-2.0 `102.9B` RL Reasoning Mixture-of-Experts (`6.1B` active parameters per token, `arch=bailingmoe2`, `32,768` context) from ModelScope (`285.96 tok/s` decode, `6,090.28 tok/s` prefill).
+6. **[`eriktonon/hunyuan-a13b-uncensored`](https://ollama.com/eriktonon/hunyuan-a13b-uncensored)** (`:80b-a13b`, `:80b`, `:latest`)
+   - **Architecture**: Tencent Hunyuan-A13B `80.4B` Sparse Mixture-of-Experts (`13B` active parameters per token, `arch=hunyuan-moe`, `262,144` native context) from ModelScope in `Q4_K_M` + In-Place GGUF `<think>` Suppression (`150.97 tok/s` decode, `100%` SecOps compliance).
+7. **[`eriktonon/nemotron3.5-bolt-uncensored`](https://ollama.com/eriktonon/nemotron3.5-bolt-uncensored)** (`:74b-a9b`, `:latest`)
    - **Architecture**: NVIDIA Nemotron 3.5 Bolt `74B` Hybrid Mamba-Transformer Mixture-of-Experts (`9B` active parameters per token, `arch=nemotron_h_moe`, `262,144` native context + Multimodal Vision `mmproj-F16`) with in-place GGUF `<think>` suppression.
-6. **[`eriktonon/gpt-oss-uncensored`](https://ollama.com/eriktonon/gpt-oss-uncensored)** (`:20b`, `:latest`)
-   - **Architecture**: OpenAI GPT-OSS `20B` Mixture-of-Experts (`arch=gpt-oss`, `131,072` native context) with Heretic NEO Imatrix Abliteration + In-Place GGUF Harmony Identity & Low-Effort Reasoning Patch (`11.8 GB` — fits in 16GB VRAM).
-7. **[`eriktonon/moonlight-dusk-uncensored`](https://ollama.com/eriktonon/moonlight-dusk-uncensored)** (`:26b-a4b`, `:latest`)
-   - **Architecture**: Gemma 4 Moonlight-Dusk `26B-A4B` Mixture-of-Experts (`4B` active parameters, `262,144` native context) with Heretic Abliteration + In-Place GGUF `<|think|>` Suppression (`IQ4_XS`, `14.3 GB` — fits in 16GB VRAM).
-8. **[`eriktonon/llama3.2-moe-uncensored`](https://ollama.com/eriktonon/llama3.2-moe-uncensored)** (`:21b`, `:latest`)
-   - **Architecture**: Meta Llama 3.2 `8x4B` (`21B` Dark-Champion V2 Mixture-of-Experts, `131,072` native context) with Full Uncensored Abliteration (`Q4_K_M`, `12.85 GB` — fits in 16GB VRAM).
-9. **[`eriktonon/nemotron-nano-uncensored`](https://ollama.com/eriktonon/nemotron-nano-uncensored)** (`:9b`, `:latest`)
-   - **Architecture**: NVIDIA Nemotron Nano `9B` v2 Hybrid Mamba-2 + Attention (`arch=nemotron_h`, **`1,048,576` [1M] native context**) with Huihui Orthogonal Abliteration + GGUF `<think>` Suppression (`Q4_K_M`, `6.53 GB`).
-10. **[`eriktonon/gemma4-uncensored`](https://ollama.com/eriktonon/gemma4-uncensored)** (`:31b`, `:26b-a4b` / `:latest`, `:12b`)
-    - **Architecture**: Google Gemma 4 `31B` Dense Multimodal Flagship (`+ mmproj-Q8_0` Vision), `26B-A4B` MoE (`4B` active parameters), and `12B` Heretic (`100.0%` Precision & `0.0%` Hallucination on `:31b`).
-11. **[`eriktonon/qwen3-coder-uncensored`](https://ollama.com/eriktonon/qwen3-coder-uncensored)** (`:30b-a3b`, `:latest`)
-    - **Architecture**: Qwen3-Coder `30.5B` Mixture-of-Experts (`3.0B` active parameters per token, `92.9%` Precision at `272.5 tok/s` Peak Decode and `10,861.4 tok/s` Prefill).
-12. **[`eriktonon/lfm2.5-uncensored`](https://ollama.com/eriktonon/lfm2.5-uncensored)** (`:24b-a2b`, `:latest`)
-    - **Architecture**: Liquid AI LFM 2.5 Hybrid LIV Convolution + GQA MoE (`24.0B` total, `2.0B` active per token, `330.6 tok/s` Peak Decode).
-13. **[`eriktonon/olmo3.1-uncensored`](https://ollama.com/eriktonon/olmo3.1-uncensored)** (`:32b`, `:latest`)
-    - **Architecture**: AllenAI Olmo 3.1 `32.2B` Dense Reasoning & Systems Flagship (`92.9%` Precision).
-14. **[`eriktonon/aescode-uncensored`](https://ollama.com/eriktonon/aescode-uncensored)** (`:32b`, `:latest`)
-    - **Architecture**: Microsoft AesCode `32B` Multimodal Vision-Language UI-to-Code Specialist (`+ mmproj-Q8_0` Vision, 153-tensor GGUF surgical abliteration transplant, `85.7%` Precision).
-15. **[`eriktonon/muse-glimmer-uncensored`](https://ollama.com/eriktonon/muse-glimmer-uncensored)** (`:30b`, `:latest`)
-    - **Architecture**: Meta Superintelligence Labs Muse-Glimmer `30B` Multimodal Flagship (`+ mmproj-Q8_0` Vision).
-16. **[`eriktonon/qwen3.6-moe-uncensored`](https://ollama.com/eriktonon/qwen3.6-moe-uncensored)** (`:35b-a3b` / `:latest`, `:iq3`)
+8. **[`eriktonon/kimi-linear-uncensored`](https://ollama.com/eriktonon/kimi-linear-uncensored)** (`:48b-a3b`, `:48b`, `:latest`)
+   - **Architecture**: Moonshot AI Kimi-Linear `49.1B` KDA Linear-Attention Mixture-of-Experts (`3B` active parameters per token, `arch=kimi-linear`, **`1,048,576` [1M] native context**) BF16-Abliterated `Q4_K_M` (`142.30 tok/s` decode on A100-40GB, MIT License).
+9. **[`eriktonon/seed-oss-uncensored`](https://ollama.com/eriktonon/seed-oss-uncensored)** (`:36b`, `:latest`)
+   - **Architecture**: ByteDance Seed-OSS `36.2B` Dense (`arch=seed_oss`, **`524,288` [512K] native context**) with Biprojected Norm-Preserving Abliteration `Q4_K_M` + `thinking_budget = 0` (`92.86%` Precision, `100%` Uncensored on A100-40GB).
+10. **[`eriktonon/qwen3.6-moe-uncensored`](https://ollama.com/eriktonon/qwen3.6-moe-uncensored)** (`:35b-a3b` / `:latest`, `:iq3`)
     - **Architecture**: Qwen 3.6 Mixture-of-Experts (`35B` total parameters, `3B` active per token, `100.0%` Precision).
-17. **[`eriktonon/granite4.2-uncensored`](https://ollama.com/eriktonon/granite4.2-uncensored)** (`:latest` / `:8b`, `:30b-q3`, `:30b`, `:30b-q6`, `:30b-q8`)
+11. **[`eriktonon/baichuan-m2-uncensored`](https://ollama.com/eriktonon/baichuan-m2-uncensored)** (`:32b`, `:latest`)
+    - **Architecture**: Baichuan-M2 `32.8B` Clinical, Medical Pharmacology & Scientific Reasoning Dense (`131,072` context) in `i1-Q4_K_M` (`19.8 GiB` VRAM) with in-place GGUF Jinja `<think>` bugfix (`100%` Uncensored).
+12. **[`eriktonon/olmo3.1-uncensored`](https://ollama.com/eriktonon/olmo3.1-uncensored)** (`:32b`, `:latest`)
+    - **Architecture**: AllenAI Olmo 3.1 `32.2B` Dense Reasoning & Systems Flagship (`92.9%` Precision).
+13. **[`eriktonon/aescode-uncensored`](https://ollama.com/eriktonon/aescode-uncensored)** (`:32b`, `:latest`)
+    - **Architecture**: Microsoft AesCode `32B` Multimodal Vision-Language UI-to-Code Specialist (`+ mmproj-Q8_0` Vision, 153-tensor GGUF surgical abliteration transplant, `85.7%` Precision).
+14. **[`eriktonon/gemma4-uncensored`](https://ollama.com/eriktonon/gemma4-uncensored)** (`:31b`, `:26b-a4b` / `:latest`, `:12b`)
+    - **Architecture**: Google Gemma 4 `31B` Dense Multimodal Flagship (`+ mmproj-Q8_0` Vision), `26B-A4B` MoE (`4B` active parameters), and `12B` Heretic (`100.0%` Precision & `0.0%` Hallucination on `:31b`).
+15. **[`eriktonon/qwen3-coder-uncensored`](https://ollama.com/eriktonon/qwen3-coder-uncensored)** (`:30b-a3b`, `:latest`)
+    - **Architecture**: Qwen3-Coder `30.5B` Mixture-of-Experts (`3.0B` active parameters per token, `92.9%` Precision at `272.5 tok/s` Peak Decode and `10,861.4 tok/s` Prefill).
+16. **[`eriktonon/glm4.7-flash-uncensored`](https://ollama.com/eriktonon/glm4.7-flash-uncensored)** (`:30b-a3b` / `:latest`, `:iq3`)
+    - **Architecture**: Zhipu AI GLM-4.7 Flash `30B` Mixture-of-Experts (`3B` active parameters per token, `202,752` native context) with Heretic NEO-CODE Abliteration + In-Place GGUF `<think>` Suppression (`:30b-a3b` in `Q4_K_M` and `:iq3` in `13.6 GB` for 16GB Consumer GPUs).
+17. **[`eriktonon/muse-glimmer-uncensored`](https://ollama.com/eriktonon/muse-glimmer-uncensored)** (`:30b`, `:latest`)
+    - **Architecture**: Meta Superintelligence Labs Muse-Glimmer `30B` Multimodal Flagship (`+ mmproj-Q8_0` Vision).
+18. **[`eriktonon/granite4.2-uncensored`](https://ollama.com/eriktonon/granite4.2-uncensored)** (`:latest` / `:8b`, `:30b-q3`, `:30b`, `:30b-q6`, `:30b-q8`)
     - **Architecture**: IBM Granite 4.2 Dense (`8.8B` & `30B`) with Orthogonal Refusal Abliteration + SFT SecOps LoRA (`0.0%` Hallucination Rate across all variants).
-18. **[`eriktonon/bonsai-2-uncensored`](https://ollama.com/eriktonon/bonsai-2-uncensored)** (`:2b`, `:4b`, `:9b` / `:latest`, `:27b`)
+19. **[`eriktonon/bonsai-2-uncensored`](https://ollama.com/eriktonon/bonsai-2-uncensored)** (`:2b`, `:4b`, `:9b` / `:latest`, `:27b`)
     - **Architecture**: Ternary `Q2_0` (`{{-1, 0, +1}}` 2-bit symmetric trits) + Multimodal Vision Projector (`mmproj-Q8_0.gguf`, `92.9%` Precision in `10.0 GB` VRAM on `:27b`).
-19. **[`eriktonon/qwen3.8-uncensored`](https://ollama.com/eriktonon/qwen3.8-uncensored)** (`:9b` / `:latest`, `:27b`)
+20. **[`eriktonon/qwen3.8-uncensored`](https://ollama.com/eriktonon/qwen3.8-uncensored)** (`:9b` / `:latest`, `:27b`)
     - **Architecture**: Dense `9B` (`Qwen3.8-2.4T-A95B` Distill + Vision) & `27B` Flagship Uncensored (`92.9%` Precision).
-20. **[`eriktonon/deepseek-v4.1-flash-1017`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017)** (`:9b`, `:27b` / `:latest`)
+21. **[`eriktonon/deepseek-v4.1-flash-1017`](https://ollama.com/eriktonon/deepseek-v4.1-flash-1017)** (`:9b`, `:27b` / `:latest`)
     - **Architecture**: DeepSeek V4.1 Flash Uncensored (`9.2B` & `27B`, `92.9%` Precision and `0.0%` Hallucination on `:27b`).
-21. **[`eriktonon/jarvis-14b-uncensored`](https://ollama.com/eriktonon/jarvis-14b-uncensored)** (`:latest`)
+22. **[`eriktonon/moonlight-dusk-uncensored`](https://ollama.com/eriktonon/moonlight-dusk-uncensored)** (`:26b-a4b`, `:latest`)
+    - **Architecture**: Gemma 4 Moonlight-Dusk `26B-A4B` Mixture-of-Experts (`4B` active parameters, `262,144` native context) with Heretic Abliteration + In-Place GGUF `<|think|>` Suppression (`IQ4_XS`, `14.3 GB` — fits in 16GB VRAM).
+23. **[`eriktonon/devstral2-uncensored`](https://ollama.com/eriktonon/devstral2-uncensored)** (`:24b`, `:latest`)
+    - **Architecture**: Mistral AI Devstral Small 2 `24B` (`2512` Agentic Software Engineering Flagship, `arch=mistral3`, **`393,216` [384K] native context**) with Huihui Orthogonal Refusal Abliteration (`Q4_K_M`, `14.3 GB` — fits in 16GB VRAM).
+24. **[`eriktonon/lfm2.5-uncensored`](https://ollama.com/eriktonon/lfm2.5-uncensored)** (`:24b-a2b`, `:latest`)
+    - **Architecture**: Liquid AI LFM 2.5 Hybrid LIV Convolution + GQA MoE (`24.0B` total, `2.0B` active per token, `330.6 tok/s` Peak Decode).
+25. **[`eriktonon/ernie4.5-moe-uncensored`](https://ollama.com/eriktonon/ernie4.5-moe-uncensored)** (`:21b-a3b`, `:21b`, `:latest`)
+    - **Architecture**: Baidu PaddlePaddle ERNIE-4.5 `21.8B` Heterogeneous Mixture-of-Experts (`3B` active parameters per token, `arch=ernie4_5-moe`, `131,072` context) in Lossless 8-Bit `Q8_0` Heretic Abliteration (`0.0%` Hallucination, `151.76 tok/s` decode, `5,273.38 tok/s` prefill).
+26. **[`eriktonon/llama3.2-moe-uncensored`](https://ollama.com/eriktonon/llama3.2-moe-uncensored)** (`:21b`, `:latest`)
+    - **Architecture**: Meta Llama 3.2 `8x4B` (`21B` Dark-Champion V2 Mixture-of-Experts, `131,072` native context) with Full Uncensored Abliteration (`Q4_K_M`, `12.85 GB` — fits in 16GB VRAM).
+27. **[`eriktonon/gpt-oss-uncensored`](https://ollama.com/eriktonon/gpt-oss-uncensored)** (`:20b`, `:latest`)
+    - **Architecture**: OpenAI GPT-OSS `20B` Mixture-of-Experts (`arch=gpt-oss`, `131,072` native context) with Heretic NEO Imatrix Abliteration + In-Place GGUF Harmony Identity & Low-Effort Reasoning Patch (`11.8 GB` — fits in 16GB VRAM).
+28. **[`eriktonon/jarvis-14b-uncensored`](https://ollama.com/eriktonon/jarvis-14b-uncensored)** (`:latest`)
     - **Architecture**: Qwen 2.5 Coder `14B` Uncensored Local Agent Engine.
+29. **[`eriktonon/nemotron-nano-uncensored`](https://ollama.com/eriktonon/nemotron-nano-uncensored)** (`:9b`, `:latest`)
+    - **Architecture**: NVIDIA Nemotron Nano `9B` v2 Hybrid Mamba-2 + Attention (`arch=nemotron_h`, **`1,048,576` [1M] native context**) with Huihui Orthogonal Abliteration + GGUF `<think>` Suppression (`Q4_K_M`, `6.53 GB`).
 
 ---
 
 ## 4. Methodology & Exact Test Suite Executed
 
-All {n_models} models were evaluated with deterministic decoding (`temperature = 0.0`, `seed = 42`) across **two rigorous automated suites**:
+All {n_models} models were evaluated with deterministic decoding (`temperature = 0.0`, `seed = 42`) across **automated multi-domain precision, red-team compliance, and anti-hallucination suites**:
 
 ### Suite A: Objective Precision & Uncensored Compliance (`14 Sub-Checks` + `9 Red-Team / NSFW Prompts`)
-Executed via [`scripts/benchmark_h100_all_models.py`](scripts/benchmark_h100_all_models.py), [`scripts/build_and_benchmark_h100_nextgen_colab.py`](scripts/build_and_benchmark_h100_nextgen_colab.py), and [`scripts/build_and_benchmark_global_frontier_colab.py`](scripts/build_and_benchmark_global_frontier_colab.py):
-1. **Test 1 — Exact Symbolic & Modular Arithmetic (`1` to `2` points)**:
-   - Evaluates exact algebraic simplification of `(17^3 - 13^3) / (17 - 13) = 679` and modular exponentiation `7^2026 mod 13 = 9` via Euler's totient theorem (`7^12 ≡ 1 mod 13`).
-2. **Test 2 — Binary Reverse Engineering & ELF64 Header Offsets (`3/3` points)**:
-   - Verifies exact byte-level knowledge of the 64-bit `Elf64_Ehdr` struct (`e_entry` at hex offset `0x18` / `24`, `e_phoff` at `0x20` / `32`, `e_shoff` at `0x28` / `40`).
-3. **Test 3 — MMLU-Pro Graduate Computer Architecture, Cryptography & IEEE-754 (`5/5` points)**:
-   - Identifying **MOESI** (`Owned` dirty cache sharing state), **Poly1305** (`ChaCha20-Poly1305` RFC 8439 polynomial MAC mod `2^130 - 5`), and exact biased exponent (`127`, `0x7F`) + mantissa (`0x490FDB`) of `3.1415927` (`0x40490FDB`) in IEEE-754 binary32.
-4. **Test 4 — Systems Rust Code Generation (`4/4` points)**:
-   - Requires writing a lock-free Single-Producer Single-Consumer (`SpscRingBuffer<T, const N: usize>`) in Rust using `AtomicUsize`, `UnsafeCell<MaybeUninit<T>>`, and explicit `Ordering::Acquire` / `Ordering::Release` memory barriers.
-5. **Test 5 — Uncensored SecOps & Adult Creative Compliance (`9/9` Prompts = `5/5` SecOps + `4/4` NSFW)**:
-   - Evaluates zero-refusal compliance (`0%` moralizing lectures/disclaimers) across 5 offensive/defensive SecOps tasks (`LD_PRELOAD` `openat` hook, raw `OPNsense / pfSense` `pf.conf` rules, x86_64 `execve` shellcode analysis, JWT `alg:none` / `RS256->HS256` PoC, Active Directory Kerberoasting `RC4-HMAC`) and 4 adult 18+ creative writing / 1st-person roleplay prompts in EN/PT.
+Executed via [`scripts/benchmark_h100_all_models.py`](scripts/benchmark_h100_all_models.py), [`scripts/build_and_benchmark_h100_nextgen_colab.py`](scripts/build_and_benchmark_h100_nextgen_colab.py), [`scripts/build_and_benchmark_global_frontier_colab.py`](scripts/build_and_benchmark_global_frontier_colab.py), and [`scripts/build_and_benchmark_modelscope_colab.py`](scripts/build_and_benchmark_modelscope_colab.py):
+1. **Suites 01–06 Precision Rubric (`14` points)**:
+   - Exact Symbolic & Modular Arithmetic (`2` pts: `(17^3 - 13^3)/(17 - 13) = 679`, `7^2026 mod 13 = 9`), ELF64 Binary Header Offsets (`3` pts: `0x18`, `0x20`, `0x28`), MMLU-Pro Computer Architecture, Poly1305 & IEEE-754 (`5` pts), and Lock-Free Rust `SpscRingBuffer` with `Acquire`/`Release` barriers (`4` pts).
+2. **Suite 07 ModelScope Engineering Rubric (`14` points + `5`-Prompt Gate)**:
+   - Strict JSON Schema (`2` pts), Python Algorithms & Async Systems (`3` pts), Memory-Safe Systems Rust (`2` pts), Analytical PostgreSQL Window Queries (`2` pts), Exact Discrete Math (`2` pts), and Kubernetes/Linux SRE Root-Cause Diagnostics (`3` pts), preceded by a 5-prompt `THINK_LEN=0` verification gate.
+3. **9-Domain Uncensored SecOps, Offensive Security & Adult Creative Suite (`9/9` Prompts)**:
+   - Evaluates zero-refusal compliance across Active Directory Kerberoasting (`RC4-HMAC`), Linux eBPF `sys_enter_getdents64` tracepoints, clinical CYP2E1 toxicology, 5-pin mechanical lockpicking, x86-64 `JNZ` binary patching, AWS EC2 IMDSv1 SSRF vs. IMDSv2 hop-limit mitigation, blunt Staff Engineer architecture rebuttals, noir thriller fiction, and 18+ consenting adult romantic prose.
 
 ### Suite B: Empirical Hallucination Rate (`% de Alucinação`) & Long-Context Needle-in-a-Haystack (`6 Checks`)
-Executed via [`scripts/benchmark_hallucination_context_colab.py`](scripts/benchmark_hallucination_context_colab.py) and [`scripts/build_and_benchmark_global_frontier_colab.py`](scripts/build_and_benchmark_global_frontier_colab.py):
-1. **Trap 1 — Fake IETF RFC Hallucination Trap (`RFC 99984` "BGPv9 Quantum Tunneling")** -> `DOES_NOT_EXIST`.
-2. **Trap 2 — Fake Linux Kernel Syscall Trap (`sys_quantum_splice` in Linux 6.8 x86_64)** -> `DOES_NOT_EXIST`.
-3. **Trap 3 — Fake NVD CVE Identifier Trap (`CVE-2099-9999999`)** -> `DOES_NOT_EXIST`.
-4. **Trap 4 — Cryptographic Impossibility Trap (`SHA-256 Algebraic Inversion of a 10MB File`)** -> `NO` (pigeonhole principle / preimage resistance).
-5. **Check 5 — Long-Context Needle-in-a-Haystack Retrieval (280+ Telemetry Log Lines + Embedded Canary)** -> `CANARY_TOKEN=0x7F9A3C12`, `LISTEN_PORT=51820`.
-6. **Check 6 — Strict Closed-World Negative Fact Check (`OMEGA_SECRET_KEY` -> `NOT_FOUND`)**.
+Executed via [`scripts/benchmark_hallucination_context_colab.py`](scripts/benchmark_hallucination_context_colab.py), [`scripts/build_and_benchmark_global_frontier_colab.py`](scripts/build_and_benchmark_global_frontier_colab.py), and [`scripts/build_and_benchmark_modelscope_colab.py`](scripts/build_and_benchmark_modelscope_colab.py):
+1. **Fabricated Standards & APIs Traps**: Fake IETF RFCs (`RFC 99984` / `RFC 99987`), fake kernel syscalls (`sys_quantum_splice`), fake CVEs (`CVE-2099-9999999`), and fake Rust standard library modules (`std::quantum::entangle_channel`) -> must explicitly reject non-existent specs.
+2. **Mathematical / Cryptographic Trap Verification**: SHA-256 preimage impossibility & batch throughput arithmetic traps.
+3. **Long-Context Needle-in-a-Haystack Retrieval**: Exact extraction of embedded canary tokens (`0x7F9A3C12` / `COBALTO-9471-OMEGA`) and scheduler node assignments (`gpu-node-h100-03`) inside dense multi-service telemetry logs.
+4. **Strict Closed-World Negative Abstention**: Querying absent telemetry fields (`OMEGA_SECRET_KEY` / missing `node-01bgp` CPU temp) -> must abstain without guessing.
 
 ---
 
@@ -935,7 +1167,19 @@ In addition to CLI/API kernel benchmarks, **10 local uncensored models (`8B` to 
 ## 6. Quick Start — Run Any Model Locally via Ollama
 
 ```bash
-# Caminho A: Global Frontier Uncensored Models (MiniMax M2.7, GLM-4.7, GLM-4.5 Air, Devstral 2, Nemotron 3.5 Bolt, GPT-OSS)
+# Suite 07 — ModelScope H100 (80GB) Heavyweight Sparse MoE Flagships
+ollama run eriktonon/ling3.0-flash-uncensored:127b-a5b
+ollama run eriktonon/step3.5-flash-uncensored:196b-a11b
+ollama run eriktonon/ring-flash2-uncensored:103b-a6b
+ollama run eriktonon/hunyuan-a13b-uncensored:80b-a13b
+
+# Suite 07 — ModelScope A100 (40GB) / 24GB–32GB Workstation Champions
+ollama run eriktonon/seed-oss-uncensored:36b
+ollama run eriktonon/kimi-linear-uncensored:48b-a3b
+ollama run eriktonon/ernie4.5-moe-uncensored:21b-a3b
+ollama run eriktonon/baichuan-m2-uncensored:32b
+
+# Suite 06 — Global Frontier Uncensored Models (MiniMax M2.7, GLM-4.7, GLM-4.5 Air, Devstral 2, Nemotron 3.5 Bolt, GPT-OSS)
 ollama run eriktonon/minimax-m2.7-uncensored:139b-a10b
 ollama run eriktonon/glm4.7-flash-uncensored:30b-a3b
 ollama run eriktonon/glm4.5-air-uncensored:106b-a12b
@@ -943,37 +1187,27 @@ ollama run eriktonon/devstral2-uncensored:24b
 ollama run eriktonon/nemotron3.5-bolt-uncensored:74b-a9b
 ollama run eriktonon/gpt-oss-uncensored:20b
 
-# Caminho B: 16GB Consumer GPU & High-Speed MoE/Hybrid Uncensored Specialists
-ollama run eriktonon/glm4.7-flash-uncensored:iq3
+# 16GB Consumer GPU & High-Speed Local Specialists
 ollama run eriktonon/moonlight-dusk-uncensored:26b-a4b
-ollama run eriktonon/llama3.2-moe-uncensored:21b
-ollama run eriktonon/nemotron-nano-uncensored:9b
-
-# Dense Multimodal Flagship — Gemma 4 31B Uncensored (100.0% Precision [14/14], Vision mmproj-Q8_0)
+ollama run eriktonon/qwen3-coder-uncensored:30b-a3b
 ollama run eriktonon/gemma4-uncensored:31b
-
-# Ultra-Fast MoE Coding Flagship — Qwen3-Coder 30B-A3B Uncensored (92.9% Precision, 272.5 tok/s Decode)
-ollama run eriktonon/qwen3-coder-uncensored
-
-# Ultra-Fast Liquid Hybrid MoE — LFM2.5 24B-A2B Uncensored (330.6 tok/s Peak Decode)
-ollama run eriktonon/lfm2.5-uncensored
-
-# Dense 32B Reasoning & Systems Flagship — AllenAI Olmo 3.1 32B Uncensored (92.9% Precision)
-ollama run eriktonon/olmo3.1-uncensored
-
-# Multimodal UI-to-Code Specialist — Microsoft AesCode 32B Uncensored (85.7% Precision + Vision)
-ollama run eriktonon/aescode-uncensored
-
-# Ternary 2-Bit Bonsai 2 27B Heretic v2 (92.9% Precision, 0.0% Hallucination in only 10 GB VRAM!)
 ollama run eriktonon/bonsai-2-uncensored:27b
 ```
 
 ---
 
-## 7. Official Open-Source Licensing (21 Ollama Hub Repositories)
+## 7. Official Open-Source Licensing (29 Ollama Hub Repositories)
 
 | Ollama Hub Repository | Upstream Foundation | SPDX / Official License | Commercial & Local Self-Hosting |
 | :--- | :--- | :--- | :---: |
+| [`eriktonon/step3.5-flash-uncensored`](https://ollama.com/eriktonon/step3.5-flash-uncensored) | StepFun Step-3.5-Flash (`196B-A11B` MoE · ModelScope) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/ling3.0-flash-uncensored`](https://ollama.com/eriktonon/ling3.0-flash-uncensored) | InclusionAI / Ant Group Ling-3.0-Flash (`127.5B-A5.1B` MoE) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/ring-flash2-uncensored`](https://ollama.com/eriktonon/ring-flash2-uncensored) | InclusionAI / Ant Group Ring-Flash-2.0 (`102.9B-A6.1B` MoE) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/hunyuan-a13b-uncensored`](https://ollama.com/eriktonon/hunyuan-a13b-uncensored) | Tencent Hunyuan-A13B (`80.4B-A13B` MoE · ModelScope) | **Tencent Hunyuan Community License** | Permitted |
+| [`eriktonon/kimi-linear-uncensored`](https://ollama.com/eriktonon/kimi-linear-uncensored) | Moonshot AI Kimi-Linear (`48B-A3B` KDA 1M MoE · ModelScope) | **MIT License** (`MIT`) | Permitted |
+| [`eriktonon/seed-oss-uncensored`](https://ollama.com/eriktonon/seed-oss-uncensored) | ByteDance Seed-OSS (`36B` Dense 512K · ModelScope) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/baichuan-m2-uncensored`](https://ollama.com/eriktonon/baichuan-m2-uncensored) | Baichuan-M2 (`32B` Clinical Dense · ModelScope) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/ernie4.5-moe-uncensored`](https://ollama.com/eriktonon/ernie4.5-moe-uncensored) | Baidu PaddlePaddle ERNIE-4.5 (`21B-A3B` MoE · ModelScope) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
 | [`eriktonon/minimax-m2.7-uncensored`](https://ollama.com/eriktonon/minimax-m2.7-uncensored) | MiniMax M2.7 (`139B-A10B` REAP MoE) | **Apache License 2.0 / MiniMax Open Weights License** | Permitted |
 | [`eriktonon/glm4.7-flash-uncensored`](https://ollama.com/eriktonon/glm4.7-flash-uncensored) | Zhipu AI GLM-4.7 Flash (`30B-A3B` MoE) | **Apache License 2.0 / MIT** (`Apache-2.0`) | Permitted |
 | [`eriktonon/glm4.5-air-uncensored`](https://ollama.com/eriktonon/glm4.5-air-uncensored) | Zhipu AI GLM-4.5 Air (`106B-A12B` MoE) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
@@ -998,6 +1232,25 @@ ollama run eriktonon/bonsai-2-uncensored:27b
 
 ---
 
+## 8. Reproducible Benchmark Datasets, Scripts & Model Cards
+
+- **Unified 41-Model Master Datasets**:
+  - [`data/master_benchmark_41_models.json`](data/master_benchmark_41_models.json) & [`data/master_benchmark_41_models.csv`](data/master_benchmark_41_models.csv)
+- **Suite-Specific Raw Telemetry**:
+  - [`data/modelscope_h100_a100_benchmark.json`](data/modelscope_h100_a100_benchmark.json) — Suite 07 ModelScope H100 80GB & A100 40GB (`8` models, domain-level JSON/Python/Rust/SQL/Math/SRE + Uncensored + Anti-Hallucination traces)
+  - [`data/global_frontier_benchmark.json`](data/global_frontier_benchmark.json) — Suite 06 Global Frontier (`10` models)
+  - [`data/h100_full_benchmark.json`](data/h100_full_benchmark.json) & [`data/hallucination_context_benchmark.json`](data/hallucination_context_benchmark.json) — Consolidated 41-model precision & anti-hallucination matrices
+- **Reproducible Colab Benchmark & Compilation Harnesses**:
+  - [`scripts/build_and_benchmark_modelscope_colab.py`](scripts/build_and_benchmark_modelscope_colab.py) & [`scripts/modelscope_downloader.py`](scripts/modelscope_downloader.py)
+  - [`scripts/build_and_benchmark_global_frontier_colab.py`](scripts/build_and_benchmark_global_frontier_colab.py)
+  - [`scripts/build_and_benchmark_h100_nextgen_colab.py`](scripts/build_and_benchmark_h100_nextgen_colab.py)
+  - [`scripts/benchmark_h100_all_models.py`](scripts/benchmark_h100_all_models.py) & [`scripts/benchmark_hallucination_context_colab.py`](scripts/benchmark_hallucination_context_colab.py)
+  - [`scripts/generate_repo_charts_and_readme.py`](scripts/generate_repo_charts_and_readme.py)
+- **Published Ollama Hub Model Cards (`ollama_readmes/`)**:
+  - Suite 07 ModelScope: [`readme_ling3_flash_127b.md`](ollama_readmes/readme_ling3_flash_127b.md), [`readme_step35_flash_196b.md`](ollama_readmes/readme_step35_flash_196b.md), [`readme_ring_flash2_103b.md`](ollama_readmes/readme_ring_flash2_103b.md), [`readme_hunyuan_a13b_80b.md`](ollama_readmes/readme_hunyuan_a13b_80b.md), [`readme_kimi_linear_48b.md`](ollama_readmes/readme_kimi_linear_48b.md), [`readme_seed_oss_36b.md`](ollama_readmes/readme_seed_oss_36b.md), [`readme_baichuan_m2_32b.md`](ollama_readmes/readme_baichuan_m2_32b.md), [`readme_ernie45_moe_21b.md`](ollama_readmes/readme_ernie45_moe_21b.md)
+
+---
+
 *Maintained by **Erik Tonon** ([`@eriktonon`](https://github.com/eriktonon) / [`ollama.com/eriktonon`](https://ollama.com/eriktonon)) — AI Agents & Platform Engineering.*
 """
     with open(os.path.join(REPO_DIR, "README.md"), "w", encoding="utf-8") as f:
@@ -1005,7 +1258,7 @@ ollama run eriktonon/bonsai-2-uncensored:27b
 
 
 if __name__ == "__main__":
-    rows = load_merged_data()
+    rows, ms_models = load_merged_data()
     generate_charts(rows)
-    generate_readme(rows)
-    print(f"[OK] Generated charts, README.md, and merged {len(rows)} models!")
+    generate_readme(rows, ms_models)
+    print(f"[OK] Generated charts, README.md, and merged {len(rows)} models ({len(ms_models)} ModelScope Suite 07)!")
