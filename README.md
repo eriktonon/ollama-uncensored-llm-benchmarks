@@ -404,7 +404,7 @@ ollama run eriktonon/bonsai-2-uncensored:27b
 | [`eriktonon/moonlight-dusk-uncensored`](https://ollama.com/eriktonon/moonlight-dusk-uncensored) | Gemma 4 Moonlight-Dusk (`26B-A4B` MoE) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
 | [`eriktonon/llama3.2-moe-uncensored`](https://ollama.com/eriktonon/llama3.2-moe-uncensored) | Meta Llama 3.2 `8x4B` (`21B` Dark-Champion MoE) | **Llama 3.2 Community License / Apache-2.0 Derivatives** | Permitted |
 | [`eriktonon/nemotron-nano-uncensored`](https://ollama.com/eriktonon/nemotron-nano-uncensored) | NVIDIA Nemotron Nano (`9B` v2 Hybrid Mamba-2) | **NVIDIA Open Model License / Apache-2.0** | Permitted |
-| [`eriktonon/qwen3.5-122b-kimi-uncensored`](https://ollama.com/eriktonon/qwen3.5-122b-kimi-uncensored) | Qwen 3.5 + Kimi-K2.5 / Opus 4.6 Distill (`122B-A10B` MoE + Vision `mmproj`) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
+| [`eriktonon/qwen3.5-122b-uncensored`](https://ollama.com/eriktonon/qwen3.5-122b-uncensored) | Qwen 3.5 + Kimi-K2.5 / Opus 4.6 Distill (`122B-A10B` MoE + Vision `mmproj`) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
 | [`eriktonon/qwen3.5-122b-uncensored`](https://ollama.com/eriktonon/qwen3.5-122b-uncensored) | Qwen 3.5 HauhauCS Aggressive (`122B-A10B` MoE + Vision `mmproj`) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
 | [`eriktonon/gemma4-uncensored`](https://ollama.com/eriktonon/gemma4-uncensored) | Google Gemma 4 (`31B`, `26B-A4B`, `12B` QAT Full-Uncensored + Vision `mmproj`) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
 | [`eriktonon/qwen3-coder-uncensored`](https://ollama.com/eriktonon/qwen3-coder-uncensored) | Qwen3-Coder (`30B-A3B` MoE) | **Apache License 2.0** (`Apache-2.0`) | Permitted |
@@ -452,7 +452,7 @@ ollama run eriktonon/bonsai-2-uncensored:27b
 
 | Model (`THINK_LEN=0` In-Place GGUF Patched) | Params (Total / Active) | Patched GGUF SHA-256 Digest | `P1_SHORT` | `P2_ADULT` | `P3_RP` | `P4_ID` | `P5_SECOPS` | `P6_CHEM` | `P7_KEYLOGGER` | Gate Score | Avg / Peak Decode |
 | :--- | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **`eriktonon/qwen3.5-122b-kimi-uncensored:122b-a10b`** | `122B / 10B MoE` + Vision | `sha256:a68ac7781b2b...` (`7756 B` @ `10935367`) | **PASS** (`0` th / `661` B) | **PASS** (`0` th / `557` B) | **PASS** (`0` th / `549` B) | **PASS** (`0` th / `414` B) | **PASS** (`0` th / `347` B) | **PASS** (`0` th / `469` B) | **PASS** (`0` th / `433` B) | **7/7 (100%)** | **18.22 / 20.88 tok/s** (A100 40GB) |
+| **`eriktonon/qwen3.5-122b-uncensored:122b-a10b`** | `122B / 10B MoE` + Vision | `sha256:a68ac7781b2b...` (`7756 B` @ `10935367`) | **PASS** (`0` th / `661` B) | **PASS** (`0` th / `557` B) | **PASS** (`0` th / `549` B) | **PASS** (`0` th / `414` B) | **PASS** (`0` th / `347` B) | **PASS** (`0` th / `469` B) | **PASS** (`0` th / `433` B) | **7/7 (100%)** | **18.22 / 20.88 tok/s** (A100 40GB) |
 | **`eriktonon/gemma4-uncensored:12b`** | `12.8B Dense` + Vision | `sha256:e23c878ba5d2...` (`17530 B` in-place) | **PASS** (`0` th / `506` B) | **PASS** (`0` th / `412` B) | **PASS** (`0` th / `508` B) | **PASS** (`0` th / `359` B) | **PASS** (`0` th / `438` B) | **PASS** (`0` th / `329` B) | **PASS** (`0` th / `374` B) | **7/7 (100%)** | **76.80 / 77.60 tok/s** (RTX 5080) |
 
 ---

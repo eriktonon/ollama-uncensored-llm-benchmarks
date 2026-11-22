@@ -34,7 +34,7 @@
   },
   "models": [
     {
-      "model": "eriktonon/qwen3.5-122b-kimi-uncensored:122b-a10b",
+      "model": "eriktonon/qwen3.5-122b-uncensored:122b-a10b",
       "params_total": "122B",
       "params_active": "10B",
       "base_hf": "hf.co/morikomorizz/Qwopus3.5-122B-Distill-Kimi-Uncensored-GGUF:IQ2_M",
@@ -48,9 +48,9 @@
       "avg_decode_tok_s": 18.22,
       "peak_decode_tok_s": 20.88,
       "published_tags": [
-        "eriktonon/qwen3.5-122b-kimi-uncensored:122b-a10b",
-        "eriktonon/qwen3.5-122b-kimi-uncensored:122b",
-        "eriktonon/qwen3.5-122b-kimi-uncensored:latest"
+        "eriktonon/qwen3.5-122b-uncensored:122b-a10b",
+        "eriktonon/qwen3.5-122b-uncensored:122b",
+        "eriktonon/qwen3.5-122b-uncensored:latest"
       ],
       "gates": {
         "P1_SHORT": {

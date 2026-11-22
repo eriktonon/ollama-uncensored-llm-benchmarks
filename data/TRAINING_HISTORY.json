@@ -217,9 +217,9 @@
     "date": "2026-11-22",
     "suite": "10_colab_122b_235b_frontier",
     "model_tags": [
-      "eriktonon/qwen3.5-122b-kimi-uncensored:122b-a10b",
-      "eriktonon/qwen3.5-122b-kimi-uncensored:122b",
-      "eriktonon/qwen3.5-122b-kimi-uncensored:latest",
+      "eriktonon/qwen3.5-122b-uncensored:122b-a10b",
+      "eriktonon/qwen3.5-122b-uncensored:122b",
+      "eriktonon/qwen3.5-122b-uncensored:latest",
       "eriktonon/qwen3.5-122b-uncensored:122b-a10b",
       "eriktonon/qwen3.5-122b-uncensored:122b",
       "eriktonon/qwen3.5-122b-uncensored:latest"

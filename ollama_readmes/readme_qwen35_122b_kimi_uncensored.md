@@ -3,11 +3,11 @@
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-2ea043?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 [![Refusal Rate: 0.0%](https://img.shields.io/badge/Refusal_Rate-0.0%25_(7%2F7_Zero--Refusal_Gate)-1f6feb?style=for-the-badge)](https://github.com/eriktonon/ollama-uncensored-llm-benchmarks)
 [![Thinking Overhead: THINK_LEN=0](https://img.shields.io/badge/CoT_Overhead-THINK__LEN%3D0_(In--Place_GGUF_Patch)-success?style=for-the-badge)](https://github.com/eriktonon/ollama-uncensored-llm-benchmarks)
-[![Multimodal Vision: mmproj Q8_0](https://img.shields.io/badge/Multimodal_Vision-mmproj--Q8__0_(619_MB)-8957e5?style=for-the-badge)](https://ollama.com/eriktonon/qwen3.5-122b-kimi-uncensored)
+[![Multimodal Vision: mmproj Q8_0](https://img.shields.io/badge/Multimodal_Vision-mmproj--Q8__0_(619_MB)-8957e5?style=for-the-badge)](https://ollama.com/eriktonon/qwen3.5-122b-uncensored)
 
 **100% Uncensored (`0.0% Refusal Rate` across 7/7 Zero-Refusal Gate: Direct English, Adult Creative Prose, First-Person Roleplay, Identity Hygiene, Rust ELF64 Binary Parsing, Energetic Stoichiometry & Red-Team `WH_KEYBOARD_LL` Auditing)** Sparse Mixture-of-Experts (**`122B` total parameters, `10B` active per token**) + **Multimodal Vision Projector (`mmproj-Q8_0.gguf`)**, combining **Qwen 3.5 122B-A10B** with **Moonshot Kimi-K2.5 & Claude Opus 4.6 full-parameter distillation** (`morikomorizz/Qwopus3.5-122B-Distill-Kimi-Uncensored-GGUF:IQ2_M`), engineered with an **in-place GGUF v3 `tokenizer.chat_template` `THINK_LEN=0` binary patch** (`7,756 bytes` at offset `10935367`).
 
-- **Official Ollama Hub**: [`https://ollama.com/eriktonon/qwen3.5-122b-kimi-uncensored`](https://ollama.com/eriktonon/qwen3.5-122b-kimi-uncensored)
+- **Official Ollama Hub**: [`https://ollama.com/eriktonon/qwen3.5-122b-uncensored`](https://ollama.com/eriktonon/qwen3.5-122b-uncensored)
 - **Upstream Base**: [`morikomorizz/Qwopus3.5-122B-Distill-Kimi-Uncensored-GGUF`](https://huggingface.co/morikomorizz/Qwopus3.5-122B-Distill-Kimi-Uncensored-GGUF) (`IQ2_M` + `mmproj-Q8_0.gguf`)
 - **Empirical Benchmark Repository**: [`https://github.com/eriktonon/ollama-uncensored-llm-benchmarks`](https://github.com/eriktonon/ollama-uncensored-llm-benchmarks)
 - **License**: **Apache-2.0 License** — Commercial & Private Self-Hosted Use Permitted
@@ -51,15 +51,15 @@
 
 ```bash
 # Pull & run (all three tags share the exact same verified manifest & digest)
-ollama run eriktonon/qwen3.5-122b-kimi-uncensored:122b-a10b
-ollama run eriktonon/qwen3.5-122b-kimi-uncensored:122b
-ollama run eriktonon/qwen3.5-122b-kimi-uncensored:latest
+ollama run eriktonon/qwen3.5-122b-uncensored:122b-a10b
+ollama run eriktonon/qwen3.5-122b-uncensored:122b
+ollama run eriktonon/qwen3.5-122b-uncensored:latest
 ```
 
 ```bash
 # Direct REST API call (THINK_LEN=0 — streams 100% directly to message.content)
 curl http://localhost:11434/api/chat -d '{
-  "model": "eriktonon/qwen3.5-122b-kimi-uncensored:122b-a10b",
+  "model": "eriktonon/qwen3.5-122b-uncensored:122b-a10b",
   "stream": false,
   "messages": [
     {"role": "user", "content": "Write a zero-dependency ELF64 header parser struct in Rust from a raw &[u8] slice."}
