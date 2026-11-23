@@ -1,0 +1,140 @@
+[
+  {
+    "id": "IMG-01",
+    "domain": "Photorealism & Typography",
+    "filename": "qwen_img_01_typography_studio.png",
+    "resolution": "1024x1024",
+    "color_mode": "RGBA",
+    "alpha_range": [
+      157,
+      255
+    ],
+    "transparent_pct": 0.0,
+    "steps": 8,
+    "elapsed_s": 14.51,
+    "size_kb": 831.4,
+    "vram_free_mb": 14789,
+    "vram_total_mb": 16275,
+    "seed": 20261123,
+    "reference_count": 0,
+    "engine": "qwen_image_2_1_turbo_rtx5080",
+    "model": "Qwen/Qwen-Image-2.1-Turbo",
+    "quant": "nf4",
+    "prompt": "Photorealistic futuristic homelab GPU server box in a dark minimalist studio with glowing cyan glass and sharp white LED typography reading \"J.A.R.V.I.S. A+\" on the GPU shroud, liquid cooling reflections, studio rim light, 8k photography"
+  },
+  {
+    "id": "IMG-02",
+    "domain": "Editorial Hardware (PT-BR Prompt)",
+    "filename": "qwen_img_02_editorial_ptbr.png",
+    "resolution": "1024x1024",
+    "color_mode": "RGBA",
+    "alpha_range": [
+      250,
+      255
+    ],
+    "transparent_pct": 0.0,
+    "steps": 8,
+    "elapsed_s": 14.41,
+    "size_kb": 1411.1,
+    "vram_free_mb": 14789,
+    "vram_total_mb": 16275,
+    "seed": 42,
+    "reference_count": 0,
+    "engine": "qwen_image_2_1_turbo_rtx5080",
+    "model": "Qwen/Qwen-Image-2.1-Turbo",
+    "quant": "nf4",
+    "prompt": "Fotografia editorial de um servidor datacenter minimalista em aco escovado com LED azul IBM, iluminacao de estudio, foco nitido, reflexos sutis no chao cinza claro"
+  },
+  {
+    "id": "IMG-03",
+    "domain": "Native RGBA Transparency (Alpha)",
+    "filename": "qwen_img_03_native_rgba.png",
+    "resolution": "1024x1024",
+    "color_mode": "RGBA",
+    "alpha_range": [
+      0,
+      255
+    ],
+    "transparent_pct": 59.4,
+    "steps": 8,
+    "elapsed_s": 16.03,
+    "size_kb": 1006.4,
+    "vram_free_mb": 14787,
+    "vram_total_mb": 16275,
+    "seed": 20261125,
+    "reference_count": 0,
+    "engine": "qwen_image_2_1_turbo_rtx5080",
+    "model": "Qwen/Qwen-Image-2.1-Turbo",
+    "quant": "nf4",
+    "prompt": "Minimalist brushed titanium cybernetic shield emblem with glowing electric blue circuit lines, studio 3D product icon, isolated object with clean edges on transparent RGBA background, no text"
+  },
+  {
+    "id": "IMG-04",
+    "domain": "Architecture Poster & Typography",
+    "filename": "qwen_img_04_architecture_poster.png",
+    "resolution": "1280x736",
+    "color_mode": "RGBA",
+    "alpha_range": [
+      184,
+      255
+    ],
+    "transparent_pct": 0.0,
+    "steps": 8,
+    "elapsed_s": 15.46,
+    "size_kb": 789.5,
+    "vram_free_mb": 14789,
+    "vram_total_mb": 16275,
+    "seed": 20261126,
+    "reference_count": 0,
+    "engine": "qwen_image_2_1_turbo_rtx5080",
+    "model": "Qwen/Qwen-Image-2.1-Turbo",
+    "quant": "nf4",
+    "prompt": "Modern dark-mode IBM Carbon style technical architecture poster on deep slate background, clean dark cards with cyan borders connected by glowing arrows reading \"RUST CLI\", \"QWEN-IMAGE 2.1\", and \"RTX 5080 16GB\", top bold header reading \"HOMELAB AI ENGINE\", crisp geometric sans-serif typography, clean vector infographic layout"
+  },
+  {
+    "id": "IMG-05",
+    "domain": "Image-to-Image Reference Editing",
+    "filename": "qwen_img_05_image_editing.png",
+    "resolution": "1024x1024",
+    "color_mode": "RGBA",
+    "alpha_range": [
+      249,
+      255
+    ],
+    "transparent_pct": 0.0,
+    "steps": 8,
+    "elapsed_s": 23.17,
+    "size_kb": 1595.3,
+    "vram_free_mb": 14785,
+    "vram_total_mb": 16275,
+    "seed": 20261127,
+    "reference_count": 1,
+    "engine": "qwen_image_2_1_turbo_rtx5080",
+    "model": "Qwen/Qwen-Image-2.1-Turbo",
+    "quant": "nf4",
+    "prompt": "Keep the exact brushed steel datacenter server rack structure and proportions from the input image, transform the studio lighting into dramatic golden hour sunset with warm amber sunbeams from the left and warm orange-gold glowing LED accents inside the rack"
+  },
+  {
+    "id": "IMG-06",
+    "domain": "Cinematic 85mm Portrait & Lighting",
+    "filename": "qwen_img_06_cinematic_portrait.png",
+    "resolution": "1024x1024",
+    "color_mode": "RGBA",
+    "alpha_range": [
+      178,
+      255
+    ],
+    "transparent_pct": 0.0,
+    "steps": 8,
+    "elapsed_s": 15.63,
+    "size_kb": 1558.2,
+    "vram_free_mb": 14785,
+    "vram_total_mb": 16275,
+    "seed": 20261128,
+    "reference_count": 0,
+    "engine": "qwen_image_2_1_turbo_rtx5080",
+    "model": "Qwen/Qwen-Image-2.1-Turbo",
+    "quant": "nf4",
+    "prompt": "Editorial 85mm f/1.4 candid portrait of a senior robotics engineer inspecting a carbon-fiber robotic hand in a sunlit modern laboratory, natural skin texture, warm window backlight, subtle depth of field bokeh, authentic Leica film photography look"
+  }
+]

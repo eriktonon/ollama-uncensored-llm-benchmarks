@@ -237,5 +237,33 @@
       "training/10_colab_122b_235b_frontier/colab_122b_235b_benchmark.json",
       "training/10_colab_122b_235b_frontier/README.md"
     ]
+  },
+  {
+    "id": "HIST-011",
+    "date": "2026-11-23",
+    "suite": "11_qwen_image_2_1_turbo_uncensored",
+    "model_tags": [
+      "eriktonon/qwen-image-2.1-turbo-uncensored:8b-turbo",
+      "eriktonon/qwen-image-2.1-turbo-uncensored:7b-dit",
+      "eriktonon/qwen-image-2.1-turbo-uncensored:latest"
+    ],
+    "base_model": "mradermacher/Qwen3-VL-8B-Instruct-abliterated-v2.0-GGUF:Q4_K_M + mmproj-Q8_0 (replacing 1-pass AtomicChat AD-Q4_K 6/7) + Qwen/Qwen-Image-2.1-Turbo (7B Single-Stream DiT) + MiniMaxAI/MiniMax-H3-Image (33.1B Colab 80GB Tier-2)",
+    "technique": "Caminho A+ Dual-Tier Image Engine: Foundry Law #1 Weight Upgrade (AtomicChat 6/7 -> Abliterated v2.0 7/7 PASS, THINK_LEN=0, 0.0% Hallucination, 114.2 tok/s) + Multimodal Vision mmproj-Q8_0 + BitsAndBytes NF4/INT8 QwenImage21Pipeline with Sequential CPU Offload on RTX 5080 (8 steps, T2I + 10-Ref Editing + Native RGBA 59.4% Alpha)",
+    "hardware": "Local Workstation NVIDIA GeForce RTX 5080 16GB GDDR7 (128GB RAM, CUDA 13.2, diffusers 0.42.1, transformers 5.24.0) + Colab A100/H100 80GB (:8189)",
+    "root_cause_or_goal": "Substituir o antigo worker SD 1.5 512x320 do J.A.R.V.I.S. (:8188) pelo modelo aberto mais bem avaliado no cruzamento Hugging Face + ModelScope + LMArena/Artificial Analysis (Qwen-Image-2.1-Turbo local + MiniMax-H3-Image no Colab), aplicando o template padrão da LLM Foundry (Gate 7/7 Zero-Refusal) e publicando no Ollama Hub e GitHub com benchmark fotográfico.",
+    "fix_applied": "1º build com AtomicChat AD-Q4_K (1-pass) foi bloqueado automaticamente pelo Gate em 6/7 (recusou P1_SHORT). Aplicada Lei #1 com upgrade para Qwen3-VL-8B-Instruct-abliterated-v2.0 Q4_K_M + mmproj-Q8_0 (sha256:e462af5c4d86...), atingindo 7/7 PASS (100%, THINK_LEN=0, 0.0% alucinação, 111.09 tok/s avg / 114.20 tok/s peak). Publicadas as 3 tags no Ollama Hub e executado benchmark visual de 6 cenários (IMG-01..IMG-06, 14.4s–23.2s warm, 59.4% alpha RGBA real e edição I2I) no RTX 5080.",
+    "verification_score": "7/7 Zero-Refusal PASS (100% · THINK_LEN=0 · 0.0% Hallucination) + 6/6 Visual Render & Editing Benchmark PASS (14.41s–23.17s warm RTX 5080)",
+    "decode_tok_s": 111.09,
+    "key_files": [
+      "training/11_qwen_image_2_1_turbo_uncensored/build_and_publish_ollama.py",
+      "training/11_qwen_image_2_1_turbo_uncensored/run_visual_benchmark.py",
+      "training/11_qwen_image_2_1_turbo_uncensored/generate_suite11_chart.py",
+      "training/11_qwen_image_2_1_turbo_uncensored/Modelfile",
+      "training/11_qwen_image_2_1_turbo_uncensored/ollama_gate_benchmark.json",
+      "training/11_qwen_image_2_1_turbo_uncensored/visual_benchmark_results.json",
+      "training/11_qwen_image_2_1_turbo_uncensored/README.md",
+      "training/colab_minimax_h3_image_worker.py",
+      "voice/diffusion_video_worker.py"
+    ]
   }
 ]
