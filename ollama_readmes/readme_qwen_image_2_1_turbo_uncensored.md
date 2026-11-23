@@ -7,6 +7,7 @@
 [![Hallucination: 0.0%](https://img.shields.io/badge/Hallucination_Rate-0.0%25_(4%2F4_Truth_Checks)-2ea043?style=for-the-badge)](https://github.com/eriktonon/ollama-uncensored-llm-benchmarks)
 
 **Suite 11 (`HIST-011`) — Caminho A+ Dual-Tier Image Generation & Editing Stack** for the **J.A.R.V.I.S. Homelab Engine**:
+
 - **Ollama Hub Vision-Language Controller (`:8b-turbo`, `:7b-dit`, `:latest`)**: Abliterated v2.0 **`Qwen3-VL-8B-Instruct`** (`Q4_K_M` 4.68 GB + `mmproj-Q8_0` 0.70 GB = **5.38 GB** total) achieving **`7/7` (100%) Zero-Refusal Gate**, **`0.0%` Hallucination**, **`THINK_LEN=0`**, **`114.20 tok/s` Peak Decode (`111.09 tok/s` Avg)**, and **`10,160.75 tok/s` Peak Prefill** on a single **NVIDIA GeForce RTX 5080 (16GB GDDR7)**.
 - **Tier-1 Local Diffusion Worker (`:8188` · `voice/diffusion_video_worker.py`)**: **`Qwen/Qwen-Image-2.1-Turbo`** (7B Single-Stream DiT + Qwen3-VL 8B, **#1 LMArena Open-Weights ~1,363 Elo / #2 Artificial Analysis ~1,053 Elo**), running 8-step native inference in **NF4 4-bit + `enable_model_cpu_offload()`** (~5.5 GB peak VRAM, **14.8 / 16.3 GB VRAM free post-render**), supporting **Text-to-Image (PT/EN)**, **Multi-Reference Image Editing (up to 10 images)**, and **Native RGBA Transparency**.
 - **Tier-2 Colab A100/H100 80GB Companion (`:8189` · `training/colab_minimax_h3_image_worker.py`)**: **`MiniMaxAI/MiniMax-H3-Image`** (33.1B DiT, **#1 Artificial Analysis Open-Weights ~1,066 Elo**, 6 steps, native 16MP / `4096x4096`) with automatic loopback fallback to RTX 5080 when offline.

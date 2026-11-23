@@ -1,0 +1,209 @@
+{
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "cuda_version": "13.2",
+  "torch_version": "2.13.0+cu132",
+  "timestamp_utc": "2026-11-23T05:43:36Z",
+  "models": [
+    {
+      "key": "qwen_image_2_1_turbo",
+      "repo_id": "Qwen/Qwen-Image-2.1-Turbo",
+      "ollama_repo": "eriktonon/qwen-image-2.1-turbo-uncensored",
+      "license": "Qwen Research License Agreement",
+      "precision": "NF4 4-bit + enable_model_cpu_offload()",
+      "steps": 8,
+      "guidance_scale": 1.0,
+      "load_s": 18.4,
+      "avg_render_s": 14.85,
+      "max_peak_vram_mb": 5632.0,
+      "renders": [
+        {
+          "id": "IMG-01",
+          "domain": "Photorealism & Typography",
+          "filename": "qwen_img_01_typography_studio.png",
+          "resolution": "1024x1024",
+          "color_mode": "RGBA",
+          "alpha_range": [
+            157,
+            255
+          ],
+          "transparent_pct": 0.0,
+          "steps": 8,
+          "elapsed_s": 14.51,
+          "size_kb": 831.4,
+          "vram_free_mb": 14789,
+          "vram_total_mb": 16275,
+          "seed": 20261123,
+          "reference_count": 0,
+          "engine": "qwen_image_2_1_turbo_rtx5080",
+          "model": "Qwen/Qwen-Image-2.1-Turbo",
+          "quant": "nf4",
+          "prompt": "Photorealistic futuristic homelab GPU server box in a dark minimalist studio with glowing cyan glass and sharp white LED typography reading \"J.A.R.V.I.S. A+\" on the GPU shroud, liquid cooling reflections, studio rim light, 8k photography"
+        },
+        {
+          "id": "IMG-02",
+          "domain": "Editorial Hardware (PT-BR Prompt)",
+          "filename": "qwen_img_02_editorial_ptbr.png",
+          "resolution": "1024x1024",
+          "color_mode": "RGBA",
+          "alpha_range": [
+            250,
+            255
+          ],
+          "transparent_pct": 0.0,
+          "steps": 8,
+          "elapsed_s": 14.41,
+          "size_kb": 1411.1,
+          "vram_free_mb": 14789,
+          "vram_total_mb": 16275,
+          "seed": 42,
+          "reference_count": 0,
+          "engine": "qwen_image_2_1_turbo_rtx5080",
+          "model": "Qwen/Qwen-Image-2.1-Turbo",
+          "quant": "nf4",
+          "prompt": "Fotografia editorial de um servidor datacenter minimalista em aco escovado com LED azul IBM, iluminacao de estudio, foco nitido, reflexos sutis no chao cinza claro"
+        },
+        {
+          "id": "IMG-06",
+          "domain": "Cinematic 85mm Portrait & Lighting",
+          "filename": "qwen_img_06_cinematic_portrait.png",
+          "resolution": "1024x1024",
+          "color_mode": "RGBA",
+          "alpha_range": [
+            178,
+            255
+          ],
+          "transparent_pct": 0.0,
+          "steps": 8,
+          "elapsed_s": 15.63,
+          "size_kb": 1558.2,
+          "vram_free_mb": 14785,
+          "vram_total_mb": 16275,
+          "seed": 20261128,
+          "reference_count": 0,
+          "engine": "qwen_image_2_1_turbo_rtx5080",
+          "model": "Qwen/Qwen-Image-2.1-Turbo",
+          "quant": "nf4",
+          "prompt": "Editorial 85mm f/1.4 candid portrait of a senior robotics engineer inspecting a carbon-fiber robotic hand in a sunlit modern laboratory, natural skin texture, warm window backlight, subtle depth of field bokeh, authentic Leica film photography look"
+        }
+      ]
+    },
+    {
+      "key": "flux2_klein_4b",
+      "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+      "ollama_repo": "eriktonon/flux2-klein-uncensored",
+      "license": "Apache-2.0",
+      "precision": "BF16 + enable_model_cpu_offload()",
+      "steps": 4,
+      "guidance_scale": 1.0,
+      "load_s": 7.51,
+      "avg_render_s": 8.91,
+      "max_peak_vram_mb": 8018.8,
+      "renders": [
+        {
+          "id": "IMG-01",
+          "domain": "Photorealism & Typography",
+          "filename": "flux2klein_img_01_typography_studio.png",
+          "resolution": "1024x1024",
+          "color_mode": "RGB",
+          "steps": 4,
+          "guidance_scale": 1.0,
+          "elapsed_s": 9.2,
+          "size_kb": 1330.9,
+          "peak_vram_mb": 8018.8,
+          "vram_free_mb": 14793,
+          "vram_total_mb": 16275,
+          "seed": 20261123
+        },
+        {
+          "id": "IMG-02",
+          "domain": "Editorial Hardware (PT-BR Prompt)",
+          "filename": "flux2klein_img_02_editorial_ptbr.png",
+          "resolution": "1024x1024",
+          "color_mode": "RGB",
+          "steps": 4,
+          "guidance_scale": 1.0,
+          "elapsed_s": 9.4,
+          "size_kb": 1306.8,
+          "peak_vram_mb": 8018.8,
+          "vram_free_mb": 14793,
+          "vram_total_mb": 16275,
+          "seed": 42
+        },
+        {
+          "id": "IMG-06",
+          "domain": "Cinematic 85mm Portrait & Lighting",
+          "filename": "flux2klein_img_06_cinematic_portrait.png",
+          "resolution": "1024x1024",
+          "color_mode": "RGB",
+          "steps": 4,
+          "guidance_scale": 1.0,
+          "elapsed_s": 8.14,
+          "size_kb": 1730.4,
+          "peak_vram_mb": 8018.8,
+          "vram_free_mb": 14793,
+          "vram_total_mb": 16275,
+          "seed": 20261128
+        }
+      ]
+    },
+    {
+      "key": "z_image_turbo",
+      "repo_id": "Tongyi-MAI/Z-Image-Turbo",
+      "ollama_repo": "eriktonon/z-image-turbo-uncensored",
+      "license": "Apache-2.0",
+      "precision": "NF4 4-bit + enable_model_cpu_offload()",
+      "steps": 9,
+      "guidance_scale": 0.0,
+      "load_s": 17.31,
+      "avg_render_s": 11.24,
+      "max_peak_vram_mb": 3553.5,
+      "renders": [
+        {
+          "id": "IMG-01",
+          "domain": "Photorealism & Typography",
+          "filename": "zimage_img_01_typography_studio.png",
+          "resolution": "1024x1024",
+          "color_mode": "RGB",
+          "steps": 9,
+          "guidance_scale": 0.0,
+          "elapsed_s": 11.16,
+          "size_kb": 1074.6,
+          "peak_vram_mb": 3553.5,
+          "vram_free_mb": 14807,
+          "vram_total_mb": 16275,
+          "seed": 20261123
+        },
+        {
+          "id": "IMG-02",
+          "domain": "Editorial Hardware (PT-BR Prompt)",
+          "filename": "zimage_img_02_editorial_ptbr.png",
+          "resolution": "1024x1024",
+          "color_mode": "RGB",
+          "steps": 9,
+          "guidance_scale": 0.0,
+          "elapsed_s": 11.46,
+          "size_kb": 1355.1,
+          "peak_vram_mb": 3553.4,
+          "vram_free_mb": 14803,
+          "vram_total_mb": 16275,
+          "seed": 42
+        },
+        {
+          "id": "IMG-06",
+          "domain": "Cinematic 85mm Portrait & Lighting",
+          "filename": "zimage_img_06_cinematic_portrait.png",
+          "resolution": "1024x1024",
+          "color_mode": "RGB",
+          "steps": 9,
+          "guidance_scale": 0.0,
+          "elapsed_s": 11.09,
+          "size_kb": 1214.0,
+          "peak_vram_mb": 3553.5,
+          "vram_free_mb": 14807,
+          "vram_total_mb": 16275,
+          "seed": 20261128
+        }
+      ]
+    }
+  ]
+}
